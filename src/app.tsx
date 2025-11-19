@@ -294,7 +294,7 @@ function LeerMas() {
 function Contenido() {
   return (
     <div className="absolute h-[118px] left-[23px] overflow-clip top-[77px] w-[323px]" data-name="contenido">
-      <p className="absolute font-['Arial:Regular',sans-serif] h-[57px] leading-[21px] left-[10px] not-italic text-[14px] text-white top-[19px] w-[264px]">pronto empezaremos cosas maravillosas, no se las pierdan</p>
+      <p className="absolute font-['Arial:Regular',sans-serif] h-[57px] leading-[21px] left-[10px] not-italic text-[20px] text-white top-[25px] w-[280px]">nuestro nuevo proyecto !!AUKANA!! oficialmente está en obra, no esperes más y sé parte de esta gran obra</p>
     </div>
   );
 }
@@ -302,7 +302,7 @@ function Contenido() {
 function Fecha() {
   return (
     <div className="absolute h-[30px] left-[7px] overflow-clip top-[7px] w-[323px]" data-name="fecha">
-      <p className="absolute font-['Arial:Regular',sans-serif] h-[23px] leading-[21px] left-[10px] not-italic text-[14px] text-white top-[7px] w-[137px]">octubre 17 del 2025</p>
+      <p className="absolute font-['Arial:Regular',sans-serif] h-[23px] leading-[21px] left-[10px] not-italic text-[14px] text-white top-[7px] w-[180px]">17 de octubre del 2025</p>
     </div>
   );
 }
@@ -758,7 +758,7 @@ function Heading4() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        +150
+        +20
       </motion.p>
     </div>
   );
@@ -852,7 +852,7 @@ function Heading5() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        +5000
+        +1000
       </motion.p>
     </div>
   );
@@ -944,7 +944,7 @@ function Heading6() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        +25
+        +10
       </motion.p>
     </div>
   );
