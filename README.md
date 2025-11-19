@@ -12,4 +12,4 @@ pagina de la constructora libella
 ## Instalación
 1. Clone el repositorio = git clone https://github.com/dokiromboide/Libella.git
 2. Instale las dependencias de Node.js/React/JavaScript = npm install
-3. instale las dependencias de Python = pip install -r requirements.txt
+3. instale las dependencias de Python = pip install -r requirements.txt (si corresponde para lo que está haciendo)

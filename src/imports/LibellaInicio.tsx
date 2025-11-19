@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import svgPaths from "./imports/svg-7y6p7vhc1w";
+import svgPaths from "./svg-7y6p7vhc1w";
 import imgHeroCarousel from "figma:asset/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
 import imgHeroCarousel1 from "figma:asset/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
 import imgHeroCarousel2 from "figma:asset/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
@@ -12,49 +10,27 @@ import imgImageLaCeiba from "figma:asset/23069cff9d3176399375c76d68759cbd72f9fa1
 import imgImageLaGranTurquesa from "figma:asset/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
 import imgImageLibellaLogo from "figma:asset/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
 
-// Design constants
-const DESIGN_WIDTH = 1263;
-const DESIGN_HEIGHT = 3971;
-
-const carouselImages = [
-  imgHeroCarousel,
-  imgHeroCarousel1,
-  imgHeroCarousel2,
-  imgHeroCarousel3,
-];
-
-function HeroCarousel({ active, index }: { active: boolean; index: number }) {
-  const images = [imgHeroCarousel, imgHeroCarousel1, imgHeroCarousel2];
-  const positions = [
-    { left: "-54.44px", top: "-21.56px", width: "1371.54px", height: "543.113px" },
-    { left: "-17.9px", top: "-7.09px", width: "1298.47px", height: "514.178px" },
-    { left: "-58.16px", top: "-23.03px", width: "1378.99px", height: "546.062px" },
-  ];
-
-  if (index > 2) return null;
-
-  const pos = positions[index];
-
+function HeroCarousel() {
   return (
-    <motion.div
-      className="absolute"
-      style={{
-        height: pos.height,
-        left: pos.left,
-        top: pos.top,
-        width: pos.width,
-      }}
-      initial={{ opacity: 0, scale: 1.1 }}
-      animate={{ opacity: active ? 1 : 0, scale: active ? 1 : 1.1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      data-name="HeroCarousel"
-    >
-      <img
-        alt=""
-        className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-        src={images[index]}
-      />
-    </motion.div>
+    <div className="absolute h-[543.113px] left-[-54.44px] opacity-0 top-[-21.56px] w-[1371.54px]" data-name="HeroCarousel">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeroCarousel} />
+    </div>
+  );
+}
+
+function HeroCarousel1() {
+  return (
+    <div className="absolute h-[514.178px] left-[-17.9px] opacity-0 top-[-7.09px] w-[1298.47px]" data-name="HeroCarousel">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeroCarousel1} />
+    </div>
+  );
+}
+
+function HeroCarousel2() {
+  return (
+    <div className="absolute h-[546.062px] left-[-58.16px] opacity-0 top-[-23.03px] w-[1378.99px]" data-name="HeroCarousel">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeroCarousel2} />
+    </div>
   );
 }
 
@@ -64,6 +40,14 @@ function HeroCarousel3() {
 
 function HeroCarousel4() {
   return <div className="absolute bg-gradient-to-t from-[rgba(0,0,0,0.4)] h-[500px] left-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0)] w-[1262.67px]" data-name="HeroCarousel" />;
+}
+
+function HeroCarousel5() {
+  return (
+    <div className="absolute h-[513.186px] left-[5px] top-[-7px] w-[1295.97px]" data-name="HeroCarousel">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-contain pointer-events-none size-full" src={imgHeroCarousel3} />
+    </div>
+  );
 }
 
 function Icon() {
@@ -80,18 +64,12 @@ function Icon() {
   );
 }
 
-function Button({ onClick }: { onClick: () => void }) {
+function Button() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(255,255,255,0.1)] box-border content-stretch flex flex-col items-start left-[24px] pb-[0.667px] pt-[12.667px] px-[12.667px] rounded-[2.23696e+07px] size-[49.333px] top-[225.33px] cursor-pointer"
-      data-name="Button"
-      onClick={onClick}
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className="absolute bg-[rgba(255,255,255,0.1)] box-border content-stretch flex flex-col items-start left-[24px] pb-[0.667px] pt-[12.667px] px-[12.667px] rounded-[2.23696e+07px] size-[49.333px] top-[225.33px]" data-name="Button">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.2)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)]" />
       <Icon />
-    </motion.div>
+    </div>
   );
 }
 
@@ -109,85 +87,54 @@ function Icon1() {
   );
 }
 
-function Button1({ onClick }: { onClick: () => void }) {
+function Button1() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(255,255,255,0.1)] box-border content-stretch flex flex-col items-start left-[1189.33px] pb-[0.667px] pt-[12.667px] px-[12.667px] rounded-[2.23696e+07px] size-[49.333px] top-[225.33px] cursor-pointer"
-      data-name="Button"
-      onClick={onClick}
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className="absolute bg-[rgba(255,255,255,0.1)] box-border content-stretch flex flex-col items-start left-[1189.33px] pb-[0.667px] pt-[12.667px] px-[12.667px] rounded-[2.23696e+07px] size-[49.333px] top-[225.33px]" data-name="Button">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.2)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px] shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)]" />
       <Icon1 />
-    </motion.div>
+    </div>
   );
 }
 
-function Button2({ active, onClick }: { active: boolean; onClick: () => void }) {
+function Button2() {
   return (
-    <motion.div
-      className={`${active ? "bg-white" : "bg-[rgba(255,255,255,0.3)]"} relative rounded-[2.23696e+07px] shrink-0 size-[12px] cursor-pointer`}
-      data-name="Button"
-      onClick={onClick}
-      whileHover={{ scale: 1.2 }}
-      animate={{ width: active ? "32px" : "12px" }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="bg-[rgba(255,255,255,0.3)] relative rounded-[2.23696e+07px] shrink-0 size-[12px]" data-name="Button">
       <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border size-[12px]" />
-    </motion.div>
+    </div>
   );
 }
 
-function HeroCarousel6({ currentSlide, setSlide }: { currentSlide: number; setSlide: (index: number) => void }) {
+function Button3() {
   return (
-    <div className="absolute bg-[rgba(0,0,0,0.2)] box-border content-stretch flex gap-[12px] h-[28px] items-center left-[563.33px] pb-0 pt-[8px] px-[16px] rounded-[2.23696e+07px] top-[440px] w-[136px]" data-name="HeroCarousel">
-      <Button2 active={currentSlide === 0} onClick={() => setSlide(0)} />
-      <Button2 active={currentSlide === 1} onClick={() => setSlide(1)} />
-      <Button2 active={currentSlide === 2} onClick={() => setSlide(2)} />
-      <Button2 active={currentSlide === 3} onClick={() => setSlide(3)} />
+    <div className="basis-0 bg-white grow h-[12px] min-h-px min-w-px relative rounded-[2.23696e+07px] shrink-0" data-name="Button">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[12px] w-full" />
+    </div>
+  );
+}
+
+function HeroCarousel6() {
+  return (
+    <div className="absolute bg-[rgba(0,0,0,0.2)] box-border content-stretch flex gap-[12px] h-[28px] items-start left-[563.33px] pb-0 pt-[8px] px-[16px] rounded-[2.23696e+07px] top-[440px] w-[136px]" data-name="HeroCarousel">
+      <Button2 />
+      <Button3 />
+      <Button2 />
+      <Button2 />
     </div>
   );
 }
 
 function Container() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 4);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % 4);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + 4) % 4);
-  };
-
   return (
     <div className="absolute h-[500px] left-0 overflow-clip top-0 w-[1263px]" data-name="Container">
-      <HeroCarousel active={currentSlide === 0} index={0} />
-      <HeroCarousel active={currentSlide === 1} index={1} />
-      <HeroCarousel active={currentSlide === 2} index={2} />
+      <HeroCarousel />
+      <HeroCarousel1 />
+      <HeroCarousel2 />
       <HeroCarousel3 />
       <HeroCarousel4 />
-      <motion.div
-        className="absolute h-[513.186px] left-[5px] top-[-7px] w-[1295.97px]"
-        data-name="HeroCarousel"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: currentSlide === 3 ? 1 : 0 }}
-        transition={{ duration: 1 }}
-      >
-        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-contain pointer-events-none size-full" src={imgHeroCarousel3} />
-      </motion.div>
-      <Button onClick={prevSlide} />
-      <Button1 onClick={nextSlide} />
-      <HeroCarousel6 currentSlide={currentSlide} setSlide={setCurrentSlide} />
+      <HeroCarousel5 />
+      <Button />
+      <Button1 />
+      <HeroCarousel6 />
     </div>
   );
 }
@@ -222,17 +169,10 @@ function NewsSection() {
 
 function Heading() {
   return (
-    <motion.div
-      className="h-[60px] relative shrink-0 w-full"
-      data-name="Heading 2"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="h-[60px] relative shrink-0 w-full" data-name="Heading 2">
       <Text />
       <NewsSection />
-    </motion.div>
+    </div>
   );
 }
 
@@ -279,15 +219,10 @@ function Icon2() {
 
 function LeerMas() {
   return (
-    <motion.div
-      className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px] cursor-pointer"
-      data-name="leer mas"
-      whileHover={{ x: 5 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px]" data-name="leer mas">
       <p className="absolute font-['Arial:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-nowrap text-white top-[-1.33px] whitespace-pre">Leer más</p>
       <Icon2 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -319,20 +254,12 @@ function NewsCard2() {
 
 function Container5() {
   return (
-    <motion.div
-      className="absolute bg-gradient-to-b from-[63.942%] from-[rgba(227,66,52,0.91)] h-[498.188px] left-0 overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[rgba(64,56,56,0.95)] top-0 w-[378.219px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
-    >
+    <div className="absolute bg-gradient-to-b from-[63.942%] from-[rgba(227,66,52,0.91)] h-[498.188px] left-0 overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[rgba(64,56,56,0.95)] top-0 w-[378.219px]" data-name="Container">
       <NewsCard />
       <Container3 />
       <NewsCard1 />
       <NewsCard2 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -429,15 +356,10 @@ function Icon4() {
 
 function Container9() {
   return (
-    <motion.div
-      className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px] cursor-pointer"
-      data-name="Container"
-      whileHover={{ x: 5 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px]" data-name="Container">
       <p className="absolute font-['Arial:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-nowrap text-white top-[-1.33px] whitespace-pre">Leer más</p>
       <Icon4 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -458,21 +380,13 @@ function Container10() {
 
 function Container11() {
   return (
-    <motion.div
-      className="absolute bg-gradient-to-b from-[63.942%] from-[rgba(227,66,52,0.91)] h-[498.188px] left-[410.22px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[rgba(64,56,56,0.95)] top-0 w-[378.219px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
-    >
+    <div className="absolute bg-gradient-to-b from-[63.942%] from-[rgba(227,66,52,0.91)] h-[498.188px] left-[410.22px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[rgba(64,56,56,0.95)] top-0 w-[378.219px]" data-name="Container">
       <NewsCard3 />
       <Container6 />
       <NewsCard4 />
       <NewsCard6 />
       <Container10 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -569,15 +483,10 @@ function Icon6() {
 
 function Container15() {
   return (
-    <motion.div
-      className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px] cursor-pointer"
-      data-name="Container"
-      whileHover={{ x: 5 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px]" data-name="Container">
       <p className="absolute font-['Arial:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-nowrap text-white top-[-1.33px] whitespace-pre">Leer más</p>
       <Icon6 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -594,20 +503,12 @@ function NewsCard10() {
 
 function Container16() {
   return (
-    <motion.div
-      className="absolute bg-gradient-to-b from-[63.942%] from-[rgba(227,66,52,0.91)] h-[498.188px] left-[820.44px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[rgba(64,56,56,0.95)] top-0 w-[378.219px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.4 }}
-      whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
-    >
+    <div className="absolute bg-gradient-to-b from-[63.942%] from-[rgba(227,66,52,0.91)] h-[498.188px] left-[820.44px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[rgba(64,56,56,0.95)] top-0 w-[378.219px]" data-name="Container">
       <NewsCard7 />
       <Container12 />
       <NewsCard8 />
       <NewsCard10 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -666,18 +567,11 @@ function Container21() {
 
 function SeccionHojasDivisoras() {
   return (
-    <motion.div
-      className="absolute h-[250px] left-0 overflow-clip top-[2686px] w-[1263px]"
-      data-name="seccion_hojas_divisoras"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
+    <div className="absolute h-[250px] left-0 overflow-clip top-[2686px] w-[1263px]" data-name="seccion_hojas_divisoras">
       <ImageDivider />
       <Container20 />
       <Container21 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -695,17 +589,10 @@ function MetricsSection() {
 
 function Heading3() {
   return (
-    <motion.div
-      className="h-[60px] relative shrink-0 w-full"
-      data-name="Heading 2"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="h-[60px] relative shrink-0 w-full" data-name="Heading 2">
       <Text1 />
       <MetricsSection />
-    </motion.div>
+    </div>
   );
 }
 
@@ -714,7 +601,7 @@ function MetricCard() {
 }
 
 function Container22() {
-  return <div className="absolute h-[288px] left-0 opacity-20 top-0 w-[378.219px]" data-name="Container" style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 378.22 288\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><rect x=\\'0\\' y=\\'0\\' height=\\'100%\\' width=\\'100%\\' fill=\\'url(%23grad)\\' opacity=\\'1\\'/><defs><radialGradient id=\\'grad\\' gradientUnits=\\'userSpaceOnUse\\' cx=\\'0\\' cy=\\'0\\' r=\\'10\\' gradientTransform=\\'matrix(0 -32.849 -32.849 0 295.25 144)\\'><stop stop-color=\\'rgba(255,255,255,0.1)\\' offset=\\'0\\'/><stop stop-color=\\'rgba(128,128,128,0.05)\\' offset=\\'0.25\\'/><stop stop-color=\\'rgba(0,0,0,0)\\' offset=\\'0.5\\'/></radialGradient></defs></svg>')" }} />;
+  return <div className="absolute h-[288px] left-0 opacity-20 top-0 w-[378.219px]" data-name="Container" style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\\'0 0 378.22 288\\\' xmlns=\\\'http://www.w3.org/2000/svg\\\' preserveAspectRatio=\\\'none\\\'><rect x=\\\'0\\\' y=\\\'0\\\' height=\\\'100%\\\' width=\\\'100%\\\' fill=\\\'url(%23grad)\\\' opacity=\\\'1\\\'/><defs><radialGradient id=\\\'grad\\\' gradientUnits=\\\'userSpaceOnUse\\\' cx=\\\'0\\\' cy=\\\'0\\\' r=\\\'10\\\' gradientTransform=\\\'matrix(0 -32.849 -32.849 0 295.25 144)\\\'><stop stop-color=\\\'rgba(255,255,255,0.1)\\\' offset=\\\'0\\\'/><stop stop-color=\\\'rgba(128,128,128,0.05)\\\' offset=\\\'0.25\\\'/><stop stop-color=\\\'rgba(0,0,0,0)\\\' offset=\\\'0.5\\\'/></radialGradient></defs></svg>')" }} />;
 }
 
 function Container23() {
@@ -736,30 +623,17 @@ function Icon7() {
 
 function Container24() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(255,255,255,0.1)] left-[109.1px] rounded-[2.23696e+07px] size-[64px] top-0"
-      data-name="Container"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.15)" }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="absolute bg-[rgba(255,255,255,0.1)] left-[109.1px] rounded-[2.23696e+07px] size-[64px] top-0" data-name="Container">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.2)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px]" />
       <Icon7 />
-    </motion.div>
+    </div>
   );
 }
 
 function Heading4() {
   return (
     <div className="absolute h-[72px] left-0 top-[88px] w-[282.219px]" data-name="Heading 3">
-      <motion.p
-        className="absolute font-['Arial:Regular',sans-serif] leading-[72px] left-[141.38px] not-italic text-[48px] text-center text-white top-[-5px] translate-x-[-50%] w-[111px]"
-        initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-      >
-        150+
-      </motion.p>
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[72px] left-[141.38px] not-italic text-[48px] text-center text-white top-[-5px] translate-x-[-50%] w-[111px]">150+</p>
     </div>
   );
 }
@@ -784,20 +658,12 @@ function MetricCard1() {
 
 function Container25() {
   return (
-    <motion.div
-      className="absolute bg-gradient-to-b from-[25.962%] from-[rgba(227,66,52,0.91)] h-[288px] left-0 overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[#403838] top-0 w-[378.219px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
-    >
+    <div className="absolute bg-gradient-to-b from-[25.962%] from-[rgba(227,66,52,0.91)] h-[288px] left-0 overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[#403838] top-0 w-[378.219px]" data-name="Container">
       <MetricCard />
       <Container22 />
       <Container23 />
       <MetricCard1 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -806,7 +672,7 @@ function MetricCard2() {
 }
 
 function Container26() {
-  return <div className="absolute h-[288px] left-0 opacity-20 top-0 w-[378.219px]" data-name="Container" style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 378.22 288\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><rect x=\\'0\\' y=\\'0\\' height=\\'100%\\' width=\\'100%\\' fill=\\'url(%23grad)\\' opacity=\\'1\\'/><defs><radialGradient id=\\'grad\\' gradientUnits=\\'userSpaceOnUse\\' cx=\\'0\\' cy=\\'0\\' r=\\'10\\' gradientTransform=\\'matrix(0 -32.849 -32.849 0 295.25 144)\\'><stop stop-color=\\'rgba(255,255,255,0.1)\\' offset=\\'0\\'/><stop stop-color=\\'rgba(128,128,128,0.05)\\' offset=\\'0.25\\'/><stop stop-color=\\'rgba(0,0,0,0)\\' offset=\\'0.5\\'/></radialGradient></defs></svg>')" }} />;
+  return <div className="absolute h-[288px] left-0 opacity-20 top-0 w-[378.219px]" data-name="Container" style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\\'0 0 378.22 288\\\' xmlns=\\\'http://www.w3.org/2000/svg\\\' preserveAspectRatio=\\\'none\\\'><rect x=\\\'0\\\' y=\\\'0\\\' height=\\\'100%\\\' width=\\\'100%\\\' fill=\\\'url(%23grad)\\\' opacity=\\\'1\\\'/><defs><radialGradient id=\\\'grad\\\' gradientUnits=\\\'userSpaceOnUse\\\' cx=\\\'0\\\' cy=\\\'0\\\' r=\\\'10\\\' gradientTransform=\\\'matrix(0 -32.849 -32.849 0 295.25 144)\\\'><stop stop-color=\\\'rgba(255,255,255,0.1)\\\' offset=\\\'0\\\'/><stop stop-color=\\\'rgba(128,128,128,0.05)\\\' offset=\\\'0.25\\\'/><stop stop-color=\\\'rgba(0,0,0,0)\\\' offset=\\\'0.5\\\'/></radialGradient></defs></svg>')" }} />;
 }
 
 function Container27() {
@@ -830,30 +696,17 @@ function Icon8() {
 
 function Container28() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(255,255,255,0.1)] left-[109.1px] rounded-[2.23696e+07px] size-[64px] top-0"
-      data-name="Container"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.15)" }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="absolute bg-[rgba(255,255,255,0.1)] left-[109.1px] rounded-[2.23696e+07px] size-[64px] top-0" data-name="Container">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.2)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px]" />
       <Icon8 />
-    </motion.div>
+    </div>
   );
 }
 
 function Heading5() {
   return (
     <div className="absolute h-[72px] left-0 top-[88px] w-[282.219px]" data-name="Heading 3">
-      <motion.p
-        className="absolute font-['Arial:Regular',sans-serif] leading-[72px] left-[141.44px] not-italic text-[48px] text-center text-white top-[-5px] translate-x-[-50%] w-[137px]"
-        initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.4 }}
-      >
-        5000+
-      </motion.p>
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[72px] left-[141.44px] not-italic text-[48px] text-center text-white top-[-5px] translate-x-[-50%] w-[137px]">5000+</p>
     </div>
   );
 }
@@ -878,20 +731,12 @@ function MetricCard3() {
 
 function Container29() {
   return (
-    <motion.div
-      className="absolute bg-gradient-to-b from-26% from-[rgba(227,66,52,0.91)] h-[288px] left-[410.22px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[#403838] top-0 w-[378.219px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
-    >
+    <div className="absolute bg-gradient-to-b from-26% from-[rgba(227,66,52,0.91)] h-[288px] left-[410.22px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[#403838] top-0 w-[378.219px]" data-name="Container">
       <MetricCard2 />
       <Container26 />
       <Container27 />
       <MetricCard3 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -900,7 +745,7 @@ function MetricCard4() {
 }
 
 function Container30() {
-  return <div className="absolute h-[288px] left-0 opacity-20 top-0 w-[378.219px]" data-name="Container" style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\'0 0 378.22 288\\' xmlns=\\'http://www.w3.org/2000/svg\\' preserveAspectRatio=\\'none\\'><rect x=\\'0\\' y=\\'0\\' height=\\'100%\\' width=\\'100%\\' fill=\\'url(%23grad)\\' opacity=\\'1\\'/><defs><radialGradient id=\\'grad\\' gradientUnits=\\'userSpaceOnUse\\' cx=\\'0\\' cy=\\'0\\' r=\\'10\\' gradientTransform=\\'matrix(0 -32.849 -32.849 0 295.25 144)\\'><stop stop-color=\\'rgba(255,255,255,0.1)\\' offset=\\'0\\'/><stop stop-color=\\'rgba(128,128,128,0.05)\\' offset=\\'0.25\\'/><stop stop-color=\\'rgba(0,0,0,0)\\' offset=\\'0.5\\'/></radialGradient></defs></svg>')" }} />;
+  return <div className="absolute h-[288px] left-0 opacity-20 top-0 w-[378.219px]" data-name="Container" style={{ backgroundImage: "url('data:image/svg+xml;utf8,<svg viewBox=\\\'0 0 378.22 288\\\' xmlns=\\\'http://www.w3.org/2000/svg\\\' preserveAspectRatio=\\\'none\\\'><rect x=\\\'0\\\' y=\\\'0\\\' height=\\\'100%\\\' width=\\\'100%\\\' fill=\\\'url(%23grad)\\\' opacity=\\\'1\\\'/><defs><radialGradient id=\\\'grad\\\' gradientUnits=\\\'userSpaceOnUse\\\' cx=\\\'0\\\' cy=\\\'0\\\' r=\\\'10\\\' gradientTransform=\\\'matrix(0 -32.849 -32.849 0 295.25 144)\\\'><stop stop-color=\\\'rgba(255,255,255,0.1)\\\' offset=\\\'0\\\'/><stop stop-color=\\\'rgba(128,128,128,0.05)\\\' offset=\\\'0.25\\\'/><stop stop-color=\\\'rgba(0,0,0,0)\\\' offset=\\\'0.5\\\'/></radialGradient></defs></svg>')" }} />;
 }
 
 function Container31() {
@@ -922,30 +767,17 @@ function Icon9() {
 
 function Container32() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(255,255,255,0.1)] left-[109.1px] rounded-[2.23696e+07px] size-[64px] top-0"
-      data-name="Container"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.15)" }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="absolute bg-[rgba(255,255,255,0.1)] left-[109.1px] rounded-[2.23696e+07px] size-[64px] top-0" data-name="Container">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.2)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px]" />
       <Icon9 />
-    </motion.div>
+    </div>
   );
 }
 
 function Heading6() {
   return (
     <div className="absolute h-[72px] left-0 top-[88px] w-[282.219px]" data-name="Heading 3">
-      <motion.p
-        className="absolute font-['Arial:Regular',sans-serif] leading-[72px] left-[141.31px] not-italic text-[48px] text-center text-white top-[-5px] translate-x-[-50%] w-[85px]"
-        initial={{ scale: 0.8, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      >
-        25+
-      </motion.p>
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[72px] left-[141.31px] not-italic text-[48px] text-center text-white top-[-5px] translate-x-[-50%] w-[85px]">25+</p>
     </div>
   );
 }
@@ -970,20 +802,12 @@ function MetricCard5() {
 
 function Container33() {
   return (
-    <motion.div
-      className="absolute bg-gradient-to-b from-26% from-[rgba(227,66,52,0.91)] h-[288px] left-[820.44px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[#403838] top-0 w-[378.219px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.4 }}
-      whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
-    >
+    <div className="absolute bg-gradient-to-b from-26% from-[rgba(227,66,52,0.91)] h-[288px] left-[820.44px] overflow-clip rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] to-[#403838] top-0 w-[378.219px]" data-name="Container">
       <MetricCard4 />
       <Container30 />
       <Container31 />
       <MetricCard5 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1049,17 +873,10 @@ function Footer1() {
 
 function Container39() {
   return (
-    <motion.div
-      className="absolute h-[234px] left-[48px] top-[-22.34px] w-[367.552px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="absolute h-[234px] left-[48px] top-[-22.34px] w-[367.552px]" data-name="Container">
       <Footer />
       <Footer1 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1086,15 +903,10 @@ function Icon10() {
 
 function Link() {
   return (
-    <motion.div
-      className="h-[21px] relative shrink-0 w-full cursor-pointer"
-      data-name="Link"
-      whileHover={{ x: 5 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div className="h-[21px] relative shrink-0 w-full" data-name="Link">
       <Icon10 />
       <p className="absolute font-['Arial:Regular',sans-serif] leading-[21px] left-[32px] not-italic text-[#f7f4eb] text-[14px] text-nowrap top-[-1.33px] whitespace-pre">libella123@libella.com</p>
-    </motion.div>
+    </div>
   );
 }
 
@@ -1117,15 +929,10 @@ function Icon11() {
 
 function Link1() {
   return (
-    <motion.div
-      className="h-[21px] relative shrink-0 w-full cursor-pointer"
-      data-name="Link"
-      whileHover={{ x: 5 }}
-      transition={{ duration: 0.2 }}
-    >
+    <div className="h-[21px] relative shrink-0 w-full" data-name="Link">
       <Icon11 />
       <p className="absolute font-['Arial:Regular',sans-serif] leading-[21px] left-[32px] not-italic text-[#f7f4eb] text-[14px] text-nowrap top-[-1.33px] whitespace-pre">(+57) 123-456-7890</p>
-    </motion.div>
+    </div>
   );
 }
 
@@ -1140,17 +947,10 @@ function Footer3() {
 
 function Container40() {
   return (
-    <motion.div
-      className="absolute content-stretch flex flex-col gap-[16px] h-[234px] items-start left-[415.55px] top-0 w-[367.552px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-    >
+    <div className="absolute content-stretch flex flex-col gap-[16px] h-[234px] items-start left-[415.55px] top-0 w-[367.552px]" data-name="Container">
       <Footer2 />
       <Footer3 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1183,17 +983,12 @@ function Icon12() {
 
 function Link2() {
   return (
-    <motion.div
-      className="bg-[rgba(255,255,255,0.1)] relative rounded-[2.23696e+07px] shrink-0 size-[48px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className="bg-[rgba(255,255,255,0.1)] relative rounded-[2.23696e+07px] shrink-0 size-[48px]" data-name="Link">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border content-stretch flex items-center justify-center p-[0.667px] relative size-[48px]">
         <Icon12 />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -1211,17 +1006,12 @@ function Icon13() {
 
 function Link3() {
   return (
-    <motion.div
-      className="bg-[rgba(255,255,255,0.1)] relative rounded-[2.23696e+07px] shrink-0 size-[48px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className="bg-[rgba(255,255,255,0.1)] relative rounded-[2.23696e+07px] shrink-0 size-[48px]" data-name="Link">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border content-stretch flex items-center justify-center p-[0.667px] relative size-[48px]">
         <Icon13 />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -1241,17 +1031,12 @@ function Icon14() {
 
 function Link4() {
   return (
-    <motion.div
-      className="bg-[rgba(255,255,255,0.1)] relative rounded-[2.23696e+07px] shrink-0 size-[48px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
-      whileTap={{ scale: 0.95 }}
-    >
+    <div className="bg-[rgba(255,255,255,0.1)] relative rounded-[2.23696e+07px] shrink-0 size-[48px]" data-name="Link">
       <div aria-hidden="true" className="absolute border-[0.667px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none rounded-[2.23696e+07px]" />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border content-stretch flex items-center justify-center p-[0.667px] relative size-[48px]">
         <Icon14 />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -1267,17 +1052,10 @@ function Footer5() {
 
 function Container41() {
   return (
-    <motion.div
-      className="absolute content-stretch flex flex-col gap-[16px] h-[234px] items-start left-[831.1px] top-0 w-[367.552px]"
-      data-name="Container"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-    >
+    <div className="absolute content-stretch flex flex-col gap-[16px] h-[234px] items-start left-[831.1px] top-0 w-[367.552px]" data-name="Container">
       <Footer4 />
       <Footer5 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1344,134 +1122,604 @@ function Heading7() {
 
 function Container47() {
   return (
-    <motion.div
-      className="absolute h-[65.159px] left-[139.01px] top-[104.25px] w-[985.205px]"
-      data-name="Container"
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
+    <div className="absolute h-[65.159px] left-[139.01px] top-[104.25px] w-[985.205px]" data-name="Container">
       <Container46 />
       <Heading7 />
-    </motion.div>
+    </div>
   );
 }
 
-// Proyecto components (simplified, we'll create one reusable component)
-function ProjectCard({ title, type, description, location, status, image, delay, left, top }: any) {
+function ImageAltosDeCattleya() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] w-[466.539px]"
-      data-name="ProjectCard"
-      style={{ left, top }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -15, boxShadow: "0px 37.15px 74.299px -13.032px rgba(0,0,0,0.35)" }}
-    >
-      <div className="h-[412.226px] overflow-clip relative shrink-0 w-full" data-name="Container">
-        <div className="absolute h-[412.226px] left-0 top-0 w-[466.539px]" data-name="Image">
-          <motion.img
-            alt=""
-            className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full"
-            src={image}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
-        <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[412.226px] left-0 opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0.4)] w-[466.539px]" />
-        <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0)] h-[412.226px] left-[-466.54px] opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(255,255,255,0.2)] w-[466.539px]" />
-        
-        <motion.div
-          className="absolute bg-[rgba(0,0,0,0.6)] box-border content-stretch flex flex-col h-auto items-start left-0 pb-0 pt-[26.932px] px-[26.064px] bottom-0 w-[466.539px]"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
-          <div className="relative w-full pb-[26.932px]">
-            <div className="h-[19.548px] mb-[13.032px]">
-              <p className="font-['Arial:Regular',sans-serif] leading-[19.548px] not-italic text-[13.032px] text-[rgba(255,255,255,0.7)] text-nowrap tracking-[0.6516px] uppercase">{type}</p>
-            </div>
-            <div className="h-[39.095px] mb-[13.032px]">
-              <p className="font-['Arial:Regular',sans-serif] leading-[39.095px] not-italic text-[26.064px] text-nowrap text-white">{title}</p>
-            </div>
-            <div className="h-auto mb-[13.032px]">
-              <p className="font-['Arial:Regular',sans-serif] leading-[24.706px] not-italic text-[15.204px] text-[rgba(255,255,255,0.85)]">{description}</p>
-            </div>
-            <div className="border-t border-[rgba(255,255,255,0.1)] pt-[13.901px] mb-[13.032px]">
-              <p className="font-['Arial:Regular',sans-serif] leading-[16.29px] not-italic text-[10.86px] text-[rgba(255,255,255,0.5)] tracking-[0.543px] uppercase mb-[4.344px]">Ubicación</p>
-              <p className="font-['Arial:Regular',sans-serif] leading-[21.177px] not-italic text-[14.118px] text-white">{location}</p>
-            </div>
-            <div className="flex items-center gap-[8.688px]">
-              <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.2)] h-[1.086px] to-[rgba(255,255,255,0)]" />
-              <div className="bg-[rgba(255,255,255,0.15)] h-[26.607px] px-[13.03px] rounded-[2.91516e+07px] flex items-center">
-                <p className="font-['Arial:Regular',sans-serif] leading-[17.919px] not-italic text-[#e34234] text-[11.946px] tracking-[0.543px] uppercase">{status}</p>
-              </div>
-              <div className="flex-1 bg-gradient-to-b from-[rgba(255,255,255,0.2)] h-[1.086px] to-[rgba(255,255,255,0)]" />
-            </div>
-          </div>
-        </motion.div>
+    <div className="absolute h-[412.226px] left-0 top-0 w-[466.539px]" data-name="Image (Altos de Cattleya)">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeroCarousel} />
+    </div>
+  );
+}
+
+function Container48() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[412.226px] left-0 opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0.4)] w-[466.539px]" data-name="Container" />;
+}
+
+function Container49() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0)] h-[412.226px] left-[-466.54px] opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(255,255,255,0.2)] w-[466.539px]" data-name="Container" />;
+}
+
+function Paragraph5() {
+  return (
+    <div className="absolute h-[19.548px] left-0 top-0 w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[19.548px] left-0 not-italic text-[13.032px] text-[rgba(255,255,255,0.7)] text-nowrap top-[-0.43px] tracking-[0.6516px] uppercase whitespace-pre">Parcelación</p>
+    </div>
+  );
+}
+
+function Heading8() {
+  return (
+    <div className="absolute h-[39.095px] left-0 top-[32.58px] w-[414.412px]" data-name="Heading 3">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[39.095px] left-0 not-italic text-[26.064px] text-nowrap text-white top-[0.87px] whitespace-pre">Altos de Cattleya</p>
+    </div>
+  );
+}
+
+function Paragraph6() {
+  return (
+    <div className="absolute h-[24.706px] left-0 top-[84.71px] w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[24.706px] left-0 not-italic text-[15.204px] text-[rgba(255,255,255,0.85)] text-nowrap top-[0.22px] whitespace-pre">Parcelas desde 1000m² en conjunto cerrado.</p>
+    </div>
+  );
+}
+
+function Text2() {
+  return (
+    <div className="h-[16.29px] relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[16.29px] relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[16.29px] left-0 not-italic text-[10.86px] text-[rgba(255,255,255,0.5)] text-nowrap top-[-0.43px] tracking-[0.543px] uppercase whitespace-pre">Ubicación</p>
       </div>
-    </motion.div>
+    </div>
+  );
+}
+
+function Text3() {
+  return (
+    <div className="basis-0 grow min-h-px min-w-px relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-full relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[21.177px] left-0 not-italic text-[14.118px] text-nowrap text-white top-[0.43px] whitespace-pre">Totoró - vereda de Aguas Tibias, Cauca. (Kilómetro 6)</p>
+      </div>
+    </div>
+  );
+}
+
+function Container50() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.344px] h-[41.81px] items-start relative shrink-0 w-full" data-name="Container">
+      <Text2 />
+      <Text3 />
+    </div>
+  );
+}
+
+function Container51() {
+  return (
+    <div className="absolute box-border content-stretch flex flex-col h-[55.711px] items-start left-0 pb-0 pt-[13.901px] px-0 top-[131.13px] w-[414.412px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container50 />
+    </div>
+  );
+}
+
+function Container52() {
+  return (
+    <div className="basis-0 bg-gradient-to-b from-[rgba(255,255,255,0.2)] grow h-[1.086px] min-h-px min-w-px relative shrink-0 to-[rgba(255,255,255,0)]" data-name="Container">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[1.086px] w-full" />
+    </div>
+  );
+}
+
+function Text4() {
+  return (
+    <div className="bg-[rgba(255,255,255,0.15)] h-[26.607px] relative rounded-[2.91516e+07px] shrink-0 w-[103.196px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[26.607px] relative w-[103.196px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[17.919px] left-[13.03px] not-italic text-[#e34234] text-[11.946px] text-nowrap top-[3.91px] tracking-[0.543px] uppercase whitespace-pre">Disponible</p>
+      </div>
+    </div>
+  );
+}
+
+function Container53() {
+  return (
+    <div className="absolute content-stretch flex gap-[8.688px] h-[26.607px] items-center left-0 top-[208.56px] w-[414.412px]" data-name="Container">
+      <Container52 />
+      <Text4 />
+      <Container52 />
+    </div>
+  );
+}
+
+function Container54() {
+  return (
+    <div className="h-[235.17px] relative shrink-0 w-full" data-name="Container">
+      <Paragraph5 />
+      <Heading8 />
+      <Paragraph6 />
+      <Container51 />
+      <Container53 />
+    </div>
+  );
+}
+
+function Container55() {
+  return (
+    <div className="absolute bg-[rgba(0,0,0,0.6)] box-border content-stretch flex flex-col h-[288.166px] items-start left-0 opacity-0 pb-0 pt-[26.932px] px-[26.064px] top-[124.06px] w-[466.539px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container54 />
+    </div>
+  );
+}
+
+function Container56() {
+  return (
+    <div className="h-[412.226px] overflow-clip relative shrink-0 w-full" data-name="Container">
+      <ImageAltosDeCattleya />
+      <Container48 />
+      <Container49 />
+      <Container55 />
+    </div>
+  );
+}
+
+function ProjectCard() {
+  return (
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-0 overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-0 w-[466.539px]" data-name="ProjectCard">
+      <Container56 />
+    </div>
+  );
+}
+
+function ImageAmsterHaus() {
+  return (
+    <div className="absolute h-[412.226px] left-0 top-0 w-[466.539px]" data-name="Image (AmsterHaus)">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgImageCertificacionInternacional} />
+    </div>
+  );
+}
+
+function Container57() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[412.226px] left-0 opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0.4)] w-[466.539px]" data-name="Container" />;
+}
+
+function Container58() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0)] h-[412.226px] left-[-466.54px] opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(255,255,255,0.2)] w-[466.539px]" data-name="Container" />;
+}
+
+function Paragraph7() {
+  return (
+    <div className="absolute h-[19.548px] left-0 top-0 w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[19.548px] left-0 not-italic text-[13.032px] text-[rgba(255,255,255,0.7)] text-nowrap top-[-0.43px] tracking-[0.6516px] uppercase whitespace-pre">Apartamentos - Apartaestudios</p>
+    </div>
+  );
+}
+
+function Heading9() {
+  return (
+    <div className="absolute h-[39.095px] left-0 top-[32.58px] w-[414.412px]" data-name="Heading 3">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[39.095px] left-0 not-italic text-[26.064px] text-nowrap text-white top-[0.87px] whitespace-pre">AmsterHaus</p>
+    </div>
+  );
+}
+
+function Paragraph8() {
+  return (
+    <div className="absolute h-[49.412px] left-0 top-[84.71px] w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[24.706px] left-0 not-italic text-[15.204px] text-[rgba(255,255,255,0.85)] top-[0.22px] w-[412.674px]">Hermosos apartamentos desde 55m² y apartaestudios desde 33,29 m².</p>
+    </div>
+  );
+}
+
+function Text5() {
+  return (
+    <div className="h-[16.29px] relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[16.29px] relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[16.29px] left-0 not-italic text-[10.86px] text-[rgba(255,255,255,0.5)] text-nowrap top-[-0.43px] tracking-[0.543px] uppercase whitespace-pre">Ubicación</p>
+      </div>
+    </div>
+  );
+}
+
+function Text6() {
+  return (
+    <div className="basis-0 grow min-h-px min-w-px relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-full relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[21.177px] left-0 not-italic text-[14.118px] text-nowrap text-white top-[0.43px] whitespace-pre">Popayán Cra 20 #55 N 64 (A dos minutos de Café La Palma)</p>
+      </div>
+    </div>
+  );
+}
+
+function Container59() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.344px] h-[41.81px] items-start relative shrink-0 w-full" data-name="Container">
+      <Text5 />
+      <Text6 />
+    </div>
+  );
+}
+
+function Container60() {
+  return (
+    <div className="absolute box-border content-stretch flex flex-col h-[55.711px] items-start left-0 pb-0 pt-[13.901px] px-0 top-[155.84px] w-[414.412px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container59 />
+    </div>
+  );
+}
+
+function Container61() {
+  return (
+    <div className="basis-0 bg-gradient-to-b from-[rgba(255,255,255,0.2)] grow h-[1.086px] min-h-px min-w-px relative shrink-0 to-[rgba(255,255,255,0)]" data-name="Container">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[1.086px] w-full" />
+    </div>
+  );
+}
+
+function Text7() {
+  return (
+    <div className="bg-[rgba(255,255,255,0.15)] h-[26.607px] relative rounded-[2.91516e+07px] shrink-0 w-[129.49px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[26.607px] relative w-[129.49px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[17.919px] left-[13.03px] not-italic text-[#e34234] text-[11.946px] text-nowrap top-[3.91px] tracking-[0.543px] uppercase whitespace-pre">Próximamente</p>
+      </div>
+    </div>
+  );
+}
+
+function Container62() {
+  return (
+    <div className="absolute box-border content-stretch flex gap-[8.688px] h-[26.607px] items-center left-0 pl-0 py-0 top-[233.27px] w-[414.412px]" data-name="Container">
+      <Container61 />
+      <Text7 />
+      <Container61 />
+    </div>
+  );
+}
+
+function Container63() {
+  return (
+    <div className="h-[259.876px] relative shrink-0 w-full" data-name="Container">
+      <Paragraph7 />
+      <Heading9 />
+      <Paragraph8 />
+      <Container60 />
+      <Container62 />
+    </div>
+  );
+}
+
+function Container64() {
+  return (
+    <div className="absolute bg-[rgba(0,0,0,0.6)] box-border content-stretch flex flex-col h-[312.872px] items-start left-0 opacity-0 pb-0 pt-[26.932px] px-[26.064px] top-[99.35px] w-[466.539px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container63 />
+    </div>
+  );
+}
+
+function Container65() {
+  return (
+    <div className="h-[412.226px] overflow-clip relative shrink-0 w-full" data-name="Container">
+      <ImageAmsterHaus />
+      <Container57 />
+      <Container58 />
+      <Container64 />
+    </div>
+  );
+}
+
+function ProjectCard1() {
+  return (
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-[518.67px] overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-0 w-[466.539px]" data-name="ProjectCard">
+      <Container65 />
+    </div>
+  );
+}
+
+function ImageLaCeiba() {
+  return (
+    <div className="absolute h-[412.226px] left-0 top-0 w-[466.539px]" data-name="Image (La Ceiba)">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgImageLaCeiba} />
+    </div>
+  );
+}
+
+function Container66() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[412.226px] left-0 opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0.4)] w-[466.539px]" data-name="Container" />;
+}
+
+function Container67() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0)] h-[412.226px] left-[-466.54px] opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(255,255,255,0.2)] w-[466.539px]" data-name="Container" />;
+}
+
+function Paragraph9() {
+  return (
+    <div className="absolute h-[19.548px] left-0 top-0 w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[19.548px] left-0 not-italic text-[13.032px] text-[rgba(255,255,255,0.7)] text-nowrap top-[-0.43px] tracking-[0.6516px] uppercase whitespace-pre">Parcelación</p>
+    </div>
+  );
+}
+
+function Heading10() {
+  return (
+    <div className="absolute h-[39.095px] left-0 top-[32.58px] w-[414.412px]" data-name="Heading 3">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[39.095px] left-0 not-italic text-[26.064px] text-nowrap text-white top-[0.87px] whitespace-pre">La Ceiba</p>
+    </div>
+  );
+}
+
+function Paragraph10() {
+  return (
+    <div className="absolute h-[49.412px] left-0 top-[84.71px] w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[24.706px] left-0 not-italic text-[15.204px] text-[rgba(255,255,255,0.85)] top-[0.22px] w-[414.846px]">Espacio campestre con escrituras de 3000m² en copropiedad y listas para escriturar.</p>
+    </div>
+  );
+}
+
+function Text8() {
+  return (
+    <div className="h-[16.29px] relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[16.29px] relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[16.29px] left-0 not-italic text-[10.86px] text-[rgba(255,255,255,0.5)] text-nowrap top-[-0.43px] tracking-[0.543px] uppercase whitespace-pre">Ubicación</p>
+      </div>
+    </div>
+  );
+}
+
+function Text9() {
+  return (
+    <div className="basis-0 grow min-h-px min-w-px relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-full relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[21.177px] left-0 not-italic text-[14.118px] text-nowrap text-white top-[0.43px] whitespace-pre">Calibio, antigua carrilera, a 4.4km de la Variante Norte.</p>
+      </div>
+    </div>
+  );
+}
+
+function Container68() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.344px] h-[41.81px] items-start relative shrink-0 w-full" data-name="Container">
+      <Text8 />
+      <Text9 />
+    </div>
+  );
+}
+
+function Container69() {
+  return (
+    <div className="absolute box-border content-stretch flex flex-col h-[55.711px] items-start left-0 pb-0 pt-[13.901px] px-0 top-[155.84px] w-[414.412px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container68 />
+    </div>
+  );
+}
+
+function Container70() {
+  return (
+    <div className="basis-0 bg-gradient-to-b from-[rgba(255,255,255,0.2)] grow h-[1.086px] min-h-px min-w-px relative shrink-0 to-[rgba(255,255,255,0)]" data-name="Container">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[1.086px] w-full" />
+    </div>
+  );
+}
+
+function Text10() {
+  return (
+    <div className="bg-[rgba(255,255,255,0.15)] h-[26.607px] relative rounded-[2.91516e+07px] shrink-0 w-[103.196px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[26.607px] relative w-[103.196px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[17.919px] left-[13.03px] not-italic text-[#e34234] text-[11.946px] text-nowrap top-[3.91px] tracking-[0.543px] uppercase whitespace-pre">Disponible</p>
+      </div>
+    </div>
+  );
+}
+
+function Container71() {
+  return (
+    <div className="absolute content-stretch flex gap-[8.688px] h-[26.607px] items-center left-0 top-[233.27px] w-[414.412px]" data-name="Container">
+      <Container70 />
+      <Text10 />
+      <Container70 />
+    </div>
+  );
+}
+
+function Container72() {
+  return (
+    <div className="h-[259.876px] relative shrink-0 w-full" data-name="Container">
+      <Paragraph9 />
+      <Heading10 />
+      <Paragraph10 />
+      <Container69 />
+      <Container71 />
+    </div>
+  );
+}
+
+function Container73() {
+  return (
+    <div className="absolute bg-[rgba(0,0,0,0.6)] box-border content-stretch flex flex-col h-[312.872px] items-start left-0 opacity-0 pb-0 pt-[26.932px] px-[26.064px] top-[99.35px] w-[466.539px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container72 />
+    </div>
+  );
+}
+
+function Container74() {
+  return (
+    <div className="h-[412.226px] overflow-clip relative shrink-0 w-full" data-name="Container">
+      <ImageLaCeiba />
+      <Container66 />
+      <Container67 />
+      <Container73 />
+    </div>
+  );
+}
+
+function ProjectCard2() {
+  return (
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-0 overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-[464.35px] w-[466.539px]" data-name="ProjectCard">
+      <Container74 />
+    </div>
+  );
+}
+
+function ImageLaGranTurquesa() {
+  return (
+    <div className="absolute h-[412.226px] left-0 top-0 w-[466.539px]" data-name="Image (La Gran Turquesa)">
+      <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgImageLaGranTurquesa} />
+    </div>
+  );
+}
+
+function Container75() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0.9)] h-[412.226px] left-0 opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0.4)] w-[466.539px]" data-name="Container" />;
+}
+
+function Container76() {
+  return <div className="absolute bg-gradient-to-b from-[rgba(0,0,0,0)] h-[412.226px] left-[-466.54px] opacity-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(255,255,255,0.2)] w-[466.539px]" data-name="Container" />;
+}
+
+function Paragraph11() {
+  return (
+    <div className="absolute h-[19.548px] left-0 top-0 w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[19.548px] left-0 not-italic text-[13.032px] text-[rgba(255,255,255,0.7)] text-nowrap top-[-0.43px] tracking-[0.6516px] uppercase whitespace-pre">Parcelación</p>
+    </div>
+  );
+}
+
+function Heading11() {
+  return (
+    <div className="absolute h-[39.095px] left-0 top-[32.58px] w-[414.412px]" data-name="Heading 3">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[39.095px] left-0 not-italic text-[26.064px] text-nowrap text-white top-[0.87px] whitespace-pre">La Gran Turquesa</p>
+    </div>
+  );
+}
+
+function Paragraph12() {
+  return (
+    <div className="absolute h-[49.412px] left-0 top-[84.71px] w-[414.412px]" data-name="Paragraph">
+      <p className="absolute font-['Arial:Regular',sans-serif] leading-[24.706px] left-0 not-italic text-[15.204px] text-[rgba(255,255,255,0.85)] top-[0.22px] w-[414.846px]">Exclusivo condominio campestre con amplias parcelas desde 1000m².</p>
+    </div>
+  );
+}
+
+function Text11() {
+  return (
+    <div className="h-[16.29px] relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[16.29px] relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[16.29px] left-0 not-italic text-[10.86px] text-[rgba(255,255,255,0.5)] text-nowrap top-[-0.43px] tracking-[0.543px] uppercase whitespace-pre">Ubicación</p>
+      </div>
+    </div>
+  );
+}
+
+function Text12() {
+  return (
+    <div className="basis-0 grow min-h-px min-w-px relative shrink-0 w-[414.412px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-full relative w-[414.412px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[21.177px] left-0 not-italic text-[14.118px] text-nowrap text-white top-[0.43px] whitespace-pre">Totoró, Cauca. (Kilómetro 4)</p>
+      </div>
+    </div>
+  );
+}
+
+function Container77() {
+  return (
+    <div className="content-stretch flex flex-col gap-[4.344px] h-[41.81px] items-start relative shrink-0 w-full" data-name="Container">
+      <Text11 />
+      <Text12 />
+    </div>
+  );
+}
+
+function Container78() {
+  return (
+    <div className="absolute box-border content-stretch flex flex-col h-[55.711px] items-start left-0 pb-0 pt-[13.901px] px-0 top-[155.84px] w-[414.412px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container77 />
+    </div>
+  );
+}
+
+function Container79() {
+  return (
+    <div className="basis-0 bg-gradient-to-b from-[rgba(255,255,255,0.2)] grow h-[1.086px] min-h-px min-w-px relative shrink-0 to-[rgba(255,255,255,0)]" data-name="Container">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[1.086px] w-full" />
+    </div>
+  );
+}
+
+function Text13() {
+  return (
+    <div className="bg-[rgba(255,255,255,0.15)] h-[26.607px] relative rounded-[2.91516e+07px] shrink-0 w-[130.603px]" data-name="Text">
+      <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[26.607px] relative w-[130.603px]">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[17.919px] left-[13.03px] not-italic text-[#e34234] text-[11.946px] text-nowrap top-[3.91px] tracking-[0.543px] uppercase whitespace-pre">FASE 1 VENDIDA</p>
+      </div>
+    </div>
+  );
+}
+
+function Container80() {
+  return (
+    <div className="absolute box-border content-stretch flex gap-[8.688px] h-[26.607px] items-center left-0 pl-0 py-0 top-[233.27px] w-[414.412px]" data-name="Container">
+      <Container79 />
+      <Text13 />
+      <Container79 />
+    </div>
+  );
+}
+
+function Container81() {
+  return (
+    <div className="h-[259.876px] relative shrink-0 w-full" data-name="Container">
+      <Paragraph11 />
+      <Heading11 />
+      <Paragraph12 />
+      <Container78 />
+      <Container80 />
+    </div>
+  );
+}
+
+function Container82() {
+  return (
+    <div className="absolute bg-[rgba(0,0,0,0.6)] box-border content-stretch flex flex-col h-[312.872px] items-start left-0 opacity-0 pb-0 pt-[26.932px] px-[26.064px] top-[99.35px] w-[466.539px]" data-name="Container">
+      <div aria-hidden="true" className="absolute border-[0.869px_0px_0px] border-[rgba(255,255,255,0.1)] border-solid inset-0 pointer-events-none" />
+      <Container81 />
+    </div>
+  );
+}
+
+function Container83() {
+  return (
+    <div className="h-[412.226px] overflow-clip relative shrink-0 w-full" data-name="Container">
+      <ImageLaGranTurquesa />
+      <Container75 />
+      <Container76 />
+      <Container82 />
+    </div>
+  );
+}
+
+function ProjectCard3() {
+  return (
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-[518.67px] overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-[464.35px] w-[466.539px]" data-name="ProjectCard">
+      <Container83 />
+    </div>
   );
 }
 
 function Container84() {
-  const projects = [
-    {
-      title: "Altos de Cattleya",
-      type: "Parcelación",
-      description: "Parcelas desde 1000m² en conjunto cerrado.",
-      location: "Totoró - vereda de Aguas Tibias, Cauca. (Kilómetro 6)",
-      status: "Disponible",
-      image: imgHeroCarousel,
-      left: "0",
-      top: "0",
-      delay: 0,
-    },
-    {
-      title: "AmsterHaus",
-      type: "Apartamentos - Apartaestudios",
-      description: "Hermosos apartamentos desde 55m² y apartaestudios desde 33,29 m².",
-      location: "Popayán Cra 20 #55 N 64 (A dos minutos de Café La Palma)",
-      status: "Próximamente",
-      image: imgImageCertificacionInternacional,
-      left: "518.67px",
-      top: "0",
-      delay: 0.2,
-    },
-    {
-      title: "La Ceiba",
-      type: "Parcelación",
-      description: "Espacio campestre con escrituras de 3000m² en copropiedad y listas para escriturar.",
-      location: "Calibio, antigua carrilera, a 4.4km de la Variante Norte.",
-      status: "Disponible",
-      image: imgImageLaCeiba,
-      left: "0",
-      top: "464.35px",
-      delay: 0.4,
-    },
-    {
-      title: "La Gran Turquesa",
-      type: "Parcelación",
-      description: "Exclusivo condominio campestre con amplias parcelas desde 1000m².",
-      location: "Totoró, Cauca. (Kilómetro 4)",
-      status: "FASE 1 VENDIDA",
-      image: imgImageLaGranTurquesa,
-      left: "518.67px",
-      top: "464.35px",
-      delay: 0.6,
-    },
-  ];
-
   return (
     <div className="absolute h-[876.58px] left-[139.01px] top-[221.54px] w-[985.205px]" data-name="Container">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
-      ))}
+      <ProjectCard />
+      <ProjectCard1 />
+      <ProjectCard2 />
+      <ProjectCard3 />
     </div>
   );
 }
@@ -1500,16 +1748,11 @@ function Icon15() {
 
 function Link5() {
   return (
-    <motion.div
-      className="absolute bg-[rgba(227,66,52,0.95)] box-border content-stretch flex gap-[13.032px] h-[53.865px] items-center left-[849.66px] px-[26.932px] py-[0.869px] rounded-[2.91516e+07px] top-[1150.25px] w-[274.55px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05, boxShadow: "0px 15px 25px -3.258px rgba(0,0,0,0.2)" }}
-      whileTap={{ scale: 0.98 }}
-    >
+    <div className="absolute bg-[rgba(227,66,52,0.95)] box-border content-stretch flex gap-[13.032px] h-[53.865px] items-center left-[849.66px] px-[26.932px] py-[0.869px] rounded-[2.91516e+07px] top-[1150.25px] w-[274.55px]" data-name="Link">
       <div aria-hidden="true" className="absolute border-[0.869px] border-[rgba(255,255,255,0.2)] border-solid inset-0 pointer-events-none rounded-[2.91516e+07px] shadow-[0px_10.86px_16.29px_-3.258px_rgba(0,0,0,0.1),0px_4.344px_6.516px_-4.344px_rgba(0,0,0,0.1)]" />
       <Text14 />
       <Icon15 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1546,14 +1789,10 @@ function Header() {
 
 function Link6() {
   return (
-    <motion.div
-      className="absolute h-[20px] left-[93px] overflow-clip top-px w-[51px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05 }}
-    >
+    <div className="absolute h-[20px] left-[93px] overflow-clip top-px w-[51px]" data-name="Link">
       <Container86 />
       <Header />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1571,14 +1810,10 @@ function Header1() {
 
 function Link7() {
   return (
-    <motion.div
-      className="absolute h-[20px] left-[225px] overflow-clip top-[2px] w-[72px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05 }}
-    >
+    <div className="absolute h-[20px] left-[225px] overflow-clip top-[2px] w-[72px]" data-name="Link">
       <Container87 />
       <Header1 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1596,14 +1831,10 @@ function Header2() {
 
 function Link8() {
   return (
-    <motion.div
-      className="absolute h-[20px] left-[378px] overflow-clip top-0 w-[94px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05 }}
-    >
+    <div className="absolute h-[20px] left-[378px] overflow-clip top-0 w-[94px]" data-name="Link">
       <Container88 />
       <Header2 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1621,15 +1852,10 @@ function Container89() {
 
 function ImageLibellaLogo() {
   return (
-    <motion.div
-      className="absolute h-[40px] left-[569px] top-[19px] w-[50px]"
-      data-name="Image (Libella Logo)"
-      whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="absolute h-[40px] left-[569px] top-[19px] w-[50px]" data-name="Image (Libella Logo)">
       <img alt="" className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgImageLibellaLogo} />
       <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[40px] w-[50px]" />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1647,14 +1873,10 @@ function Header3() {
 
 function Link9() {
   return (
-    <motion.div
-      className="absolute h-[20px] left-0 overflow-clip top-[-0.25px] w-[88px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05 }}
-    >
+    <div className="absolute h-[20px] left-0 overflow-clip top-[-0.25px] w-[88px]" data-name="Link">
       <Container90 />
       <Header3 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1672,14 +1894,10 @@ function Header4() {
 
 function Link10() {
   return (
-    <motion.div
-      className="absolute h-[20px] left-[162px] overflow-clip top-0 w-[76px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05 }}
-    >
+    <div className="absolute h-[20px] left-[162px] overflow-clip top-0 w-[76px]" data-name="Link">
       <Container91 />
       <Header4 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1697,14 +1915,10 @@ function Header5() {
 
 function Link11() {
   return (
-    <motion.div
-      className="absolute h-[20px] left-[311px] overflow-clip top-[-0.25px] w-[107px] cursor-pointer"
-      data-name="Link"
-      whileHover={{ scale: 1.05 }}
-    >
+    <div className="absolute h-[20px] left-[311px] overflow-clip top-[-0.25px] w-[107px]" data-name="Link">
       <Container92 />
       <Header5 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1722,17 +1936,11 @@ function Container93() {
 
 function Header6() {
   return (
-    <motion.div
-      className="absolute bg-[#c62926] box-border content-stretch flex h-[80px] items-center justify-between left-0 px-[32px] py-0 top-0 w-[1262.67px]"
-      data-name="Header"
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="absolute bg-[#c62926] box-border content-stretch flex h-[80px] items-center justify-between left-0 px-[32px] py-0 top-0 w-[1262.67px]" data-name="Header">
       <Container89 />
       <ImageLibellaLogo />
       <Container93 />
-    </motion.div>
+    </div>
   );
 }
 
@@ -1751,56 +1959,9 @@ function App() {
 }
 
 export default function LibellaInicio() {
-  const [scale, setScale] = useState(1);
-  const [dimensions, setDimensions] = useState({ width: DESIGN_WIDTH, height: DESIGN_HEIGHT });
-
-  useEffect(() => {
-    const calculateScale = () => {
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-      
-      // Calculate scale based on width
-      const scaleX = windowWidth / DESIGN_WIDTH;
-      const scaleY = windowHeight / DESIGN_HEIGHT;
-      
-      // Use the smaller scale to ensure everything fits
-      const newScale = Math.min(scaleX, 1); // Don't scale up beyond 100%
-      
-      setScale(newScale);
-      setDimensions({
-        width: DESIGN_WIDTH * newScale,
-        height: DESIGN_HEIGHT * newScale,
-      });
-    };
-
-    calculateScale();
-    window.addEventListener("resize", calculateScale);
-    
-    return () => window.removeEventListener("resize", calculateScale);
-  }, []);
-
   return (
-    <div className="bg-white flex flex-col items-center overflow-x-hidden w-full" data-name="libella inicio">
-      <div
-        style={{
-          width: `${dimensions.width}px`,
-          height: `${dimensions.height}px`,
-          transition: "width 0.3s ease-out, height 0.3s ease-out",
-        }}
-        className="relative"
-      >
-        <div
-          style={{
-            width: `${DESIGN_WIDTH}px`,
-            height: `${DESIGN_HEIGHT}px`,
-            transform: `scale(${scale})`,
-            transformOrigin: "top left",
-          }}
-          className="absolute top-0 left-0"
-        >
-          <App />
-        </div>
-      </div>
+    <div className="bg-white content-stretch flex flex-col items-start relative size-full" data-name="libella inicio">
+      <App />
     </div>
   );
 }
