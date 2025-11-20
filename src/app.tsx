@@ -236,8 +236,19 @@ function Heading() {
   );
 }
 
-function NewsCard() {
-  return <div className="absolute h-[498.188px] left-0 opacity-0 top-0 w-[378.219px]" data-name="NewsCard" />;
+function NewsCard({ date = " ", title = "Noticias", description = "Contenido" }: { date?: string; title?: string; description?: string } = {}) {
+  return (
+    <div className="absolute h-[240px] left-0 overflow-clip top-0 w-[378.219px]" data-name="NewsCard">
+      <div className="absolute h-[240px] left-0 top-0 w-[378.219px]" data-name="Image">
+        <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgHeroCarousel} />
+      </div>
+      <div className="absolute bg-gradient-to-b from-[rgba(135,21,21,0.95)] h-[240px] left-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0)] w-[378.219px]" data-name="Container" />
+
+
+
+
+    </div>
+  );
 }
 
 function Container3() {
@@ -256,11 +267,10 @@ function Container4() {
   return <div className="absolute bg-gradient-to-b from-[rgba(135,21,21,0.95)] h-[240px] left-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0)] w-[378.219px]" data-name="Container" />;
 }
 
-function NewsCard1() {
+function NewsCard1({ date = "17 de octubre del 2025", title = "Noticias", description = "Contenido" }: { date?: string; title?: string; description?: string } = {}) {
   return (
     <div className="absolute h-[240px] left-0 overflow-clip top-0 w-[378.219px]" data-name="NewsCard">
-      <ImageNuevoProyectoResidencial />
-      <Container4 />
+
     </div>
   );
 }
@@ -301,18 +311,24 @@ function Contenido() {
 
 function Fecha() {
   return (
-    <div className="absolute h-[30px] left-[7px] overflow-clip top-[7px] w-[323px]" data-name="fecha">
-      <p className="absolute font-['Arial:Regular',sans-serif] h-[23px] leading-[21px] left-[10px] not-italic text-[14px] text-white top-[7px] w-[180px]">17 de octubre del 2025</p>
+    <div className="absolute h-[30px] left-[7px] overflow-clip top-[12px] w-[323px]" data-name="fecha">
+      <p className="absolute font-['Arial:Regular',sans-serif] h-[23px] leading-[21px] left-[10px] not-italic text-[16px] text-white top-[15px] w-[180px]">17 de octubre del 2025</p>
     </div>
   );
 }
 
-function NewsCard2() {
+function NewsCard2({ date = "17 de octubre del 2025", description = "Contenido" }: { date?: string; description?: string } = {}) {
   return (
     <div className="absolute h-[258.188px] left-0 top-[240px] w-[378.219px]" data-name="NewsCard">
-      <LeerMas />
-      <Contenido />
-      <Fecha />
+      <div className="absolute h-[21px] left-[32px] top-[205.19px] w-[314.219px] cursor-pointer" data-name="leer mas">
+        <p className="absolute font-['Arial:Regular',sans-serif] leading-[21px] left-0 not-italic text-[14px] text-nowrap text-white top-[-1.33px] whitespace-pre">Leer más</p>
+      </div>
+      <div className="absolute h-[118px] left-[23px] overflow-clip top-[77px] w-[323px]" data-name="contenido">
+        <p className="absolute font-['Arial:Regular',sans-serif] h-[57px] leading-[21px] left-[10px] not-italic text-[14px] text-white top-[19px] w-[264px]">{description}</p>
+      </div>
+      <div className="absolute h-[30px] left-[7px] overflow-clip top-[7px] w-full" data-name="fecha">
+        <p className="absolute font-['Arial:Regular',sans-serif] h-[23px] leading-[21px] left-[10px] not-italic text-[14px] text-white top-[7px] w-auto">{date}</p>
+      </div>
     </div>
   );
 }
@@ -328,10 +344,10 @@ function Container5() {
       transition={{ duration: 0.5 }}
       whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
     >
-      <NewsCard />
+      <NewsCard date="17 de octubre de 2025" title="Altos de Cattleya" description="Pronto comenzaremos cosas maravillosas, ¡no te las pierdas!" />
       <Container3 />
-      <NewsCard1 />
-      <NewsCard2 />
+      <NewsCard1 date="17 de octubre de 2025" title="Nuevo Proyecto" description="Pronto comenzaremos cosas maravillosas, ¡no te las pierdas!" />
+      <NewsCard2 date="17 de octubre de 2025" description="Pronto comenzaremos cosas maravillosas, ¡no te las pierdas!" />
     </motion.div>
   );
 }
@@ -467,10 +483,10 @@ function Container11() {
       transition={{ duration: 0.5, delay: 0.2 }}
       whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
     >
-      <NewsCard3 />
+      <NewsCard date="8 de octubre de 2025" title="Certificación LEED" description="Libella obtiene la certificación LEED Platino por nuestro compromiso con la construcción sostenible y el medio ambiente." />
       <Container6 />
-      <NewsCard4 />
-      <NewsCard6 />
+      <NewsCard1 date="08 de octubre de 2025" title="Certificación LEED" description="Libella obtiene la certificación LEED Platino por nuestro compromiso con la construcción sostenible y el medio ambiente." />
+      <NewsCard2 date="08 de octubre de 2025" description="Libella obtiene la certificación LEED Platino por nuestro compromiso con la construcción sostenible y el medio ambiente." />
       <Container10 />
     </motion.div>
   );
@@ -603,10 +619,10 @@ function Container16() {
       transition={{ duration: 0.5, delay: 0.4 }}
       whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
     >
-      <NewsCard7 />
+      <NewsCard date="1 de octubre de 2025" title="Expansión Regional" description="Abrimos nueva oficina en Medellín para atender mejor a nuestros clientes en la región y expandir nuestra presencia nacional." />
       <Container12 />
-      <NewsCard8 />
-      <NewsCard10 />
+      <NewsCard1 date="01 de octubre de 2025" title="Expansión Regional" description="Abrimos nueva oficina en Medellín para atender mejor a nuestros clientes en la región y expandir nuestra presencia nacional." />
+      <NewsCard2 date="01 de octubre de 2025" description="Abrimos nueva oficina en Medellín para atender mejor a nuestros clientes en la región y expandir nuestra presencia nacional." />
     </motion.div>
   );
 }
