@@ -1,14 +1,14 @@
 import svgPaths from "./svg-7y6p7vhc1w";
-import imgHeroCarousel from "figma:asset/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
-import imgHeroCarousel1 from "figma:asset/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
-import imgHeroCarousel2 from "figma:asset/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
-import imgHeroCarousel3 from "figma:asset/8e85657db36622060dfb26f2074645c77e42e7fd.png";
-import imgImageCertificacionInternacional from "figma:asset/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
-import imgImageDivider from "figma:asset/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
-import imgFooter from "figma:asset/24f7863d5067ebf528c000123ff21263e96e6063.png";
-import imgImageLaCeiba from "figma:asset/23069cff9d3176399375c76d68759cbd72f9fa16.png";
-import imgImageLaGranTurquesa from "figma:asset/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
-import imgImageLibellaLogo from "figma:asset/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
+import imgHeroCarousel from "../imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
+import imgHeroCarousel1 from "../imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
+import imgHeroCarousel2 from "../imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
+import imgHeroCarousel3 from "../imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
+import imgImageCertificacionInternacional from "../imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
+import imgImageDivider from "../imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
+import imgFooter from "../imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png";
+import imgImageLaCeiba from "../imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
+import imgImageLaGranTurquesa from "../imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
+import imgImageLibellaLogo from "../imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
 
 function HeroCarousel() {
   return (
@@ -1269,7 +1269,7 @@ function Container56() {
 
 function ProjectCard() {
   return (
-    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-0 overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-0 w-[466.539px]" data-name="ProjectCard">
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-0 overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-0 w-[466.539px] cursor-pointer" data-name="ProjectCard" onClick={() => (window as any).navigateToProject?.('altos-cattleya')}>
       <Container56 />
     </div>
   );
@@ -1415,7 +1415,7 @@ function Container65() {
 
 function ProjectCard1() {
   return (
-    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-[518.67px] overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-0 w-[466.539px]" data-name="ProjectCard">
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-[518.67px] overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-0 w-[466.539px] cursor-pointer" data-name="ProjectCard" onClick={() => (window as any).navigateToProject?.('amsterdam')}>
       <Container65 />
     </div>
   );
@@ -1561,7 +1561,7 @@ function Container74() {
 
 function ProjectCard2() {
   return (
-    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-0 overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-[464.35px] w-[466.539px]" data-name="ProjectCard">
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-0 overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-[464.35px] w-[466.539px] cursor-pointer" data-name="ProjectCard" onClick={() => (window as any).navigateToProject?.('la-ceiba')}>
       <Container74 />
     </div>
   );
@@ -1707,7 +1707,7 @@ function Container83() {
 
 function ProjectCard3() {
   return (
-    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-[518.67px] overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-[464.35px] w-[466.539px]" data-name="ProjectCard">
+    <div className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start left-[518.67px] overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] top-[464.35px] w-[466.539px] cursor-pointer" data-name="ProjectCard" onClick={() => (window as any).navigateToProject?.('la-gran-turquesa')}>
       <Container83 />
     </div>
   );

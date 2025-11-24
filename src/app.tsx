@@ -1,30 +1,26 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
+import { ProyectoDetalle } from "./componentes/ProyectosDetalle";
 import svgPaths from "./imports/svg-7y6p7vhc1w";
-import imgHeroCarousel from "figma:asset/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
-import imgHeroCarousel1 from "figma:asset/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
-import imgHeroCarousel2 from "figma:asset/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
-import imgHeroCarousel3 from "figma:asset/8e85657db36622060dfb26f2074645c77e42e7fd.png";
-import imgImageCertificacionInternacional from "figma:asset/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
-import imgImageDivider from "figma:asset/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
-import imgFooter from "figma:asset/24f7863d5067ebf528c000123ff21263e96e6063.png";
-import imgImageLaCeiba from "figma:asset/23069cff9d3176399375c76d68759cbd72f9fa16.png";
-import imgImageLaGranTurquesa from "figma:asset/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
-import imgImageLibellaLogo from "figma:asset/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
+import imgHeroCarousel from "./imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
+import imgHeroCarousel1 from "./imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
+import imgHeroCarousel2 from "./imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
+import imgHeroCarousel3 from "./imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
+import imgImageCertificacionInternacional from "./imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
+import imgImageDivider from "./imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
+import imgFooter from "./imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png";
+import imgImageLaCeiba from "./imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
+import imgImageLaGranTurquesa from "./imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
+import imgImageLibellaLogo from "./imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
 
 // Design constants
 const DESIGN_WIDTH = 1263;
 const DESIGN_HEIGHT = 3971;
-
-const carouselImages = [
-  imgHeroCarousel,
-  imgHeroCarousel1,
-  imgHeroCarousel2,
-  imgHeroCarousel3,
-];
+const CAROUSEL_INTERVAL = 5000; // ms
+const CAROUSEL_IMAGES = [imgHeroCarousel, imgHeroCarousel1, imgHeroCarousel2, imgHeroCarousel3];
 
 function HeroCarousel({ active, index }: { active: boolean; index: number }) {
-  const images = [imgHeroCarousel, imgHeroCarousel1, imgHeroCarousel2];
+  const images = CAROUSEL_IMAGES.slice(0, 3);
   const positions = [
     { left: "-54.44px", top: "-21.56px", width: "1371.54px", height: "543.113px" },
     { left: "-17.9px", top: "-7.09px", width: "1298.47px", height: "514.178px" },
@@ -156,7 +152,7 @@ function Container() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % 4);
-    }, 5000);
+    }, CAROUSEL_INTERVAL);
 
     return () => clearInterval(interval);
   }, []);
@@ -267,13 +263,7 @@ function Container4() {
   return <div className="absolute bg-gradient-to-b from-[rgba(135,21,21,0.95)] h-[240px] left-0 to-[rgba(0,0,0,0)] top-0 via-50% via-[rgba(0,0,0,0)] w-[378.219px]" data-name="Container" />;
 }
 
-function NewsCard1({ date = "17 de octubre del 2025", title = "Noticias", description = "Contenido" }: { date?: string; title?: string; description?: string } = {}) {
-  return (
-    <div className="absolute h-[240px] left-0 overflow-clip top-0 w-[378.219px]" data-name="NewsCard">
-
-    </div>
-  );
-}
+// NewsCard1 eliminado - componente vacío innecesario
 
 function Icon2() {
   return (
@@ -346,7 +336,6 @@ function Container5() {
     >
       <NewsCard date="17 de octubre de 2025" title="Altos de Cattleya" description="Pronto comenzaremos cosas maravillosas, ¡no te las pierdas!" />
       <Container3 />
-      <NewsCard1 date="17 de octubre de 2025" title="Nuevo Proyecto" description="Pronto comenzaremos cosas maravillosas, ¡no te las pierdas!" />
       <NewsCard2 date="17 de octubre de 2025" description="Pronto comenzaremos cosas maravillosas, ¡no te las pierdas!" />
     </motion.div>
   );
@@ -485,7 +474,6 @@ function Container11() {
     >
       <NewsCard date="8 de octubre de 2025" title="Certificación LEED" description="Libella obtiene la certificación LEED Platino por nuestro compromiso con la construcción sostenible y el medio ambiente." />
       <Container6 />
-      <NewsCard1 date="08 de octubre de 2025" title="Certificación LEED" description="Libella obtiene la certificación LEED Platino por nuestro compromiso con la construcción sostenible y el medio ambiente." />
       <NewsCard2 date="08 de octubre de 2025" description="Libella obtiene la certificación LEED Platino por nuestro compromiso con la construcción sostenible y el medio ambiente." />
       <Container10 />
     </motion.div>
@@ -621,7 +609,6 @@ function Container16() {
     >
       <NewsCard date="1 de octubre de 2025" title="Expansión Regional" description="Abrimos nueva oficina en Medellín para atender mejor a nuestros clientes en la región y expandir nuestra presencia nacional." />
       <Container12 />
-      <NewsCard1 date="01 de octubre de 2025" title="Expansión Regional" description="Abrimos nueva oficina en Medellín para atender mejor a nuestros clientes en la región y expandir nuestra presencia nacional." />
       <NewsCard2 date="01 de octubre de 2025" description="Abrimos nueva oficina en Medellín para atender mejor a nuestros clientes en la región y expandir nuestra presencia nacional." />
     </motion.div>
   );
@@ -774,7 +761,7 @@ function Heading4() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
-        +20
+        150+
       </motion.p>
     </div>
   );
@@ -868,7 +855,7 @@ function Heading5() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.4 }}
       >
-        +1000
+        5000+
       </motion.p>
     </div>
   );
@@ -960,7 +947,7 @@ function Heading6() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        +10
+        25+
       </motion.p>
     </div>
   );
@@ -1375,12 +1362,13 @@ function Container47() {
 }
 
 // Proyecto components (simplified, we'll create one reusable component)
-function ProjectCard({ title, type, description, location, status, image, delay, left, top }: any) {
+function ProjectCard({ title, type, description, location, status, image, delay, left, top, onClick }: any) {
   return (
     <motion.div
-      className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] w-[466.539px]"
+      className="absolute bg-[rgba(255,255,255,0)] box-border content-stretch flex flex-col h-[412.226px] items-start overflow-clip rounded-[26.064px] shadow-[0px_27.15px_54.299px_-13.032px_rgba(0,0,0,0.25)] w-[466.539px] cursor-pointer"
       data-name="ProjectCard"
       style={{ left, top }}
+      onClick={onClick}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -1435,9 +1423,10 @@ function ProjectCard({ title, type, description, location, status, image, delay,
   );
 }
 
-function Container84() {
+function Container84({ onSelectProject }: { onSelectProject?: (projectId: string) => void }) {
   const projects = [
     {
+      id: "altos-cattleya",
       title: "Altos de Cattleya",
       type: "Parcelación",
       description: "Parcelas desde 1000m² en conjunto cerrado.",
@@ -1449,6 +1438,7 @@ function Container84() {
       delay: 0,
     },
     {
+      id: "amsterdam",
       title: "AmsterHaus",
       type: "Apartamentos - Apartaestudios",
       description: "Hermosos apartamentos desde 55m² y apartaestudios desde 33,29 m².",
@@ -1460,6 +1450,7 @@ function Container84() {
       delay: 0.2,
     },
     {
+      id: "la-ceiba",
       title: "La Ceiba",
       type: "Parcelación",
       description: "Espacio campestre con escrituras de 3000m² en copropiedad y listas para escriturar.",
@@ -1471,6 +1462,7 @@ function Container84() {
       delay: 0.4,
     },
     {
+      id: "la-gran-turquesa",
       title: "La Gran Turquesa",
       type: "Parcelación",
       description: "Exclusivo condominio campestre con amplias parcelas desde 1000m².",
@@ -1485,8 +1477,12 @@ function Container84() {
 
   return (
     <div className="absolute h-[876.58px] left-[139.01px] top-[221.54px] w-[985.205px]" data-name="Container">
-      {projects.map((project, index) => (
-        <ProjectCard key={index} {...project} />
+      {projects.map((project) => (
+        <ProjectCard 
+          key={project.id} 
+          {...project} 
+          onClick={() => onSelectProject?.(project.id)}
+        />
       ))}
     </div>
   );
@@ -1529,21 +1525,21 @@ function Link5() {
   );
 }
 
-function Container85() {
+function Container85({ onSelectProject }: { onSelectProject?: (projectId: string) => void }) {
   return (
     <div className="absolute h-[1308.37px] left-0 top-0 w-[1263.22px]" data-name="Container">
       <Container47 />
-      <Container84 />
+      <Container84 onSelectProject={onSelectProject} />
       <Link5 />
     </div>
   );
 }
 
-function InversionesPaginaConstructora() {
+function InversionesPaginaConstructora({ onSelectProject }: { onSelectProject?: (projectId: string) => void }) {
   return (
     <div className="absolute h-[1308.61px] left-0 top-[1378px] w-[1263px]" data-name="Inversiones Página Constructora" style={{ backgroundImage: "linear-gradient(rgb(64, 56, 56) 0%, rgba(198, 41, 38, 0.97) 100%), linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 100%)" }}>
       <Container45 />
-      <Container85 />
+      <Container85 onSelectProject={onSelectProject} />
     </div>
   );
 }
@@ -1752,7 +1748,7 @@ function Header6() {
   );
 }
 
-function App() {
+function App({ onSelectProject }: { onSelectProject?: (projectId: string) => void }) {
   return (
     <div className="absolute h-[3971px] left-0 top-0 w-[1263px]" data-name="App">
       <CarruselInicio />
@@ -1760,14 +1756,83 @@ function App() {
       <SeccionHojasDivisoras />
       <SeccionMetricas />
       <EndPage />
-      <InversionesPaginaConstructora />
+      <InversionesPaginaConstructora onSelectProject={onSelectProject} />
       <Header6 />
     </div>
   );
 }
 
+// Datos de los proyectos
+const proyectosData = {
+  "altos-cattleya": {
+    nombreProyecto: "Altos de Cattleya",
+    descripcion: "Parcelas desde 1000m² en conjunto cerrado con seguridad 24/7, vigilancia permanente y acceso controlado. Ubicadas en una zona estratégica con vistas panorámicas y acceso a servicios básicos.",
+    ubicacion: "Totoró - vereda de Aguas Tibias, Cauca. (Kilómetro 6)",
+    fechaEntrega: "Según disponibilidad",
+    lotes: "Parcelas disponibles desde 1000m²",
+    amenidades: ["Acceso controlado", "Vigilancia 24/7", "Vías internas", "Servicios básicos", "Áreas verdes", "Senderos peatonales"],
+    porcentajeAvance: 75,
+    detallesAvance: [
+      { nombre: "Adecuación del terreno", porcentaje: 100 },
+      { nombre: "Instalación de servicios", porcentaje: 80 },
+      { nombre: "Vías de acceso", porcentaje: 70 },
+      { nombre: "Áreas comunes", porcentaje: 60 }
+    ],
+    imagenBanner: "https://images.unsplash.com/photo-1486406146926-c62733dd37f7?w=1400&h=600&fit=crop"
+  },
+  "amsterdam": {
+    nombreProyecto: "AmsterHaus",
+    descripcion: "Hermosos apartamentos desde 55m² y apartaestudios desde 33.29m² con acabados modernos. Ubicados en el corazón de Popayán, cerca de comercios, restaurantes y transporte público.",
+    ubicacion: "Popayán Cra 20 #55 N 64 (A dos minutos de Café La Palma)",
+    fechaEntrega: "Próximamente",
+    lotes: "Apartamentos disponibles desde 55m²",
+    amenidades: ["Parqueadero privado", "Ascensor", "Áreas comunes", "Salón de eventos", "Terraza común", "Seguridad 24/7"],
+    porcentajeAvance: 45,
+    detallesAvance: [
+      { nombre: "Cimentación", porcentaje: 100 },
+      { nombre: "Estructura", porcentaje: 60 },
+      { nombre: "Instalaciones", porcentaje: 30 },
+      { nombre: "Acabados", porcentaje: 10 }
+    ],
+    imagenBanner: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1400&h=600&fit=crop"
+  },
+  "la-ceiba": {
+    nombreProyecto: "La Ceiba",
+    descripcion: "Espacio campestre con escrituras de 3000m² en copropiedad y listas para escriturar. Perfecto para quienes buscan tranquilidad y conexión con la naturaleza sin alejarse de la ciudad.",
+    ubicacion: "Calibio, antigua carrilera, a 4.4km de la Variante Norte.",
+    fechaEntrega: "Disponible inmediatamente",
+    lotes: "Lotes campestres de 3000m²",
+    amenidades: ["Paisaje natural", "Escrituras listas", "Servicios básicos", "Acceso vial", "Zona verde", "Fauna y flora nativa"],
+    porcentajeAvance: 100,
+    detallesAvance: [
+      { nombre: "Levantamiento topográfico", porcentaje: 100 },
+      { nombre: "División de lotes", porcentaje: 100 },
+      { nombre: "Registros catastrales", porcentaje: 100 },
+      { nombre: "Documentos legales", porcentaje: 100 }
+    ],
+    imagenBanner: "https://images.unsplash.com/photo-1500721694683-b8e8328cab37?w=1400&h=600&fit=crop"
+  },
+  "la-gran-turquesa": {
+    nombreProyecto: "La Gran Turquesa",
+    descripcion: "Exclusivo condominio campestre con amplias parcelas desde 1000m². Diseñado para ofrecer privacidad, seguridad y un estilo de vida de lujo en armonía con la naturaleza.",
+    ubicacion: "Totoró, Cauca. (Kilómetro 4)",
+    fechaEntrega: "Fase 2 en construcción",
+    lotes: "Parcelas desde 1000m²",
+    amenidades: ["Club house", "Piscina", "Cancha de tenis", "Zona de juegos", "Vigilancia permanente", "Áreas verdes amplias"],
+    porcentajeAvance: 40,
+    detallesAvance: [
+      { nombre: "Fase 1 - Completada", porcentaje: 100 },
+      { nombre: "Fase 2 - Estructura", porcentaje: 50 },
+      { nombre: "Áreas comunes", porcentaje: 30 },
+      { nombre: "Servicios complementarios", porcentaje: 20 }
+    ],
+    imagenBanner: "https://images.unsplash.com/photo-1512207736139-6c3ee1e93a00?w=1400&h=600&fit=crop"
+  }
+};
+
 export default function LibellaInicio() {
   const [scale, setScale] = useState(1);
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   useEffect(() => {
     const calculateScale = () => {
@@ -1784,6 +1849,17 @@ export default function LibellaInicio() {
 
   const scaledHeight = DESIGN_HEIGHT * scale;
 
+  // Si hay un proyecto seleccionado, mostrar la página de detalles
+  if (selectedProject && proyectosData[selectedProject as keyof typeof proyectosData]) {
+    const projectData = proyectosData[selectedProject as keyof typeof proyectosData];
+    return (
+      <ProyectoDetalle
+        {...projectData}
+        onVolver={() => setSelectedProject(null)}
+      />
+    );
+  }
+
   return (
     <div className="bg-white w-full" style={{ height: `${scaledHeight}px`, overflow: 'hidden' }} data-name="libella inicio">
       <div
@@ -1794,7 +1870,7 @@ export default function LibellaInicio() {
           transformOrigin: "top left",
         }}
       >
-        <App />
+        <App onSelectProject={setSelectedProject} />
       </div>
     </div>
   );
