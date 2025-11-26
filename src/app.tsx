@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { ProyectoDetalle } from "./componentes/ProyectosDetalle";
 import svgPaths from "./imports/svg-7y6p7vhc1w";
 import imgHeroCarousel from "./imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
 import imgHeroCarousel1 from "./imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
@@ -1762,82 +1761,13 @@ function App({ onSelectProject }: { onSelectProject?: (projectId: string) => voi
   );
 }
 
-// Datos de los proyectos
-const proyectosData = {
-  "altos-cattleya": {
-    nombreProyecto: "Altos de Cattleya",
-    descripcion: "Parcelas desde 1000m² en conjunto cerrado con seguridad 24/7, vigilancia permanente y acceso controlado. Ubicadas en una zona estratégica con vistas panorámicas y acceso a servicios básicos.",
-    ubicacion: "Totoró - vereda de Aguas Tibias, Cauca. (Kilómetro 6)",
-    fechaEntrega: "Según disponibilidad",
-    lotes: "Parcelas disponibles desde 1000m²",
-    amenidades: ["Acceso controlado", "Vigilancia 24/7", "Vías internas", "Servicios básicos", "Áreas verdes", "Senderos peatonales"],
-    porcentajeAvance: 75,
-    detallesAvance: [
-      { nombre: "Adecuación del terreno", porcentaje: 100 },
-      { nombre: "Instalación de servicios", porcentaje: 80 },
-      { nombre: "Vías de acceso", porcentaje: 70 },
-      { nombre: "Áreas comunes", porcentaje: 60 }
-    ],
-    imagenBanner: "https://images.unsplash.com/photo-1486406146926-c62733dd37f7?w=1400&h=600&fit=crop"
-  },
-  "amsterdam": {
-    nombreProyecto: "AmsterHaus",
-    descripcion: "Hermosos apartamentos desde 55m² y apartaestudios desde 33.29m² con acabados modernos. Ubicados en el corazón de Popayán, cerca de comercios, restaurantes y transporte público.",
-    ubicacion: "Popayán Cra 20 #55 N 64 (A dos minutos de Café La Palma)",
-    fechaEntrega: "Próximamente",
-    lotes: "Apartamentos disponibles desde 55m²",
-    amenidades: ["Parqueadero privado", "Ascensor", "Áreas comunes", "Salón de eventos", "Terraza común", "Seguridad 24/7"],
-    porcentajeAvance: 45,
-    detallesAvance: [
-      { nombre: "Cimentación", porcentaje: 100 },
-      { nombre: "Estructura", porcentaje: 60 },
-      { nombre: "Instalaciones", porcentaje: 30 },
-      { nombre: "Acabados", porcentaje: 10 }
-    ],
-    imagenBanner: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1400&h=600&fit=crop"
-  },
-  "la-ceiba": {
-    nombreProyecto: "La Ceiba",
-    descripcion: "Espacio campestre con escrituras de 3000m² en copropiedad y listas para escriturar. Perfecto para quienes buscan tranquilidad y conexión con la naturaleza sin alejarse de la ciudad.",
-    ubicacion: "Calibio, antigua carrilera, a 4.4km de la Variante Norte.",
-    fechaEntrega: "Disponible inmediatamente",
-    lotes: "Lotes campestres de 3000m²",
-    amenidades: ["Paisaje natural", "Escrituras listas", "Servicios básicos", "Acceso vial", "Zona verde", "Fauna y flora nativa"],
-    porcentajeAvance: 100,
-    detallesAvance: [
-      { nombre: "Levantamiento topográfico", porcentaje: 100 },
-      { nombre: "División de lotes", porcentaje: 100 },
-      { nombre: "Registros catastrales", porcentaje: 100 },
-      { nombre: "Documentos legales", porcentaje: 100 }
-    ],
-    imagenBanner: "https://images.unsplash.com/photo-1500721694683-b8e8328cab37?w=1400&h=600&fit=crop"
-  },
-  "la-gran-turquesa": {
-    nombreProyecto: "La Gran Turquesa",
-    descripcion: "Exclusivo condominio campestre con amplias parcelas desde 1000m². Diseñado para ofrecer privacidad, seguridad y un estilo de vida de lujo en armonía con la naturaleza.",
-    ubicacion: "Totoró, Cauca. (Kilómetro 4)",
-    fechaEntrega: "Fase 2 en construcción",
-    lotes: "Parcelas desde 1000m²",
-    amenidades: ["Club house", "Piscina", "Cancha de tenis", "Zona de juegos", "Vigilancia permanente", "Áreas verdes amplias"],
-    porcentajeAvance: 40,
-    detallesAvance: [
-      { nombre: "Fase 1 - Completada", porcentaje: 100 },
-      { nombre: "Fase 2 - Estructura", porcentaje: 50 },
-      { nombre: "Áreas comunes", porcentaje: 30 },
-      { nombre: "Servicios complementarios", porcentaje: 20 }
-    ],
-    imagenBanner: "https://images.unsplash.com/photo-1512207736139-6c3ee1e93a00?w=1400&h=600&fit=crop"
-  }
-};
-
-export default function LibellaInicio() {
+export default function LibellaInicio({ onNavigateToProject }: { onNavigateToProject?: (projectId: string) => void }) {
   const [scale, setScale] = useState(1);
-  const [selectedProject, setSelectedProject] = useState<string | null>(null);
 
   useEffect(() => {
     const calculateScale = () => {
       const windowWidth = window.innerWidth;
-      const newScale = windowWidth / DESIGN_WIDTH;
+      const newScale = Math.min(windowWidth / DESIGN_WIDTH, 1); // No escalar más grande que el original
       setScale(newScale);
     };
 
@@ -1849,28 +1779,18 @@ export default function LibellaInicio() {
 
   const scaledHeight = DESIGN_HEIGHT * scale;
 
-  // Si hay un proyecto seleccionado, mostrar la página de detalles
-  if (selectedProject && proyectosData[selectedProject as keyof typeof proyectosData]) {
-    const projectData = proyectosData[selectedProject as keyof typeof proyectosData];
-    return (
-      <ProyectoDetalle
-        {...projectData}
-        onVolver={() => setSelectedProject(null)}
-      />
-    );
-  }
-
   return (
-    <div className="bg-white w-full" style={{ height: `${scaledHeight}px`, overflow: 'hidden' }} data-name="libella inicio">
+    <div className="bg-white w-full overflow-x-hidden" style={{ minHeight: `${scaledHeight}px` }} data-name="libella inicio">
       <div
         style={{
           width: `${DESIGN_WIDTH}px`,
           height: `${DESIGN_HEIGHT}px`,
           transform: `scale(${scale})`,
-          transformOrigin: "top left",
+          transformOrigin: "top center",
+          margin: "0 auto",
         }}
       >
-        <App onSelectProject={setSelectedProject} />
+        <App onSelectProject={onNavigateToProject} />
       </div>
     </div>
   );

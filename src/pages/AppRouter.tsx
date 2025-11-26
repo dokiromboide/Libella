@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
 import LibellaInicio from "../app";
 import { ProyectoDetalle } from "../componentes/ProyectosDetalle";
 import { motion } from "motion/react";
@@ -71,64 +71,63 @@ const proyectosData: Record<string, any> = {
   }
 };
 
-interface AppRouterProps {
-  onNavigateToProject?: (projectId: string) => void;
-}
-
-export default function AppRouter({ onNavigateToProject }: AppRouterProps) {
-  const [currentPage, setCurrentPage] = useState<string | null>(null);
+// Componente para la página principal
+function HomePage() {
+  const navigate = useNavigate();
 
   const handleNavigateToProject = (projectId: string) => {
-    setCurrentPage(projectId);
+    navigate(`/proyecto/${projectId}`);
     window.scrollTo(0, 0);
   };
+
+  return <LibellaInicio onNavigateToProject={handleNavigateToProject} />;
+}
+
+// Componente para la página de detalle del proyecto
+function ProyectoPage() {
+  const { projectId } = useParams<{ projectId: string }>();
+  const navigate = useNavigate();
 
   const handleBackToHome = () => {
-    setCurrentPage(null);
+    navigate('/');
     window.scrollTo(0, 0);
   };
 
-  // Si estamos en una página de proyecto
-  if (currentPage && proyectosData[currentPage]) {
-    const projectData = proyectosData[currentPage];
+  // Verificar si el proyecto existe
+  if (!projectId || !proyectosData[projectId]) {
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="fixed top-0 left-0 right-0 z-50 bg-[#c62926] shadow-lg">
-          <motion.button
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#c62926] to-[#403838]">
+        <div className="text-center text-white">
+          <h1 className="text-4xl font-bold mb-4">Proyecto no encontrado</h1>
+          <button
             onClick={handleBackToHome}
-            className="m-4 px-6 py-2 bg-white text-[#c62926] rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="px-6 py-3 bg-white text-[#c62926] rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            ← Volver al inicio
-          </motion.button>
+            Volver al inicio
+          </button>
         </div>
-        <div className="pt-16">
-          <ProyectoDetalle
-            nombreProyecto={projectData.nombreProyecto}
-            descripcion={projectData.descripcion}
-            ubicacion={projectData.ubicacion}
-            fechaEntrega={projectData.fechaEntrega}
-            lotes={projectData.lotes}
-            amenidades={projectData.amenidades}
-            porcentajeAvance={projectData.porcentajeAvance}
-            detallesAvance={projectData.detallesAvance}
-            imagenBanner={projectData.imagenBanner}
-          />
-        </div>
-      </motion.div>
+      </div>
     );
   }
 
-  // Página de inicio con capacidad de navegación
+  const projectData = proyectosData[projectId];
+
   return (
-    <LibellaInicio 
-      onNavigateToProject={handleNavigateToProject}
+    <ProyectoDetalle
+      {...projectData}
+      onVolver={handleBackToHome}
     />
+  );
+}
+
+// Router principal
+export default function AppRouter() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
