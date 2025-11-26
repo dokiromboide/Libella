@@ -1767,7 +1767,7 @@ export default function LibellaInicio({ onNavigateToProject }: { onNavigateToPro
   useEffect(() => {
     const calculateScale = () => {
       const windowWidth = window.innerWidth;
-      const newScale = Math.min(windowWidth / DESIGN_WIDTH, 1); // No escalar más grande que el original
+      const newScale = windowWidth < DESIGN_WIDTH ? windowWidth / DESIGN_WIDTH : 1;
       setScale(newScale);
     };
 
@@ -1780,14 +1780,25 @@ export default function LibellaInicio({ onNavigateToProject }: { onNavigateToPro
   const scaledHeight = DESIGN_HEIGHT * scale;
 
   return (
-    <div className="bg-white w-full overflow-x-hidden" style={{ minHeight: `${scaledHeight}px` }} data-name="libella inicio">
+    <div 
+      className="bg-white w-full" 
+      style={{ 
+        height: `${scaledHeight}px`,
+        overflow: 'hidden',
+        position: 'relative',
+        display: 'flex',
+        justifyContent: 'center'
+      }} 
+      data-name="libella inicio"
+    >
       <div
         style={{
           width: `${DESIGN_WIDTH}px`,
           height: `${DESIGN_HEIGHT}px`,
           transform: `scale(${scale})`,
           transformOrigin: "top center",
-          margin: "0 auto",
+          position: 'absolute',
+          top: 0
         }}
       >
         <App onSelectProject={onNavigateToProject} />

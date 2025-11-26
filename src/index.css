@@ -2112,18 +2112,11 @@
 
 html {
   font-size: var(--font-size);
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
 }
 
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
@@ -2132,13 +2125,6 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-}
-
-/* Prevent double scrollbars */
-div[data-name="libella inicio"] {
-  width: 100%;
-  overflow-x: hidden !important;
-  overflow-y: auto;
 }
 
 @property --tw-translate-x {
