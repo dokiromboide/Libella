@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import svgPaths from "./imports/svg-7y6p7vhc1w";
-import imgHeroCarousel from "./imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
-import imgHeroCarousel1 from "./imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
-import imgHeroCarousel2 from "./imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
-import imgHeroCarousel3 from "./imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
-import imgImageCertificacionInternacional from "./imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
-import imgImageDivider from "./imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
-import imgFooter from "./imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png";
-import imgImageLaCeiba from "./imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
-import imgImageLaGranTurquesa from "./imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
-import imgImageLibellaLogo from "./imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
+import TarjetaNoticia from "./componentes/noticias/TarjetaNoticia";
+import { noticiasData } from "./datos/noticias";
+import svgPaths from "./recursos/svg/paths";
+import imgHeroCarousel from "./recursos/imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
+import imgHeroCarousel1 from "./recursos/imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
+import imgHeroCarousel2 from "./recursos/imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
+import imgHeroCarousel3 from "./recursos/imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
+import imgImageCertificacionInternacional from "./recursos/imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
+import imgImageDivider from "./recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
+import imgFooter from "./recursos/imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png";
+import imgImageLaCeiba from "./recursos/imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
+import imgImageLaGranTurquesa from "./recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
+import imgImageLibellaLogo from "./recursos/imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
 
 // Design constants
 const DESIGN_WIDTH = 1263;
@@ -614,11 +616,24 @@ function Container16() {
 }
 
 function Container17() {
+  // Mostrar solo las primeras 3 noticias
+  const noticiasParaMostrar = noticiasData.slice(0, 3);
+  
   return (
-    <div className="h-[498.188px] relative shrink-0 w-full" data-name="Container">
-      <Container5 />
-      <Container11 />
-      <Container16 />
+    <div className="h-[498.188px] relative shrink-0 w-full flex gap-[32px]" data-name="Container">
+      {noticiasParaMostrar.map((noticia, index) => (
+        <motion.div
+          key={noticia.id}
+          className="w-[378.219px] h-full flex-shrink-0"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.2 }}
+          whileHover={{ y: -10 }}
+        >
+          <TarjetaNoticia noticia={noticia} />
+        </motion.div>
+      ))}
     </div>
   );
 }
@@ -1783,11 +1798,9 @@ export default function LibellaInicio({ onNavigateToProject }: { onNavigateToPro
     <div 
       className="bg-white w-full" 
       style={{ 
-        height: `${scaledHeight}px`,
-        overflow: 'hidden',
+        minHeight: '100vh',
         position: 'relative',
-        display: 'flex',
-        justifyContent: 'center'
+        overflow: 'hidden'
       }} 
       data-name="libella inicio"
     >
@@ -1797,8 +1810,8 @@ export default function LibellaInicio({ onNavigateToProject }: { onNavigateToPro
           height: `${DESIGN_HEIGHT}px`,
           transform: `scale(${scale})`,
           transformOrigin: "top center",
-          position: 'absolute',
-          top: 0
+          position: 'relative',
+          margin: '0 auto'
         }}
       >
         <App onSelectProject={onNavigateToProject} />

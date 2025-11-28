@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-// Importar imágenes de la misma forma que en app.tsx
-import imgHeroCarousel from "../imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
-import imgHeroCarousel1 from "../imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
-import imgHeroCarousel2 from "../imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
-import imgHeroCarousel3 from "../imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
-import imgImageLaCeiba from "../imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
-import imgImageLaGranTurquesa from "../imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
+// Importar imágenes desde la carpeta recursos
+import imgHeroCarousel from "../../recursos/imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
+import imgHeroCarousel1 from "../../recursos/imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
+import imgHeroCarousel2 from "../../recursos/imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
+import imgHeroCarousel3 from "../../recursos/imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
+import imgImageLaCeiba from "../../recursos/imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
+import imgImageLaGranTurquesa from "../../recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
 
 interface ProyectoDetalleProps {
   nombreProyecto: string;
