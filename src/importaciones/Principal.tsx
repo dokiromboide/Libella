@@ -7,7 +7,7 @@ import imgImage3 from "../imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png"
 import imgImageLibellaLogo from "../imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
 import svgPaths from "./svg-bnupwpn4rr";
 
-function HeroInversiones() {
+function Banner() {
   return (
     <div className="h-[200px] md:h-[250px] lg:h-[300px] overflow-clip relative w-full" data-name="HeroInversiones">
       <div className="absolute inset-0">
@@ -35,7 +35,7 @@ function HeroInversiones() {
   );
 }
 
-function SeccionTiposInversion() {
+function SeccionPasosInversion() {
   const [pasoExpandido, setPasoExpandido] = useState<number | null>(0);
   
   const pasos = [
@@ -322,8 +322,8 @@ export default function Principal() {
     <div className="bg-[#403838] min-h-screen" data-name="libella inversiones inicio">
       <Header />
       <main className="pt-[60px] md:pt-[70px]">
-        <HeroInversiones />
-        <SeccionTiposInversion />
+        <Banner />
+        <SeccionPasosInversion />
         <SeccionDivisora />
         <Footer />
       </main>
