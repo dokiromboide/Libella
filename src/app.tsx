@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import { Link as RouterLink } from "react-router-dom";
 import TarjetaNoticia from "./componentes/noticias/TarjetaNoticia";
 import { noticiasData } from "./datos/noticias";
 import svgPaths from "./recursos/svg/paths";
@@ -1755,9 +1756,76 @@ function Header6() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Container89 />
-      <ImageLibellaLogo />
-      <Container93 />
+      {/* Left Menu */}
+      <div className="absolute h-[20px] left-0 top-[31px] w-[543px]">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[20px] relative w-[543px]">
+          <RouterLink to="/">
+            <motion.div className="absolute h-[20px] left-[93px] overflow-clip top-px w-[51px] cursor-pointer" whileHover={{ scale: 1.05 }}>
+              <div className="absolute bg-white h-[2px] left-0 top-[17.5px] w-0" />
+              <div className="absolute content-stretch flex h-[17.333px] items-start left-0 top-[0.67px] w-[35.615px]">
+                <p className="font-['Arial:Regular',sans-serif] leading-[19.5px] not-italic relative shrink-0 text-[#f2f2f2] text-[13px] text-nowrap tracking-[-0.39px] whitespace-pre">INICIO</p>
+              </div>
+            </motion.div>
+          </RouterLink>
+          <RouterLink to="/servicios">
+            <motion.div className="absolute h-[20px] left-[225px] overflow-clip top-[2px] w-[72px] cursor-pointer" whileHover={{ scale: 1.05 }}>
+              <div className="absolute bg-white h-[2px] left-0 top-[17.5px] w-0" />
+              <div className="absolute content-stretch flex h-[17.333px] items-start left-0 top-[0.67px] w-[57.5px]">
+                <p className="font-['Arial:Regular',sans-serif] leading-[19.5px] not-italic relative shrink-0 text-[#f2f2f2] text-[13px] text-nowrap tracking-[-0.39px] whitespace-pre">SERVICIOS</p>
+              </div>
+            </motion.div>
+          </RouterLink>
+          <RouterLink to="/inversiones">
+            <motion.div className="absolute h-[20px] left-[378px] overflow-clip top-0 w-[94px] cursor-pointer" whileHover={{ scale: 1.05 }}>
+              <div className="absolute bg-white h-[2px] left-0 top-[17.5px] w-0" />
+              <div className="absolute content-stretch flex h-[17.333px] items-start left-0 top-[0.67px] w-[74.698px]">
+                <p className="font-['Arial:Regular',sans-serif] leading-[19.5px] not-italic relative shrink-0 text-[#f2f2f2] text-[13px] text-nowrap tracking-[-0.39px] whitespace-pre">INVERSIONES</p>
+              </div>
+            </motion.div>
+          </RouterLink>
+        </div>
+      </div>
+
+      {/* Logo */}
+      <RouterLink to="/">
+        <motion.div
+          className="absolute h-[40px] left-[569px] top-[19px] w-[50px]"
+          whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
+          transition={{ duration: 0.5 }}
+        >
+          <img alt="" className="absolute bg-clip-padding border-0 border-[transparent] border-solid box-border inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgImageLibellaLogo} />
+        </motion.div>
+      </RouterLink>
+
+      {/* Right Menu */}
+      <div className="absolute h-[20px] left-[732px] top-[29px] w-[499px]">
+        <div className="bg-clip-padding border-0 border-[transparent] border-solid box-border h-[20px] relative w-[499px]">
+          <RouterLink to="/proyectos">
+            <motion.div className="absolute h-[20px] left-0 overflow-clip top-[-0.25px] w-[88px] cursor-pointer" whileHover={{ scale: 1.05 }}>
+              <div className="absolute bg-white h-[2px] left-0 top-[17.5px] w-0" />
+              <div className="absolute content-stretch flex h-[17.333px] items-start left-0 top-[0.67px] w-[65.635px]">
+                <p className="font-['Arial:Regular',sans-serif] leading-[19.5px] not-italic relative shrink-0 text-[#f2f2f2] text-[13px] text-nowrap tracking-[-0.39px] whitespace-pre">PROYECTOS</p>
+              </div>
+            </motion.div>
+          </RouterLink>
+          <RouterLink to="/nosotros">
+            <motion.div className="absolute h-[20px] left-[162px] overflow-clip top-0 w-[76px] cursor-pointer" whileHover={{ scale: 1.05 }}>
+              <div className="absolute bg-white h-[2px] left-0 top-[17.5px] w-0" />
+              <div className="absolute content-stretch flex h-[17.333px] items-start left-0 top-[0.67px] w-[63.698px]">
+                <p className="font-['Arial:Regular',sans-serif] leading-[19.5px] not-italic relative shrink-0 text-[#f2f2f2] text-[13px] text-nowrap tracking-[-0.39px] whitespace-pre">NOSOTROS</p>
+              </div>
+            </motion.div>
+          </RouterLink>
+          <RouterLink to="/contacto">
+            <motion.div className="absolute h-[20px] left-[311px] overflow-clip top-[-0.25px] w-[107px] cursor-pointer" whileHover={{ scale: 1.05 }}>
+              <div className="absolute bg-white h-[2px] left-0 top-[17.5px] w-0" />
+              <div className="absolute content-stretch flex h-[17.333px] items-start left-0 top-[0.67px] w-[85.781px]">
+                <p className="font-['Arial:Regular',sans-serif] leading-[19.5px] not-italic relative shrink-0 text-[#f2f2f2] text-[13px] text-nowrap tracking-[-0.39px] whitespace-pre">CONTACTANOS</p>
+              </div>
+            </motion.div>
+          </RouterLink>
+        </div>
+      </div>
     </motion.div>
   );
 }

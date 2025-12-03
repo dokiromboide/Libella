@@ -1,8 +1,97 @@
-import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams, useNavigate, Link } from "react-router-dom";
+import { motion } from "motion/react";
 import LibellaInicio from "../app";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
+import Inversiones from "./Inversiones";
+import imgImageLibellaLogo from "../recursos/imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
+
+// Header compartido para todas las páginas
+function HeaderCompartido({ paginaActual = '' }: { paginaActual?: string }) {
+  const menuItemsLeft = ['INICIO', 'SERVICIOS', 'INVERSIONES'];
+  const menuItemsRight = ['PROYECTOS', 'NOSOTROS', 'CONTACTANOS'];
+  
+  const getPath = (item: string) => {
+    const paths: Record<string, string> = {
+      'INICIO': '/',
+      'SERVICIOS': '/servicios',
+      'INVERSIONES': '/inversiones',
+      'PROYECTOS': '/proyectos',
+      'NOSOTROS': '/nosotros',
+      'CONTACTANOS': '/contacto',
+    };
+    return paths[item] || '/';
+  };
+
+  return (
+    <motion.header
+      className="fixed w-full top-0 z-50"
+      style={{ 
+        backgroundColor: '#c62926',
+        height: '80px'
+      }}
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="h-full max-w-[1600px] mx-auto flex items-center justify-center" style={{ paddingLeft: '110px', paddingRight: '110px' }}>
+        {/* Left Menu */}
+        <div className="flex items-center justify-end flex-1" style={{ gap: '130px' }}>
+          {menuItemsLeft.map((item, index) => (
+            <Link key={item} to={getPath(item)}>
+              <motion.div
+                className="relative text-white text-[15px] tracking-[-0.39px] cursor-pointer overflow-hidden group whitespace-nowrap font-['Arial']"
+                whileHover={{ scale: 1.08 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <span className="relative z-10">{item}</span>
+                <motion.div
+                  className={`absolute bottom-[-4px] left-0 h-[2px] bg-white ${item === paginaActual ? 'w-full' : 'w-0'}`}
+                  whileHover={{ width: '100%' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Centered Logo */}
+        <Link to="/" className="flex-shrink-0" style={{ margin: '0 120px' }}>
+          <img
+            alt="Libella Logo"
+            className="h-[40px] w-[50px] object-cover"
+            src={imgImageLibellaLogo}
+          />
+        </Link>
+
+        {/* Right Menu */}
+        <div className="flex items-center justify-start flex-1" style={{ gap: '130px' }}>
+          {menuItemsRight.map((item, index) => (
+            <Link key={item} to={getPath(item)}>
+              <motion.div
+                className="relative text-white text-[15px] tracking-[-0.39px] cursor-pointer overflow-hidden group whitespace-nowrap font-['Arial']"
+                whileHover={{ scale: 1.08 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (menuItemsLeft.length + index) * 0.1 }}
+              >
+                <span className="relative z-10">{item}</span>
+                <motion.div
+                  className={`absolute bottom-[-4px] left-0 h-[2px] bg-white ${item === paginaActual ? 'w-full' : 'w-0'}`}
+                  whileHover={{ width: '100%' }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </motion.header>
+  );
+}
 
 // Datos de los proyectos
 const proyectosData: Record<string, any> = {
@@ -72,7 +161,7 @@ const proyectosData: Record<string, any> = {
   }
 };
 
-// Componente para la página principal
+// Componente para la página principal (Inicio)
 function HomePage() {
   const navigate = useNavigate();
 
@@ -121,15 +210,44 @@ function ProyectoPage() {
   );
 }
 
+// Página placeholder genérica
+function PaginaPlaceholder({ titulo, paginaActual }: { titulo: string; paginaActual: string }) {
+  return (
+    <div className="min-h-screen bg-[#403838]">
+      <HeaderCompartido paginaActual={paginaActual} />
+      <div className="pt-[80px] flex items-center justify-center min-h-screen">
+        <div className="text-center text-white">
+          <h1 className="text-4xl font-bold mb-4 font-['Arial']">{titulo}</h1>
+          <p className="text-lg text-white/70 font-['Arial']">Próximamente</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Router principal
 export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Página de inicio */}
         <Route path="/" element={<HomePage />} />
+        
+        {/* Página de inversiones */}
+        <Route path="/inversiones" element={<Inversiones />} />
+        
+        {/* Páginas de proyectos */}
         <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
+        <Route path="/proyectos" element={<PaginaPlaceholder titulo="Proyectos" paginaActual="PROYECTOS" />} />
+        
+        {/* Páginas de noticias */}
         <Route path="/noticias" element={<TodasNoticias />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
+        
+        {/* Otras páginas (placeholders) */}
+        <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
+        <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
+        <Route path="/contacto" element={<PaginaPlaceholder titulo="Contáctanos" paginaActual="CONTACTANOS" />} />
       </Routes>
     </BrowserRouter>
   );
