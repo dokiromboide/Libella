@@ -4,6 +4,8 @@ import { HeaderProyectos } from '../../componentes/proyectos-lista/HeaderProyect
 import { HeroBanner } from '../../componentes/proyectos-lista/HeroBanner';
 import { ProjectCard } from '../../componentes/proyectos-lista/ProjectCard';
 import { ProjectFilters } from '../../componentes/proyectos-lista/ProjectFilters';
+import HeaderInicio from "@/componentes/HeaderInicio";
+import FooterInicio from "@/componentes/FooterInicio";
 
 // Importar imágenes reales del proyecto
 import img1 from '../../recursos/imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png'; // Altos de Cattleya
@@ -17,6 +19,7 @@ import img8 from '../../recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171c
 import imgImageDivider from '../../recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png';
 import imgLibellaLogo from '../../recursos/imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png';
 import imgLibellaFooter from '../../recursos/imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png';
+import { Toaster } from 'sonner';
 
 // Project data with status
 const projectsData = [
@@ -263,8 +266,11 @@ export default function TodosProyectos() {
   const carouselImages = [img1, img2, img3, img4, img5, img6, img7, img8];
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-gradient-to-b from-[#1e1717] to-[rgba(135,21,21,0.97)]">
-      <HeaderProyectos logoUrl={imgLibellaLogo} />
+    <div className="bg-gradient-to-b from-[#1e1717] to-[rgba(135,21,21,0.97)] min-h-screen">
+      <Toaster position="top-center" />
+      
+      {/* Header de Inicio */}
+      <HeaderInicio paginaActual="CONTACTENOS" />
       
       <main className="flex flex-col w-full overflow-x-hidden pt-[80px]">
         <HeroBanner
@@ -290,7 +296,7 @@ export default function TodosProyectos() {
         <ImageDividerSection />
       </main>
 
-      <FooterSection />
+      <FooterInicio />
     </div>
   );
 }
