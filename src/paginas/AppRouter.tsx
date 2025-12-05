@@ -4,7 +4,10 @@ import App from "../app";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
+<<<<<<< HEAD
 import TodosProyectos from "./proyectos/TodosProyectos";
+=======
+>>>>>>> e865780032b72da482a5413d001643e16ffad4b0
 import Inversiones from "./Inversiones";
 import HeaderUnificado from "../componentes/HeaderUnificado";
 
@@ -152,8 +155,13 @@ export default function AppRouter() {
         <Route path="/inversiones" element={<Inversiones />} />
         
         {/* Páginas de proyectos */}
+<<<<<<< HEAD
         <Route path="/proyectos" element={<TodosProyectos />} />
         <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
+=======
+        <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
+        <Route path="/proyectos" element={<PaginaPlaceholder titulo="Proyectos" paginaActual="PROYECTOS" />} />
+>>>>>>> e865780032b72da482a5413d001643e16ffad4b0
         
         {/* Páginas de noticias */}
         <Route path="/noticias" element={<TodasNoticias />} />
