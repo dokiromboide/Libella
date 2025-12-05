@@ -4,12 +4,8 @@ import App from "../app";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
-<<<<<<< HEAD
 import TodosProyectos from "./proyectos/TodosProyectos";
-=======
->>>>>>> e865780032b72da482a5413d001643e16ffad4b0
 import Inversiones from "./Inversiones";
-import Contactanos from "./contactanos";
 import HeaderUnificado from "../componentes/HeaderUnificado";
 
 // Datos de los proyectos
@@ -156,25 +152,19 @@ export default function AppRouter() {
         <Route path="/inversiones" element={<Inversiones />} />
         
         {/* Páginas de proyectos */}
-<<<<<<< HEAD
         <Route path="/proyectos" element={<TodosProyectos />} />
         <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
-=======
-        <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
-        <Route path="/proyectos" element={<PaginaPlaceholder titulo="Proyectos" paginaActual="PROYECTOS" />} />
->>>>>>> e865780032b72da482a5413d001643e16ffad4b0
         
         {/* Páginas de noticias */}
         <Route path="/noticias" element={<TodasNoticias />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
         
-        {/* Página de contacto - Componente real */}
-        <Route path="/contacto" element={<Contactanos />} />
-        
         {/* Otras páginas (placeholders) */}
         <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
         <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
+        <Route path="/contacto" element={<PaginaPlaceholder titulo="Contáctanos" paginaActual="CONTACTANOS" />} />
       </Routes>
     </BrowserRouter>
   );
 }
+  
