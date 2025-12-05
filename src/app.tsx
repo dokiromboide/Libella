@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 import TarjetaNoticia from "./componentes/noticias/TarjetaNoticia";
 import { noticiasData } from "./datos/noticias";
 import svgPaths from "./recursos/svg/paths";
@@ -1525,10 +1526,13 @@ function Icon15() {
 }
 
 function Link5() {
+  const navigate = useNavigate();
+  
   return (
     <motion.div
       className="absolute bg-[rgba(227,66,52,0.95)] box-border content-stretch flex gap-[13.032px] h-[53.865px] items-center left-[849.66px] px-[26.932px] py-[0.869px] rounded-[2.91516e+07px] top-[1150.25px] w-[274.55px] cursor-pointer"
       data-name="Link"
+      onClick={() => navigate('/proyectos')}
       whileHover={{ scale: 1.05, boxShadow: "0px 15px 25px -3.258px rgba(0,0,0,0.2)" }}
       whileTap={{ scale: 0.98 }}
     >
@@ -1672,10 +1676,13 @@ function Header3() {
 }
 
 function Link9() {
+  const navigate = useNavigate();
+  
   return (
     <motion.div
       className="absolute h-[20px] left-0 overflow-clip top-[-0.25px] w-[88px] cursor-pointer"
       data-name="Link"
+      onClick={() => navigate('/proyectos')}
       whileHover={{ scale: 1.05 }}
     >
       <Container90 />

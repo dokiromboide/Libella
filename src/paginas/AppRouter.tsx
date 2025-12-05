@@ -3,6 +3,7 @@ import LibellaInicio from "../app";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
+import TodosProyectos from "./proyectos/TodosProyectos";
 
 // Datos de los proyectos
 const proyectosData: Record<string, any> = {
@@ -127,6 +128,7 @@ export default function AppRouter() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/proyectos" element={<TodosProyectos />} />
         <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
         <Route path="/noticias" element={<TodasNoticias />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
