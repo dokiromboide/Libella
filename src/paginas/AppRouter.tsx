@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
-import LibellaInicio from "../app";
+import InicioResponsive from "../InicioResponsive";
+import App from "../app";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
 import TodosProyectos from "./proyectos/TodosProyectos";
+import Inversiones from "./Inversiones";
+import HeaderUnificado from "../componentes/HeaderUnificado";
 
 // Datos de los proyectos
 const proyectosData: Record<string, any> = {
@@ -73,7 +76,7 @@ const proyectosData: Record<string, any> = {
   }
 };
 
-// Componente para la página principal
+// Componente para la página principal (Inicio)
 function HomePage() {
   const navigate = useNavigate();
 
@@ -82,7 +85,7 @@ function HomePage() {
     window.scrollTo(0, 0);
   };
 
-  return <LibellaInicio onNavigateToProject={handleNavigateToProject} />;
+  return <App onNavigateToProject={handleNavigateToProject} />;
 }
 
 // Componente para la página de detalle del proyecto
@@ -122,16 +125,44 @@ function ProyectoPage() {
   );
 }
 
+// Página placeholder genérica
+function PaginaPlaceholder({ titulo, paginaActual }: { titulo: string; paginaActual: string }) {
+  return (
+    <div className="min-h-screen bg-[#403838]">
+      <HeaderUnificado paginaActual={paginaActual} />
+      <div className="pt-[80px] flex items-center justify-center min-h-screen">
+        <div className="text-center text-white">
+          <h1 className="text-4xl font-bold mb-4 font-['Arial']">{titulo}</h1>
+          <p className="text-lg text-white/70 font-['Arial']">Próximamente</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Router principal
 export default function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Página de inicio */}
         <Route path="/" element={<HomePage />} />
+        
+        {/* Página de inversiones */}
+        <Route path="/inversiones" element={<Inversiones />} />
+        
+        {/* Páginas de proyectos */}
         <Route path="/proyectos" element={<TodosProyectos />} />
         <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
+        
+        {/* Páginas de noticias */}
         <Route path="/noticias" element={<TodasNoticias />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
+        
+        {/* Otras páginas (placeholders) */}
+        <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
+        <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
+        <Route path="/contacto" element={<PaginaPlaceholder titulo="Contáctanos" paginaActual="CONTACTANOS" />} />
       </Routes>
     </BrowserRouter>
   );

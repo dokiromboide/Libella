@@ -11,7 +11,7 @@ export function HeaderProyectos({ logoUrl }: HeaderProyectosProps) {
   const menuItemsLeft = [
     { label: 'INICIO', path: '/' },
     { label: 'SERVICIOS', path: '/#servicios' },
-    { label: 'INVERSIONES', path: '/#inversiones' }
+    { label: 'INVERSIONES', path: '/inversiones' }
   ];
   
   const menuItemsRight = [
@@ -37,7 +37,7 @@ export function HeaderProyectos({ logoUrl }: HeaderProyectosProps) {
     <motion.header
       className="fixed w-full top-0 z-50"
       style={{ 
-        backgroundColor: '#c73028',
+        backgroundColor: '#c62926',
         height: '80px'
       }}
       initial={{ y: -80 }}
