@@ -6,6 +6,7 @@ import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
 import TodosProyectos from "./proyectos/TodosProyectos";
 import Inversiones from "./Inversiones";
+import Contactanos from "./Contactanos";
 import HeaderUnificado from "../componentes/HeaderUnificado";
 
 // Datos de los proyectos
@@ -162,7 +163,7 @@ export default function AppRouter() {
         {/* Otras páginas (placeholders) */}
         <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
         <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
-        <Route path="/contacto" element={<PaginaPlaceholder titulo="Contáctanos" paginaActual="CONTACTANOS" />} />
+        <Route path="/contacto" element={<Contactanos />} />
       </Routes>
     </BrowserRouter>
   );
