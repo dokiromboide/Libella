@@ -9,6 +9,7 @@ interface HeaderProps {
 }
 
 // Configuración de menú con posiciones exactas del diseño original
+// textWidth es el ancho del texto, usado para centrar la línea debajo del texto
 const menuItemsLeft = [
   { nombre: 'INICIO', ruta: '/', key: 'INICIO', left: '93px', width: '51px', textWidth: 36 },
   { nombre: 'SERVICIOS', ruta: '/servicios', key: 'SERVICIOS', left: '225px', width: '72px', textWidth: 58 },
@@ -56,23 +57,6 @@ function MobileMenuItem({ nombre, ruta, isActive, onClick }: { nombre: string; r
   );
 }
 
-// Componente para links con scroll to top
-function NavLink({ to, children, className, style }: { to: string; children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
-  const navigate = useNavigate();
-  
-  const handleClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate(to);
-    window.scrollTo(0, 0);
-  };
-  
-  return (
-    <a href={to} onClick={handleClick} className={className} style={style}>
-      {children}
-    </a>
-  );
-}
-
 export default function Header({ paginaActual = '' }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -107,12 +91,18 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
                   whileHover={{ scale: 1.05 }}
                   onClick={() => handleNavigation(item.ruta)}
                 >
-                  {/* Línea indicadora - centrada debajo del texto */}
+                  {/* Texto del menú */}
+                  <div className="absolute flex h-[17.333px] items-start left-0 top-[0.67px]">
+                    <p className="font-['Arial'] leading-[19.5px] text-[#f2f2f2] text-[13px] whitespace-nowrap tracking-[-0.39px]">
+                      {item.nombre}
+                    </p>
+                  </div>
+                  {/* Línea indicadora - centrada debajo del texto (no del contenedor) */}
                   <motion.div 
                     className="absolute bg-white h-[2px] top-[17.5px]"
                     style={{ 
-                      left: '50%',
-                      translateX: '-50%'
+                      left: item.textWidth / 2,
+                      x: '-50%'
                     }}
                     initial={false}
                     animate={{ 
@@ -121,11 +111,6 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
                     }}
                     transition={{ duration: 0.3 }}
                   />
-                  <div className="absolute flex h-[17.333px] items-start left-0 top-[0.67px]">
-                    <p className="font-['Arial'] leading-[19.5px] text-[#f2f2f2] text-[13px] whitespace-nowrap tracking-[-0.39px]">
-                      {item.nombre}
-                    </p>
-                  </div>
                 </motion.div>
               ))}
             </div>
@@ -156,12 +141,18 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
                   whileHover={{ scale: 1.05 }}
                   onClick={() => handleNavigation(item.ruta)}
                 >
-                  {/* Línea indicadora - centrada debajo del texto */}
+                  {/* Texto del menú */}
+                  <div className="absolute flex h-[17.333px] items-start left-0 top-[0.67px]">
+                    <p className="font-['Arial'] leading-[19.5px] text-[#f2f2f2] text-[13px] whitespace-nowrap tracking-[-0.39px]">
+                      {item.nombre}
+                    </p>
+                  </div>
+                  {/* Línea indicadora - centrada debajo del texto (no del contenedor) */}
                   <motion.div 
                     className="absolute bg-white h-[2px] top-[17.5px]"
                     style={{ 
-                      left: '50%',
-                      translateX: '-50%'
+                      left: item.textWidth / 2,
+                      x: '-50%'
                     }}
                     initial={false}
                     animate={{ 
@@ -170,11 +161,6 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
                     }}
                     transition={{ duration: 0.3 }}
                   />
-                  <div className="absolute flex h-[17.333px] items-start left-0 top-[0.67px]">
-                    <p className="font-['Arial'] leading-[19.5px] text-[#f2f2f2] text-[13px] whitespace-nowrap tracking-[-0.39px]">
-                      {item.nombre}
-                    </p>
-                  </div>
                 </motion.div>
               ))}
             </div>

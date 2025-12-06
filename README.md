@@ -9,6 +9,7 @@ pagina de la constructora libella
 - **React**: construcción de interfaces de usuario interactivas y reutilizables (frontend).
 - **CSS**: estilos personalizados y/o frameworks de estilos para darle presentación a la aplicación.
 - **Vite**: para correr el proyecto
+- **Sonner**: para algunos estilos necesarios en alguna de las paginas
 
 ## Instalación
 1. Clone el repositorio = git clone https://github.com/dokiromboide/Libella.git
