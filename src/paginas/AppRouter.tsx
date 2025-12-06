@@ -163,7 +163,7 @@ export default function AppRouter() {
         
         {/* Otras páginas */}
         <Route path="/servicios" element={<Servicios />} />
-        <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
+        <Route path="/nosotros" element={<Nosotros />} />
         {/* Otras páginas (placeholders) */}
         <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
         <Route path="/nosotros" element={<Nosotros />} />
