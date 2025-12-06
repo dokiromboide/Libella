@@ -6,6 +6,7 @@ import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
 import TodosProyectos from "./proyectos/TodosProyectos";
 import Inversiones from "./Inversiones";
+import Servicios from "./Servicios";
 import Contactanos from "./Contactanos";
 import HeaderUnificado from "../componentes/HeaderUnificado";
 
@@ -160,8 +161,8 @@ export default function AppRouter() {
         <Route path="/noticias" element={<TodasNoticias />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
         
-        {/* Otras páginas (placeholders) */}
-        <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
+        {/* Otras páginas */}
+        <Route path="/servicios" element={<Servicios />} />
         <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
         <Route path="/contacto" element={<Contactanos />} />
       </Routes>
