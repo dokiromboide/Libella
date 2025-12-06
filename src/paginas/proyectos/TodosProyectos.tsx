@@ -4,7 +4,7 @@ import { HeaderProyectos } from '../../componentes/proyectos-lista/HeaderProyect
 import { HeroBanner } from '../../componentes/proyectos-lista/HeroBanner';
 import { ProjectCard } from '../../componentes/proyectos-lista/ProjectCard';
 import { ProjectFilters } from '../../componentes/proyectos-lista/ProjectFilters';
-import HeaderInicio from "@/componentes/HeaderInicio";
+import Header from "@/componentes/Header";
 import FooterInicio from "@/componentes/FooterInicio";
 
 // Importar imágenes reales del proyecto
@@ -270,7 +270,7 @@ export default function TodosProyectos() {
       <Toaster position="top-center" />
       
       {/* Header de Inicio */}
-      <HeaderInicio paginaActual="CONTACTENOS" />
+      <Header paginaActual="PROYECTOS" />
       
       <main className="flex flex-col w-full overflow-x-hidden pt-[80px]">
         <HeroBanner
