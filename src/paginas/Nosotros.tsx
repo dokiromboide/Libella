@@ -216,45 +216,69 @@ function ValoresSection() {
 // ============================================
 function EquipoSection() {
   const equipo = [
-    {
-      nombre: "Bryan Santiago Castro",
-      cargo: "Programador",
-      imagen: imgRetratoHombreBlancoAislado
-    },
-    {
-      nombre: "Jesus Caicedo",
-      cargo: "Programador",
-      imagen: imgRetratoHombreBlancoAislado
-    },
-    {
-      nombre: "Johnatan Ordoñez",
-      cargo: "Gerente",
-      imagen: imgRetratoHombreBlancoAislado
-    }
+    { nombre: "Bryan Santiago Castro", cargo: "Ingeniero Informatico", rol:"Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Jesus Caicedo", cargo: "Ingeniero Informatico", rol:"Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Dayana", cargo: "Diseñadora Gráfica", rol:"Diseñadora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Santiago", cargo: "Arte y Diseño", rol:"Ilustrador", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Ana", cargo: "Arte y Diseño", rol:"Escritora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Maria del Mar", cargo: "Arquitectura", rol:"Arquitecta", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol:"Estudio de Campo", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Johnatan Ordoñez", cargo: "Arte y Diseño", rol:"Gerente", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Diana Campo", cargo: "Contaduría Pública", rol:"Contadora Pública", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Yacson", cargo: "Auxiliar Contable", rol:"Auxiliar Contable", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol:"Asistente Administrativa", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Sergio", cargo: "Ingeniero civil", rol:"Jefe de obras", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Yeison", cargo: "Ingeniero Civil", rol:"Auditor de Viabilidad", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Sebastian", cargo: "Ingeniero Civil", rol:"Asistente de Arquitectura", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Johana", cargo: "Economista", rol:"Jefe de ventas", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Teresa", cargo: "Administradora", rol:"Asesora comercial", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado }
   ];
+
+  const [categoria, setCategoria] = useState("Todos");
+
+  const categorias = ["Todos", ...new Set(equipo.map(p => p.area))];
+
+  const equipoFiltrado =
+    categoria === "Todos"
+      ? equipo
+      : equipo.filter(persona => persona.area === categoria);
 
   return (
     <section className="py-24 px-8">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-white text-5xl text-center mb-16">Nuestro Equipo</h2>
-        <div className="grid md:grid-cols-3 gap-12">
-          {equipo.map((miembro, index) => (
-            <div 
-              key={index}
-              className="group relative"
+
+        {/* ======== BOTONES CATEGORIA ======== */}
+        <div className="flex flex-wrap justify-center gap-4 mb-10">
+          {categorias.map((cat, i) => (
+            <button
+              key={i}
+              onClick={() => setCategoria(cat)}
+              className={`px-6 py-2 rounded-full border transition-all 
+              ${categoria === cat
+                ? "bg-[#af2c28] text-white border-[#af2c28]"
+                : "bg-transparent text-white border-white/40 hover:border-white"}`}
             >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* ======== GRID ======== */}
+        <div className="grid md:grid-cols-3 gap-12 transition-all duration-500">
+          {equipoFiltrado.map((miembro, index) => (
+            <div key={index} className="group relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-[#af2c28] to-[#871515] opacity-0 group-hover:opacity-20 blur-2xl transition-opacity rounded-3xl" />
               <div className="relative bg-gradient-to-b from-[rgba(175,44,40,0.91)] to-[rgba(135,21,21,0.95)] rounded-2xl overflow-hidden border-2 border-[#871515] group-hover:border-[#af2c28] transition-all">
                 <div className="aspect-[3/4] overflow-hidden">
-                  <img 
-                    src={miembro.imagen} 
-                    alt={miembro.nombre}
+                  <img src={miembro.imagen} alt={miembro.nombre}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-6 bg-gradient-to-t from-black/80 to-transparent -mt-20 relative z-10">
+                <div className="p-6 bg-gradient-to-t from-black/80 to-transparent -mt-30 relative z-10">
                   <h3 className="text-white text-xl mb-1">{miembro.nombre}</h3>
                   <p className="text-white/80">{miembro.cargo}</p>
+                  <p className="text-white/80">{miembro.rol}</p>
                 </div>
               </div>
             </div>
