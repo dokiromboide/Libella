@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { toast } from "sonner";
 import { Toaster } from "@/componentes/ui/sonner";
-import HeaderInicio from "@/componentes/HeaderInicio";
+import Header from "@/componentes/Header";
 import FooterInicio from "@/componentes/FooterInicio";
 
 // SVG Paths para los iconos
@@ -95,7 +95,7 @@ export default function Contactanos() {
       <Toaster position="top-center" />
       
       {/* Header de Inicio */}
-      <HeaderInicio paginaActual="CONTACTENOS" />
+      <Header paginaActual="CONTACTENOS" />
       
       {/* Hero Section */}
       <div className="relative w-full overflow-hidden mt-20">

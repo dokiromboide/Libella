@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
-import InicioResponsive from "../InicioResponsive";
 import App from "../app";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
@@ -8,7 +7,8 @@ import TodosProyectos from "./proyectos/TodosProyectos";
 import Inversiones from "./Inversiones";
 import Servicios from "./Servicios";
 import Contactanos from "./Contactanos";
-import HeaderUnificado from "../componentes/HeaderUnificado";
+import Nosotros from "./Nosotros";
+import Header from "../componentes/Header";
 
 // Datos de los proyectos
 const proyectosData: Record<string, any> = {
@@ -131,7 +131,7 @@ function ProyectoPage() {
 function PaginaPlaceholder({ titulo, paginaActual }: { titulo: string; paginaActual: string }) {
   return (
     <div className="min-h-screen bg-[#403838]">
-      <HeaderUnificado paginaActual={paginaActual} />
+      <Header paginaActual={paginaActual} />
       <div className="pt-[80px] flex items-center justify-center min-h-screen">
         <div className="text-center text-white">
           <h1 className="text-4xl font-bold mb-4 font-['Arial']">{titulo}</h1>
@@ -164,6 +164,9 @@ export default function AppRouter() {
         {/* Otras páginas */}
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/nosotros" element={<PaginaPlaceholder titulo="Nosotros" paginaActual="NOSOTROS" />} />
+        {/* Otras páginas (placeholders) */}
+        <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
+        <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<Contactanos />} />
       </Routes>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 import { MessageCircle, Search, Users, FileCheck, CreditCard, Bell, Sparkles, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
-import HeaderInicio from "../componentes/HeaderInicio";
+import Header from "../componentes/Header";
 import FooterInicio from "../componentes/FooterInicio";
 import imgImage from "../recursos/imagenes/aa1a95bc607dc1fc933ff383be0cf8024b068732.png";
 import imgImage3 from "../recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
@@ -200,7 +200,7 @@ export default function Inversiones() {
 
   return (
     <div className="bg-[#403838] min-h-screen">
-      <HeaderInicio paginaActual="INVERSIONES" />
+      <Header paginaActual="INVERSIONES" />
       <main className="pt-[80px]">
         <Banner />
         <SeccionPasosInversion />

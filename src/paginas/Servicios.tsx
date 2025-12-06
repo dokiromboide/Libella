@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
-import HeaderInicio from "../componentes/HeaderInicio";
+import HeaderInicio from "../componentes/Header";
 import FooterInicio from "../componentes/FooterInicio";
+import SubserviciosArquitectura from "../componentes/servicios/SubserviciosArquitectura";
+import SubserviciosMaquinaria from "../componentes/servicios/SubserviciosMaquinaria";
+import SubserviciosExteriores from "../componentes/servicios/SubserviciosExteriores";
+import SubserviciosPlanificacion from "../componentes/servicios/SubserviciosPlanificacion";
+import SubserviciosUrbanismo from "../componentes/servicios/SubserviciosUrbanismo";
 
 // Definir tipos
 type ServiceType = 'main' | 'arquitectura' | 'maquinaria' | 'exteriores' | 'planificacion' | 'urbanismo';
@@ -152,15 +157,15 @@ export default function Servicios() {
   const renderView = () => {
     switch (currentView) {
       case 'arquitectura':
-        return <SubservicioPlaceholder title="Arquitectura" onBack={() => setCurrentView('main')} />;
+        return <SubserviciosArquitectura onBack={() => setCurrentView('main')} />;
       case 'maquinaria':
-        return <SubservicioPlaceholder title="Maquinaria Amarilla" onBack={() => setCurrentView('main')} />;
+        return <SubserviciosMaquinaria onBack={() => setCurrentView('main')} />;
       case 'exteriores':
-        return <SubservicioPlaceholder title="Diseño de Exteriores" onBack={() => setCurrentView('main')} />;
+        return <SubserviciosExteriores onBack={() => setCurrentView('main')} />;
       case 'planificacion':
-        return <SubservicioPlaceholder title="Planificación del Sitio" onBack={() => setCurrentView('main')} />;
+        return <SubserviciosPlanificacion onBack={() => setCurrentView('main')} />;
       case 'urbanismo':
-        return <SubservicioPlaceholder title="Urbanismo y Consultoría" onBack={() => setCurrentView('main')} />;
+        return <SubserviciosUrbanismo onBack={() => setCurrentView('main')} />;
       default:
         return (
           <div className="bg-[#403838] min-h-screen">

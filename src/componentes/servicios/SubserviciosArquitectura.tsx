@@ -1,6 +1,6 @@
 import { MessageCircle, ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
-import HeaderInicio from '../HeaderInicio';
+import HeaderInicio from '../Header';
 import FooterInicio from '../FooterInicio';
 
 interface SubserviciosArquitecturaProps {

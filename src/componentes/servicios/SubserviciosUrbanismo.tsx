@@ -3,7 +3,7 @@ import { useState } from 'react';
 import HeaderInicio from '../Header';
 import FooterInicio from '../FooterInicio';
 
-interface SubserviciosPlanificacionProps {
+interface SubserviciosUrbanismoProps {
   onBack: () => void;
 }
 
@@ -13,22 +13,22 @@ function ImageWithFallback({ src, alt, className }: { src: string; alt: string; 
   return <img src={src} alt={alt} className={className} onError={() => setError(true)} />;
 }
 
-export default function SubserviciosPlanificacion({ onBack }: SubserviciosPlanificacionProps) {
+export default function SubserviciosUrbanismo({ onBack }: SubserviciosUrbanismoProps) {
   const subservicios = [
     {
+      image: "https://images.unsplash.com/photo-1758519289152-d64650d13c7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+      title: "Consultoría Integral",
+      description: "Ofrecemos acompañamiento profesional multidisciplinario en todas las fases del proyecto."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1754298994778-514e0a285479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+      title: "Normativa y Zonificación",
+      description: "Proporcionamos asesoría especializada en regulaciones urbanas complejas, códigos de construcción vigentes, reglamentos de zonificación, normas ambientales aplicables y gestión de trámites."
+    },
+    {
       image: "https://images.unsplash.com/photo-1760553120324-d3d2bf53852b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Desarrollo de Planes para Terrenos Rurales y Urbanos",
-      description: "Creamos planes maestros integrales que definen la visión estratégica de desarrollo a largo plazo para terrenos rurales y urbanos de cualquier escala."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1723650212085-3c4ea33701cb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Integración de Vías, Topografías y Normativa",
-      description: "Optimizamos el potencial de su lote mediante la integración armónica de sistemas viales, condiciones topográficas naturales y normativa urbana aplicable."
-    },
-    {
-      image: "https://images.unsplash.com/photo-1680792181043-c148cf60cbf1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-      title: "Diseño Paisajístico Técnico",
-      description: "Desarrollamos proyectos de diseño paisajístico con rigor técnico profesional que integran vegetación estratégica, sistemas de drenaje, topografía modificada y elementos constructivos de alta calidad."
+      title: "Estudios de Factibilidad Urbana",
+      description: "Realizamos análisis técnicos integrales que evalúan viabilidad económica, normativa, ambiental y técnica de proyectos urbanos."
     }
   ];
 
@@ -42,8 +42,8 @@ export default function SubserviciosPlanificacion({ onBack }: SubserviciosPlanif
             <span className="font-['Arial'] text-[14px] md:text-[16px]">Volver</span>
           </button>
           <div className="max-w-[900px] text-center px-6">
-            <h1 className="font-['Arial'] text-[28px] md:text-[48px] text-white tracking-[-1.68px] md:tracking-[-2.88px] uppercase mb-4 md:mb-6">Planificación del Sitio</h1>
-            <p className="font-['Arial'] text-[16px] md:text-[20px] text-[rgba(255,255,255,0.9)]">Análisis estratégico del terreno para optimizar cada proyecto</p>
+            <h1 className="font-['Arial'] text-[26px] md:text-[48px] text-white tracking-[-1.56px] md:tracking-[-2.88px] uppercase mb-4 md:mb-6">Urbanismo y Consultoría</h1>
+            <p className="font-['Arial'] text-[16px] md:text-[20px] text-[rgba(255,255,255,0.9)]">Proyectos urbanos integrales y asesoramiento profesional especializado</p>
           </div>
         </div>
         <div className="bg-gradient-to-b from-[#463f3f] to-[#c62926] py-12 md:py-16 lg:py-20 px-6 md:px-12 lg:px-24">
@@ -62,7 +62,7 @@ export default function SubserviciosPlanificacion({ onBack }: SubserviciosPlanif
               ))}
             </div>
             <div className="flex justify-center mt-12">
-              <a href="https://wa.me/573155456029?text=Hola,%20me%20interesa%20conocer%20mas%20sobre%20sus%20servicios%20de%20planificacion%20del%20sitio" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20BA5A] text-white px-8 py-4 rounded-full flex items-center gap-3 transition-all hover:scale-105 shadow-xl">
+              <a href="https://wa.me/573155456029?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios%20de%20urbanismo%20y%20consultoría" target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20BA5A] text-white px-8 py-4 rounded-full flex items-center gap-3 transition-all hover:scale-105 shadow-xl">
                 <MessageCircle size={24} />
                 <span className="font-['Arial'] text-[16px] md:text-[18px] font-medium">Contáctanos por WhatsApp</span>
               </a>
