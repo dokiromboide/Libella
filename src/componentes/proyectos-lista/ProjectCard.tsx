@@ -30,7 +30,7 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
     if (onClick) {
       onClick();
     } else if (projectId || id) {
-      navigate(`/proyecto/${projectId || id}`);
+      navigate(`/proyecto/${projectId || id}?from=proyectos`);
       window.scrollTo(0, 0);
     }
   };

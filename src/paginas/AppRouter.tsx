@@ -16,7 +16,7 @@ function HomePage() {
   const navigate = useNavigate();
 
   const handleNavigateToProject = (projectId: string) => {
-    navigate(`/proyecto/${projectId}`);
+    navigate(`/proyecto/${projectId}?from=inicio`);
     window.scrollTo(0, 0);
   };
 
@@ -27,9 +27,15 @@ function HomePage() {
 function ProyectoPage() {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+  const searchParams = new URLSearchParams(window.location.search);
+  const fromPage = searchParams.get('from'); // 'inicio' o 'proyectos'
 
-  const handleBackToHome = () => {
-    navigate('/');
+  const handleBack = () => {
+    if (fromPage === 'proyectos') {
+      navigate('/proyectos');
+    } else {
+      navigate('/');
+    }
     window.scrollTo(0, 0);
   };
 
@@ -40,10 +46,10 @@ function ProyectoPage() {
         <div className="text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Proyecto no encontrado</h1>
           <button
-            onClick={handleBackToHome}
+            onClick={handleBack}
             className="px-6 py-3 bg-white text-[#c62926] rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
-            Volver al inicio
+            Volver
           </button>
         </div>
       </div>
@@ -51,11 +57,13 @@ function ProyectoPage() {
   }
 
   const projectData = proyectosData[projectId];
+  const buttonText = fromPage === 'proyectos' ? 'Volver a Proyectos' : 'Volver al Inicio';
 
   return (
     <ProyectoDetalle
       {...projectData}
-      onVolver={handleBackToHome}
+      onVolver={handleBack}
+      volverTexto={buttonText}
     />
   );
 }

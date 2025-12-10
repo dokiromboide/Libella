@@ -15,6 +15,7 @@ export interface ProyectoDetalle {
   porcentajeAvance: number;
   detallesAvance: DetalleAvance[];
   imagenBanner: string;
+  galeriaImagenes?: string[]; // Array de URLs de imágenes para la galería
 }
 
 export const proyectosData: Record<string, ProyectoDetalle> = {
@@ -32,7 +33,15 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Vías de acceso", porcentaje: 70 },
       { nombre: "Áreas comunes", porcentaje: 60 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1486406146926-c62733dd37f7?w=1400&h=600&fit=crop"
+    imagenBanner: "https://images.unsplash.com/photo-1486406146926-c62733dd37f7?w=1400&h=600&fit=crop",
+    galeriaImagenes: [
+      "https://images.unsplash.com/photo-1486406146926-c62733dd37f7?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&h=800&fit=crop"
+    ]
   },
   "amsterdam": {
     nombreProyecto: "AmsterHaus",

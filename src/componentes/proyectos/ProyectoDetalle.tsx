@@ -18,7 +18,9 @@ interface ProyectoDetalleProps {
   porcentajeAvance: number;
   detallesAvance: { nombre: string; porcentaje: number }[];
   imagenBanner: string;
+  galeriaImagenes?: string[]; // Nueva prop para la galería
   onVolver?: () => void;
+  volverTexto?: string; // Texto personalizado para el botón de volver
 }
 
 export function ProyectoDetalle({
@@ -31,7 +33,9 @@ export function ProyectoDetalle({
   porcentajeAvance,
   detallesAvance,
   imagenBanner,
+  galeriaImagenes,
   onVolver,
+  volverTexto = "Volver al Inicio", // Valor por defecto
 }: ProyectoDetalleProps) {
   const [formData, setFormData] = useState({
     nombre: "",
@@ -39,6 +43,7 @@ export function ProyectoDetalle({
     telefono: "",
   });
   const [showProgress, setShowProgress] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,8 +52,8 @@ export function ProyectoDetalle({
     setFormData({ nombre: "", email: "", telefono: "" });
   };
 
-  // Usar las imágenes importadas
-  const portfolioImages = [
+  // Usar imágenes de la galería si están disponibles, sino usar imágenes por defecto
+  const portfolioImages = galeriaImagenes && galeriaImagenes.length > 0 ? galeriaImagenes : [
     imgHeroCarousel,
     imgHeroCarousel1,
     imgHeroCarousel2,
@@ -56,6 +61,18 @@ export function ProyectoDetalle({
     imgImageLaCeiba,
     imgImageLaGranTurquesa
   ];
+
+  // Funciones para navegar en la galería (de 2 en 2)
+  const handlePrevImages = () => {
+    setCurrentImageIndex((prev) => Math.max(0, prev - 2));
+  };
+
+  const handleNextImages = () => {
+    setCurrentImageIndex((prev) => Math.min(portfolioImages.length - 2, prev + 2));
+  };
+
+  const canGoPrev = currentImageIndex > 0;
+  const canGoNext = currentImageIndex < portfolioImages.length - 2;
 
   return (
     <div style={{ width: "100%", minHeight: "100vh", background: "linear-gradient(to bottom, rgba(198, 41, 38, 0.97), #403838)" }}>
@@ -78,7 +95,7 @@ export function ProyectoDetalle({
               gap: "8px"
             }}
           >
-            ← Volver al Inicio
+            ← {volverTexto}
           </button>
         </div>
       </div>
@@ -324,22 +341,161 @@ export function ProyectoDetalle({
           </div>
         )}
 
-        {/* Carrusel/Portafolio */}
+        {/* Carrusel/Portafolio - Formato libro (2 imágenes juntas) con flechas */}
         <div style={{ marginBottom: "48px" }}>
           <h2 style={{ textAlign: "center", color: "white", fontSize: "28px", fontWeight: "bold", marginBottom: "32px", textTransform: "uppercase", letterSpacing: "2px" }}>
             Galería del Proyecto
           </h2>
           
-          <div style={{ display: "flex", gap: "16px", overflowX: "auto", paddingBottom: "16px", scrollbarWidth: "thin" }}>
-            {portfolioImages.map((imgSrc, idx) => (
-              <div key={idx} style={{ minWidth: "400px", height: "250px", borderRadius: "12px", overflow: "hidden", flexShrink: 0, background: "rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.1)" }}>
-                <img
-                  src={imgSrc}
-                  alt={`${nombreProyecto} - Vista ${idx + 1}`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
+          {/* Contenedor con flechas */}
+          <div style={{ position: "relative", maxWidth: "1200px", margin: "0 auto" }}>
+            {/* Flecha Izquierda */}
+            <button
+              onClick={handlePrevImages}
+              disabled={!canGoPrev}
+              style={{
+                position: "absolute",
+                left: "-60px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                zIndex: 10,
+                background: canGoPrev ? "rgba(227, 66, 52, 0.95)" : "rgba(100, 100, 100, 0.5)",
+                border: "none",
+                borderRadius: "50%",
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: canGoPrev ? "pointer" : "not-allowed",
+                color: "white",
+                fontSize: "36px",
+                fontWeight: "bold",
+                transition: "all 0.3s",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                lineHeight: "0",
+                paddingTop: "0",
+                paddingBottom: "0"
+              }}
+              onMouseEnter={(e) => {
+                if (canGoPrev) {
+                  e.currentTarget.style.background = "rgba(227, 66, 52, 1)";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (canGoPrev) {
+                  e.currentTarget.style.background = "rgba(227, 66, 52, 0.95)";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                }
+              }}
+            >
+              ‹
+            </button>
+
+            {/* Contenedor de imágenes */}
+            <div style={{ 
+              display: "flex", 
+              gap: "0", 
+              overflow: "hidden",
+              borderRadius: "8px",
+              boxShadow: "0 8px 24px rgba(0,0,0,0.4)"
+            }}>
+              <div style={{
+                display: "flex",
+                gap: "0",
+                transform: `translateX(-${currentImageIndex * 50}%)`,
+                transition: "transform 0.5s ease-in-out",
+                width: "100%"
+              }}>
+                {portfolioImages.map((imgSrc, idx) => (
+                  <div 
+                    key={idx} 
+                    style={{ 
+                      minWidth: "50%",
+                      width: "50%",
+                      height: "600px", 
+                      overflow: "hidden", 
+                      flexShrink: 0, 
+                      background: "rgba(0,0,0,0.2)"
+                    }}
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`${nombreProyecto} - Vista ${idx + 1}`}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Flecha Derecha */}
+            <button
+              onClick={handleNextImages}
+              disabled={!canGoNext}
+              style={{
+                position: "absolute",
+                right: "-60px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                zIndex: 10,
+                background: canGoNext ? "rgba(227, 66, 52, 0.95)" : "rgba(100, 100, 100, 0.5)",
+                border: "none",
+                borderRadius: "50%",
+                width: "50px",
+                height: "50px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: canGoNext ? "pointer" : "not-allowed",
+                color: "white",
+                fontSize: "36px",
+                fontWeight: "bold",
+                transition: "all 0.3s",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+                lineHeight: "0",
+                paddingTop: "0",
+                paddingBottom: "0"
+              }}
+              onMouseEnter={(e) => {
+                if (canGoNext) {
+                  e.currentTarget.style.background = "rgba(227, 66, 52, 1)";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (canGoNext) {
+                  e.currentTarget.style.background = "rgba(227, 66, 52, 0.95)";
+                  e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+                }
+              }}
+            >
+              ›
+            </button>
+          </div>
+          
+          {/* Indicador de página */}
+          <div style={{ textAlign: "center", marginTop: "24px" }}>
+            <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "14px" }}>
+              Páginas {currentImageIndex + 1}-{Math.min(currentImageIndex + 2, portfolioImages.length)} de {portfolioImages.length}
+            </p>
+            <div style={{ display: "flex", gap: "8px", justifyContent: "center", marginTop: "12px" }}>
+              {Array.from({ length: Math.ceil(portfolioImages.length / 2) }).map((_, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    width: currentImageIndex / 2 === idx ? "32px" : "12px",
+                    height: "12px",
+                    borderRadius: "6px",
+                    background: currentImageIndex / 2 === idx ? "rgba(227, 66, 52, 0.95)" : "rgba(255,255,255,0.3)",
+                    transition: "all 0.3s",
+                    cursor: "pointer"
+                  }}
+                  onClick={() => setCurrentImageIndex(idx * 2)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
