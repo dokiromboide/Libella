@@ -1,8 +1,11 @@
 import { motion } from 'motion/react';
 import { MapPin, Tag, Users } from 'lucide-react';
 import { Badge } from '../ui/badge';
+import { useNavigate } from 'react-router-dom';
 
 interface ProjectCardProps {
+  id?: string;
+  projectId?: string;
   image: string;
   title: string;
   location: string;
@@ -10,6 +13,7 @@ interface ProjectCardProps {
   date: string;
   units?: number;
   description: string;
+  onClick?: () => void;
 }
 
 const statusConfig = {
@@ -18,8 +22,18 @@ const statusConfig = {
   'en-venta': { label: 'En Venta', color: 'bg-[#6b1616]' }
 };
 
-export function ProjectCard({ image, title, location, status, date, units, description }: ProjectCardProps) {
+export function ProjectCard({ id, projectId, image, title, location, status, date, units, description, onClick }: ProjectCardProps) {
+  const navigate = useNavigate();
   const statusInfo = statusConfig[status];
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else if (projectId || id) {
+      navigate(`/proyecto/${projectId || id}`);
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <motion.div
@@ -27,7 +41,8 @@ export function ProjectCard({ image, title, location, status, date, units, descr
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -10, scale: 1.02 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
-      className="group relative rounded-xl overflow-hidden h-full"
+      onClick={handleClick}
+      className="group relative rounded-xl overflow-hidden h-full cursor-pointer"
       style={{
         background: 'linear-gradient(145deg, #0d0d0d 0%, #000000 50%, #0d0d0d 100%)',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.8)',
