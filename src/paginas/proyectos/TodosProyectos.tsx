@@ -25,6 +25,7 @@ import { Toaster } from 'sonner';
 const projectsData = [
   {
     id: 1,
+    projectId: "altos-cattleya",
     image: img1,
     title: "Altos de Cattleya",
     location: "Km 6 Vereda de Aguas Tibias - Totoró, Cauca.",
@@ -34,6 +35,7 @@ const projectsData = [
   },
   {
     id: 2,
+    projectId: "eskarlata",
     image: img6,
     title: "Eskarlata",
     location: "Patía, Cauca",
@@ -43,6 +45,7 @@ const projectsData = [
   },
   {
     id: 3,
+    projectId: "aukana",
     image: img3,
     title: "Aukana",
     location: "Popayán, Cauca",
@@ -52,6 +55,7 @@ const projectsData = [
   },
   {
     id: 4,
+    projectId: "caoba",
     image: img4,
     title: "Caoba",
     location: "Km 3 Variante vía Las Margaritas - Popayán, Cauca",
@@ -61,6 +65,7 @@ const projectsData = [
   },
   {
     id: 5,
+    projectId: "cattleya-campestre",
     image: img5,
     title: "Cattleya Campestre",
     location: "Km 6 Vereda de Aguas Tibias - Totoró, Cauca.",
@@ -70,6 +75,7 @@ const projectsData = [
   },
   {
     id: 6,
+    projectId: "amsterdam",
     image: img2,
     title: "AmsterHaus",
     location: "Cra 20 #55 N64 - Popayán, Cauca.",
@@ -79,6 +85,7 @@ const projectsData = [
   },
   {
     id: 7,
+    projectId: "la-ceiba",
     image: img7,
     title: "La Ceiba",
     location: "Antigua carrilera - Calibio, Cauca.",  
@@ -88,6 +95,7 @@ const projectsData = [
   },
   {
     id: 8,
+    projectId: "la-gran-turquesa",
     image: img8,
     title: "La gran Turquesa",
     location: "Km 4 vía Totoró, Cauca",

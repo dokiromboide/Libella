@@ -122,22 +122,15 @@ export function ProyectoDetalle({
               </div>
             </div>
 
-            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", marginBottom: "16px" }}>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", marginBottom: "24px" }}>
               <span style={{ fontSize: "20px" }}>📅</span>
               <div>
                 <p style={{ opacity: 0.9 }}>Entrega estimada: {fechaEntrega}</p>
               </div>
             </div>
 
-            <div style={{ display: "flex", alignItems: "flex-start", gap: "12px", marginBottom: "24px" }}>
-              <span style={{ fontSize: "20px" }}>💰</span>
-              <div>
-                <p style={{ opacity: 0.9 }}>Planes de financiamiento disponibles con las mejores tasas del mercado</p>
-              </div>
-            </div>
-
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: "16px" }}>
-              <h4 style={{ marginBottom: "12px", fontWeight: "600" }}>Amenidades:</h4>
+              <h4 style={{ marginBottom: "12px", fontWeight: "600" }}>Caracteristicas:</h4>
               <ul style={{ listStyle: "none", padding: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
                 {amenidades.map((amenidad, idx) => (
                   <li key={idx} style={{ display: "flex", alignItems: "center", gap: "8px", opacity: 0.9 }}>
