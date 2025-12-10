@@ -13,9 +13,9 @@ import imgHeroCarousel2 from "./recursos/imagenes/829756ee755a52dd5565fc34801ad0
 import imgHeroCarousel3 from "./recursos/imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
 import imgImageDivider from "./recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
 
-// =============================================================================
+//=============================================================================
 // CARRUSEL INICIO (HERO)
-// =============================================================================
+//=============================================================================
 
 const CAROUSEL_INTERVAL = 5000;
 const CAROUSEL_IMAGES = [
@@ -564,7 +564,7 @@ export function SeccionMetricas() {
 }
 //=============================================================================
 // COMPONENTE PRINCIPAL DE LA PÁGINA DE INICIO
-// =============================================================================
+//=============================================================================
 
 export default function InicioResponsive() {
   return (
