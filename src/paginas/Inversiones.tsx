@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Header from "../componentes/Header";
 import FooterInicio from "../componentes/FooterInicio";
 import imgImage from "../recursos/imagenes/aa1a95bc607dc1fc933ff383be0cf8024b068732.png";
-import imgImage3 from "../recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
+import imgImage3 from "../recursos/imagenes/divider-leaves.png";
 
 function Banner() {
   return (

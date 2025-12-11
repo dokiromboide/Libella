@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import imgImageLibellaLogo from "../recursos/imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
+import imgImageLibellaLogo from "../recursos/imagenes/libella-logo.png";
 
 interface HeaderProps {
   paginaActual?: string;

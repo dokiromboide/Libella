@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import imgFooter from "../recursos/imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png";
+import imgFooter from "../recursos/imagenes/footer-logo.png";
 import svgPaths from "../recursos/svg/paths";
 
 export default function FooterInicio() {

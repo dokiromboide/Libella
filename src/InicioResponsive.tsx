@@ -7,11 +7,11 @@ import FooterInicio from "./componentes/FooterInicio";
 import TarjetaNoticia from "./componentes/noticias/TarjetaNoticia";
 import { noticiasData } from "./datos/noticias";
 import { proyectosData } from "./datos/proyectos";
-import imgHeroCarousel from "./recursos/imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
-import imgHeroCarousel1 from "./recursos/imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
-import imgHeroCarousel2 from "./recursos/imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png";
-import imgHeroCarousel3 from "./recursos/imagenes/8e85657db36622060dfb26f2074645c77e42e7fd.png";
-import imgImageDivider from "./recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png";
+import imgHeroCarousel from "./recursos/imagenes/hero-carousel-1.png";
+import imgHeroCarousel1 from "./recursos/imagenes/hero-carousel-2.png";
+import imgHeroCarousel2 from "./recursos/imagenes/hero-carousel-3.png";
+import imgHeroCarousel3 from "./recursos/imagenes/hero-carousel-4.png";
+import imgImageDivider from "./recursos/imagenes/divider-leaves.png";
 
 //=============================================================================
 // CARRUSEL INICIO (HERO)
@@ -226,7 +226,7 @@ function ProyectoCard({
 }: ProyectoCardProps) {
   return (
     <motion.div
-      className="relative bg-gradient-to-b from-[rgba(227,66,52,0.91)] to-[#403838] rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] overflow-hidden cursor-pointer mx-auto"
+      className="group relative bg-gradient-to-b from-[rgba(227,66,52,0.91)] to-[#403838] rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] overflow-hidden cursor-pointer mx-auto"
       style={{ 
         height: 'clamp(400px, 450px, 500px)',
         maxWidth: '467px',
@@ -249,27 +249,22 @@ function ProyectoCard({
           transition={{ duration: 0.5 }}
         />
         
-        {/* Overlay oscuro */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+        {/* Overlay oscuro - más oscuro en mobile, se oscurece en hover en desktop */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 md:from-black/20 md:via-black/10 md:to-black/30 md:group-hover:from-black/60 md:group-hover:via-black/40 md:group-hover:to-black/80 transition-all duration-500" />
       </div>
 
       {/* Contenido */}
       <div className="relative h-full flex flex-col justify-between p-6 md:p-8">
         
-        {/* Tipo de proyecto */}
-        <motion.div
-          className="inline-block"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-        >
+        {/* Tipo de proyecto - siempre visible */}
+        <div className="inline-block">
           <span className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1 text-white/90 text-xs md:text-sm uppercase tracking-wide">
             {tipo}
           </span>
-        </motion.div>
+        </div>
 
-        {/* Información del proyecto */}
-        <div className="space-y-3 md:space-y-4">
+        {/* Información del proyecto - visible en mobile, aparece en hover en desktop */}
+        <div className="space-y-3 md:space-y-4 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500">
           
           {/* Título */}
           <h3 className="font-['Arial'] text-white font-semibold leading-tight" style={{ fontSize: 'clamp(20px, 2.5vw, 26px)' }}>

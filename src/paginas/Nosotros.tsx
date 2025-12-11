@@ -6,9 +6,9 @@ import FooterInicio from "../componentes/FooterInicio";
 // Importar imágenes desde recursos
 import imgRetratoHombreBlancoAislado from "../recursos/imagenes/c45292d9d595b1476e0c7cd533a0e1483a2112c3.png";
 import imgLibellaLogo from "../recursos/imagenes/e5405135f74a3096ac6e7cfb1ced2550f21c0eaa.png";
-import imgImage4 from "../recursos/imagenes/c9f8ba6867605bfb5dd4574833e1755af8845ad8.png";
-import imgProyecto1 from "../recursos/imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png";
-import imgProyecto2 from "../recursos/imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png";
+import imgImage4 from "../recursos/imagenes/la-gran-turquesa.png";
+import imgProyecto1 from "../recursos/imagenes/hero-carousel-1.png";
+import imgProyecto2 from "../recursos/imagenes/hero-carousel-2.png";
 
 // ============================================
 // SECCIÓN: HERO CON CARRUSEL
