@@ -12,7 +12,7 @@ import img1 from '../../recursos/imagenes/hero-carousel-1.png'; // Altos de Catt
 import img2 from '../../recursos/imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png'; // AmsterHaus
 import img3 from '../../recursos/imagenes/hero-carousel-2.png'; // Aukana
 import img4 from '../../recursos/imagenes/hero-carousel-3.png'; // Caoba
-import img5 from '../../recursos/imagenes/38b537f7c3d943ba8fdeec109470b734b1fa3f31.png'; // Cattleya Campestre
+import img5 from '../../recursos/imagenes/cattleya.png'; // Cattleya Campestre
 import img6 from '../../recursos/imagenes/amsterdam.png'; // Eskarlata
 import img7 from '../../recursos/imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png'; // La Ceiba
 import img8 from '../../recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png'; // La Gran Turquesa
