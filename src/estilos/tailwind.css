@@ -78,3 +78,45 @@
     font-size: var(--font-size);
   }
 }
+
+/* Estilos para la animación del logo */
+@keyframes logo-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3))
+            drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5))
+            drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+  }
+}
+
+@keyframes scanner-sweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.logo-glow {
+  animation: logo-glow 3s ease-in-out infinite;
+}
+
+.logo-scanner-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
+  );
+  animation: scanner-sweep 3s ease-in-out infinite;
+  opacity: 0.6;
+}
