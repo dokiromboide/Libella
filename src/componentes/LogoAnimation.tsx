@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { FishAnimation } from "./FishAnimation";
-import { MoonBackground } from "./MoonBackground";
+import { VideoMoonAnimation } from "./VideoMoonAnimation";
+import videoMediaLuna from "../recursos/videos/video_medialuna.mp4";
 
 interface LogoAnimationProps {
   mainLogoSrc: string;
@@ -21,35 +21,22 @@ export default function LogoAnimation({
   const [showLogo3, setShowLogo3] = useState(false); // Suelo 360
   const [showLogo2, setShowLogo2] = useState(false); // Libella
   const [showLogo1, setShowLogo1] = useState(false); // Ojo de Oso
-  const [showFish, setShowFish] = useState(false);
-  const [showMoon, setShowMoon] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
-    let fishTimeoutId: NodeJS.Timeout;
-    
     if (isHovered) {
-      // Los logos y la media luna aparecen inmediatamente
+      // El video y los logos aparecen inmediatamente
       setShowLogo1(true);
       setShowLogo2(true);
       setShowLogo3(true);
-      setShowMoon(true);
-      
-      // Los peces aparecen después de que termine la animación de expansión (600ms)
-      fishTimeoutId = setTimeout(() => {
-        setShowFish(true);
-      }, 600);
+      setShowVideo(true);
     } else {
       // Cuando se quita el hover, todo desaparece inmediatamente
       setShowLogo1(false);
       setShowLogo2(false);
       setShowLogo3(false);
-      setShowFish(false);
-      setShowMoon(false);
+      setShowVideo(false);
     }
-
-    return () => {
-      if (fishTimeoutId) clearTimeout(fishTimeoutId);
-    };
   }, [isHovered]);
 
   return (
@@ -76,25 +63,14 @@ export default function LogoAnimation({
         }}
       >
         <div className="relative w-[280px] h-[110px]">
-          {/* Fondo de media luna (semicírculo) */}
+          {/* Video de fondo de media luna (semicírculo) */}
           <div 
             className="absolute inset-0 overflow-hidden rounded-b-[280px] z-[1]"
             style={{ 
-              visibility: showMoon ? 'visible' : 'hidden'
+              visibility: showVideo ? 'visible' : 'hidden'
             }}
           >
-            <MoonBackground />
-          </div>
-          
-          {/* Animación de peces (capa superior) - aparece después de los logos */}
-          <div 
-            className="absolute inset-0 overflow-hidden rounded-b-[280px] z-[2]"
-            style={{ 
-              opacity: showFish ? 1 : 0,
-              transition: 'opacity 0.3s ease-out'
-            }}
-          >
-            <FishAnimation />
+            <VideoMoonAnimation src={videoMediaLuna} />
           </div>
           
           {/* Contenedor de logos */}
