@@ -28,7 +28,7 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
     const render = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Clip de media luna (igual que antes)
+      // Clip de media luna
       ctx.save();
       ctx.beginPath();
       ctx.ellipse(
@@ -43,6 +43,7 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
       ctx.clip();
 
       if (video.readyState >= 2) {
+        // Dibuja el video
         ctx.drawImage(
           video,
           0,
@@ -52,8 +53,34 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
         );
       }
 
-      // Overlay oscuro sutil (opcional)
-      ctx.fillStyle = "rgba(0,0,0,0.25)";
+      // Overlay con gradiente para integrar con el fondo rojo
+      // Gradiente radial desde el centro hacia los bordes
+      const gradient = ctx.createRadialGradient(
+        canvas.width / 2, 0, 0,
+        canvas.width / 2, 0, canvas.height * 1.2
+      );
+      
+      // Centro: más transparente para ver el video
+      gradient.addColorStop(0, 'rgba(198, 41, 38, 0.1)');
+      gradient.addColorStop(0.3, 'rgba(198, 41, 38, 0.2)');
+      gradient.addColorStop(0.5, 'rgba(198, 41, 38, 0.35)');
+      gradient.addColorStop(0.7, 'rgba(198, 41, 38, 0.5)');
+      // Bordes: más opaco para mezclar con el header
+      gradient.addColorStop(0.85, 'rgba(198, 41, 38, 0.65)');
+      gradient.addColorStop(1, 'rgba(198, 41, 38, 0.8)');
+      
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Viñeta sutil en los bordes para suavizar la transición
+      const vignetteGradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 3, canvas.width * 0.3,
+        canvas.width / 2, canvas.height / 3, canvas.width * 0.6
+      );
+      vignetteGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      vignetteGradient.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
+      
+      ctx.fillStyle = vignetteGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.restore();
@@ -76,7 +103,10 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
       width={280}
       height={110}
       className="absolute inset-0 rounded-b-[280px]"
-      style={{ clipPath: "ellipse(140px 110px at 50% 0%)" }}
+      style={{ 
+        clipPath: "ellipse(140px 110px at 50% 0%)",
+        mixBlendMode: "normal"
+      }}
     />
   );
 }
