@@ -43,7 +43,7 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
       ctx.clip();
 
       if (video.readyState >= 2) {
-        // Dibuja el video
+        // Dibuja el video sin ningún overlay
         ctx.drawImage(
           video,
           0,
@@ -52,38 +52,6 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
           canvas.height
         );
       }
-
-      // Overlay con gradiente radial para fundirse con el fondo
-      const gradient = ctx.createRadialGradient(
-        canvas.width / 2, 0, 0,
-        canvas.width / 2, 0, canvas.height * 1.1
-      );
-      
-      // Centro: más transparente para ver el video
-      gradient.addColorStop(0, 'rgba(198, 41, 38, 0.05)');
-      gradient.addColorStop(0.25, 'rgba(198, 41, 38, 0.15)');
-      gradient.addColorStop(0.4, 'rgba(198, 41, 38, 0.3)');
-      gradient.addColorStop(0.55, 'rgba(198, 41, 38, 0.45)');
-      gradient.addColorStop(0.7, 'rgba(198, 41, 38, 0.65)');
-      // Bordes: completamente opaco para fundirse con el header
-      gradient.addColorStop(0.85, 'rgba(198, 41, 38, 0.85)');
-      gradient.addColorStop(0.95, 'rgba(198, 41, 38, 0.95)');
-      gradient.addColorStop(1, 'rgba(198, 41, 38, 1)');
-      
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Gradiente adicional para suavizar aún más los bordes extremos
-      const edgeGradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 4, canvas.width * 0.25,
-        canvas.width / 2, canvas.height / 4, canvas.width * 0.55
-      );
-      edgeGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      edgeGradient.addColorStop(0.7, 'rgba(0, 0, 0, 0.1)');
-      edgeGradient.addColorStop(1, 'rgba(0, 0, 0, 0.5)');
-      
-      ctx.fillStyle = edgeGradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.restore();
 
