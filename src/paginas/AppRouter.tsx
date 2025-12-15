@@ -6,11 +6,9 @@ import TodasNoticias from "./noticias/TodasNoticias";
 import TodosProyectos from "./proyectos/TodosProyectos";
 import Inversiones from "./Inversiones";
 import Servicios from "./Servicios";
-import Servicios from "./Servicios";
 import Contactanos from "./Contactanos";
 import Nosotros from "./Nosotros";
 import Header from "../componentes/Header";
-import { proyectosData } from "../datos/proyectos";
 import { proyectosData } from "../datos/proyectos";
 
 // Componente para la página principal (Inicio)
