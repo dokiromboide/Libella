@@ -2,7 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+<<<<<<< Updated upstream
 import imgImageLibellaLogo from "../recursos/imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png";
+=======
+import imgImageLibellaLogo from "../recursos/imagenes/libella-logo.png";
+import imgLogoOjoDeOso from "../recursos/imagenes/ojo-de-oso.png";
+import imgLogoSuelo360 from "../recursos/imagenes/suelo-360.png";
+import LogoAnimation from "./LogoAnimation";
+>>>>>>> Stashed changes
 
 interface HeaderProps {
   paginaActual?: string;
@@ -116,19 +123,16 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
             </div>
           </div>
 
-          {/* Logo - Centrado en posición exacta */}
-          <motion.div
-            className="absolute h-[40px] left-[569px] top-[19px] w-[50px] cursor-pointer"
-            whileHover={{ scale: 1.1, rotate: [0, -5, 5, -5, 0] }}
-            transition={{ duration: 0.5 }}
-            onClick={() => handleNavigation('/')}
-          >
-            <img 
-              alt="Libella Logo" 
-              className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" 
-              src={imgImageLibellaLogo} 
+          {/* Logo con animación - Centrado en posición exacta */}
+          <div className="absolute left-[569px] top-[19px]">
+            <LogoAnimation
+              mainLogoSrc={imgImageLibellaLogo}
+              logo1Src={imgLogoOjoDeOso}
+              logo2Src={imgImageLibellaLogo}
+              logo3Src={imgLogoSuelo360}
+              onNavigate={() => handleNavigation('/')}
             />
-          </motion.div>
+          </div>
 
           {/* Right Menu - Posiciones absolutas exactas */}
           <div className="absolute h-[20px] left-[732px] top-[29px] w-[499px]">
