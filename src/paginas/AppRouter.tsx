@@ -1,26 +1,21 @@
 import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
-import App from "../app";
+import InicioResponsive from "../InicioResponsive";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
 import TodasNoticias from "./noticias/TodasNoticias";
 import TodosProyectos from "./proyectos/TodosProyectos";
 import Inversiones from "./Inversiones";
 import Servicios from "./Servicios";
+import Servicios from "./Servicios";
 import Contactanos from "./Contactanos";
 import Nosotros from "./Nosotros";
 import Header from "../componentes/Header";
 import { proyectosData } from "../datos/proyectos";
+import { proyectosData } from "../datos/proyectos";
 
 // Componente para la página principal (Inicio)
 function HomePage() {
-  const navigate = useNavigate();
-
-  const handleNavigateToProject = (projectId: string) => {
-    navigate(`/proyecto/${projectId}`);
-    window.scrollTo(0, 0);
-  };
-
-  return <App onNavigateToProject={handleNavigateToProject} />;
+  return <InicioResponsive />;
 }
 
 // Componente para la página de detalle del proyecto
@@ -97,12 +92,8 @@ export default function AppRouter() {
         {/* Otras páginas */}
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/nosotros" element={<Nosotros />} />
-        {/* Otras páginas (placeholders) */}
-        <Route path="/servicios" element={<PaginaPlaceholder titulo="Servicios" paginaActual="SERVICIOS" />} />
-        <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<Contactanos />} />
       </Routes>
     </BrowserRouter>
   );
 }
-  

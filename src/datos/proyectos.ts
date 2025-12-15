@@ -1,4 +1,12 @@
 // Datos detallados de los proyectos de Libella
+import imgCattleya from "../recursos/imagenes/cattleya.png";
+import imgAmsterdam from "../recursos/imagenes/amsterdam.png";
+import imgLaCeiba from "../recursos/imagenes/la-ceiba.png";
+import imgLaGranTurquesa from "../recursos/imagenes/la-gran-turquesa.png";
+import imgEskarlata from "../recursos/imagenes/eskarlata.png";
+import imgAukana from "../recursos/imagenes/aukana.png";
+import imgCaoba from "../recursos/imagenes/caoba.png";
+import imgCattleyaCampestre from "../recursos/imagenes/cattleya-campestre.png";
 
 export interface DetalleAvance {
   nombre: string;
@@ -32,7 +40,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Vías de acceso", porcentaje: 70 },
       { nombre: "Áreas comunes", porcentaje: 60 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1486406146926-c62733dd37f7?w=1400&h=600&fit=crop"
+    imagenBanner: imgCattleya
   },
   "amsterdam": {
     nombreProyecto: "AmsterHaus",
@@ -48,7 +56,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Instalaciones", porcentaje: 30 },
       { nombre: "Acabados", porcentaje: 10 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1400&h=600&fit=crop"
+    imagenBanner: imgAmsterdam
   },
   "la-ceiba": {
     nombreProyecto: "La Ceiba",
@@ -64,7 +72,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Registros catastrales", porcentaje: 100 },
       { nombre: "Documentos legales", porcentaje: 100 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1500721694683-b8e8328cab37?w=1400&h=600&fit=crop"
+    imagenBanner: imgLaCeiba
   },
   "la-gran-turquesa": {
     nombreProyecto: "La Gran Turquesa",
@@ -80,7 +88,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Áreas comunes", porcentaje: 30 },
       { nombre: "Servicios complementarios", porcentaje: 20 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1512207736139-6c3ee1e93a00?w=1400&h=600&fit=crop"
+    imagenBanner: imgLaGranTurquesa
   },
   "eskarlata": {
     nombreProyecto: "Eskarlata",
@@ -96,7 +104,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Construcción de zonas temáticas", porcentaje: 25 },
       { nombre: "Instalaciones y servicios", porcentaje: 15 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1400&h=600&fit=crop"
+    imagenBanner: imgEskarlata
   },
   "aukana": {
     nombreProyecto: "Aukana",
@@ -112,7 +120,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Permisos y licencias", porcentaje: 40 },
       { nombre: "Inicio de construcción", porcentaje: 10 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&h=600&fit=crop"
+    imagenBanner: imgAukana
   },
   "caoba": {
     nombreProyecto: "Caoba",
@@ -128,7 +136,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Vías y accesos", porcentaje: 100 },
       { nombre: "Áreas comunes", porcentaje: 100 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1400&h=600&fit=crop"
+    imagenBanner: imgCaoba
   },
   "cattleya-campestre": {
     nombreProyecto: "Cattleya Campestre",
@@ -144,6 +152,6 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
       { nombre: "Paisajismo y zonas verdes", porcentaje: 85 },
       { nombre: "Detalles finales", porcentaje: 75 }
     ],
-    imagenBanner: "https://images.unsplash.com/photo-1464146072230-91cabc968266?w=1400&h=600&fit=crop"
+    imagenBanner: imgCattleyaCampestre
   }
 };

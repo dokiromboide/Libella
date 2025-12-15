@@ -8,17 +8,17 @@ import Header from "@/componentes/Header";
 import FooterInicio from "@/componentes/FooterInicio";
 
 // Importar imágenes reales del proyecto
-import img1 from '../../recursos/imagenes/aed81eafca51449cbcc21b296890d74d9dd3d588.png'; // Altos de Cattleya
+import img1 from '../../recursos/imagenes/hero-carousel-1.png'; // Altos de Cattleya
 import img2 from '../../recursos/imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png'; // AmsterHaus
-import img3 from '../../recursos/imagenes/9a59421dc01ab6a7265d9147d3abf33d1210b1b0.png'; // Aukana
-import img4 from '../../recursos/imagenes/829756ee755a52dd5565fc34801ad07081dc3d5a.png'; // Caoba
-import img5 from '../../recursos/imagenes/38b537f7c3d943ba8fdeec109470b734b1fa3f31.png'; // Cattleya Campestre
-import img6 from '../../recursos/imagenes/98cc955bd06d4103ff360d67388e7ae64d6541e8.png'; // Eskarlata
+import img3 from '../../recursos/imagenes/hero-carousel-2.png'; // Aukana
+import img4 from '../../recursos/imagenes/hero-carousel-3.png'; // Caoba
+import img5 from '../../recursos/imagenes/cattleya.png'; // Cattleya Campestre
+import img6 from '../../recursos/imagenes/amsterdam.png'; // Eskarlata
 import img7 from '../../recursos/imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png'; // La Ceiba
 import img8 from '../../recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png'; // La Gran Turquesa
-import imgImageDivider from '../../recursos/imagenes/b6d521758aae91b27322e3f74aa38fe014ea55ea.png';
-import imgLibellaLogo from '../../recursos/imagenes/ff8c620bf8477f6cb34fd583907c36620683b38d.png';
-import imgLibellaFooter from '../../recursos/imagenes/24f7863d5067ebf528c000123ff21263e96e6063.png';
+import imgImageDivider from '../../recursos/imagenes/divider-leaves.png';
+import imgLibellaLogo from '../../recursos/imagenes/libella-logo.png';
+import imgLibellaFooter from '../../recursos/imagenes/footer-logo.png';
 import { Toaster } from 'sonner';
 
 // Project data with status
