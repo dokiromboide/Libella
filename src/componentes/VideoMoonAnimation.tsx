@@ -43,7 +43,7 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
       ctx.clip();
 
       if (video.readyState >= 2) {
-        // Dibuja el video sin ningún overlay
+        // Dibuja el video
         ctx.drawImage(
           video,
           0,
@@ -52,6 +52,26 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
           canvas.height
         );
       }
+
+      // Máscara de opacidad radial: 100% opaco en el centro, 0% en los bordes
+      const opacityGradient = ctx.createRadialGradient(
+        canvas.width / 2, 0, 0,
+        canvas.width / 2, 0, canvas.height * 1.1
+      );
+      
+      // Centro: 100% opaco (se ve completamente)
+      opacityGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      opacityGradient.addColorStop(0.85, 'rgba(0, 0, 0, 0)'); // Hasta 85% sigue siendo 100% opaco
+      // Desde 85% hasta 100%: transición de opaco a transparente
+      opacityGradient.addColorStop(1, 'rgba(0, 0, 0, 1)'); // 100% = completamente transparente
+      
+      // Aplicar la máscara con globalCompositeOperation
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = opacityGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      // Restaurar el modo de composición normal
+      ctx.globalCompositeOperation = 'source-over';
 
       ctx.restore();
 
