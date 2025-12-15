@@ -65,7 +65,7 @@ export default function LogoAnimation({
         <div className="relative w-[280px] h-[110px]">
           {/* Video de fondo de media luna (semicírculo) */}
           <div 
-            className="absolute inset-0 overflow-hidden rounded-b-[280px] z-[1]"
+            className="absolute inset-0 overflow-hidden z-[1]"
             style={{ 
               visibility: showVideo ? 'visible' : 'hidden'
             }}

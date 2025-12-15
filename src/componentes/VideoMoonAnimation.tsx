@@ -53,34 +53,36 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
         );
       }
 
-      // Overlay con gradiente para integrar con el fondo rojo
-      // Gradiente radial desde el centro hacia los bordes
+      // Overlay con gradiente radial para fundirse con el fondo
       const gradient = ctx.createRadialGradient(
         canvas.width / 2, 0, 0,
-        canvas.width / 2, 0, canvas.height * 1.2
+        canvas.width / 2, 0, canvas.height * 1.1
       );
       
       // Centro: más transparente para ver el video
-      gradient.addColorStop(0, 'rgba(198, 41, 38, 0.1)');
-      gradient.addColorStop(0.3, 'rgba(198, 41, 38, 0.2)');
-      gradient.addColorStop(0.5, 'rgba(198, 41, 38, 0.35)');
-      gradient.addColorStop(0.7, 'rgba(198, 41, 38, 0.5)');
-      // Bordes: más opaco para mezclar con el header
-      gradient.addColorStop(0.85, 'rgba(198, 41, 38, 0.65)');
-      gradient.addColorStop(1, 'rgba(198, 41, 38, 0.8)');
+      gradient.addColorStop(0, 'rgba(198, 41, 38, 0.05)');
+      gradient.addColorStop(0.25, 'rgba(198, 41, 38, 0.15)');
+      gradient.addColorStop(0.4, 'rgba(198, 41, 38, 0.3)');
+      gradient.addColorStop(0.55, 'rgba(198, 41, 38, 0.45)');
+      gradient.addColorStop(0.7, 'rgba(198, 41, 38, 0.65)');
+      // Bordes: completamente opaco para fundirse con el header
+      gradient.addColorStop(0.85, 'rgba(198, 41, 38, 0.85)');
+      gradient.addColorStop(0.95, 'rgba(198, 41, 38, 0.95)');
+      gradient.addColorStop(1, 'rgba(198, 41, 38, 1)');
       
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Viñeta sutil en los bordes para suavizar la transición
-      const vignetteGradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 3, canvas.width * 0.3,
-        canvas.width / 2, canvas.height / 3, canvas.width * 0.6
+      // Gradiente adicional para suavizar aún más los bordes extremos
+      const edgeGradient = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 4, canvas.width * 0.25,
+        canvas.width / 2, canvas.height / 4, canvas.width * 0.55
       );
-      vignetteGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-      vignetteGradient.addColorStop(1, 'rgba(0, 0, 0, 0.4)');
+      edgeGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      edgeGradient.addColorStop(0.7, 'rgba(0, 0, 0, 0.1)');
+      edgeGradient.addColorStop(1, 'rgba(0, 0, 0, 0.5)');
       
-      ctx.fillStyle = vignetteGradient;
+      ctx.fillStyle = edgeGradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.restore();
@@ -102,10 +104,9 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
       ref={canvasRef}
       width={280}
       height={110}
-      className="absolute inset-0 rounded-b-[280px]"
+      className="absolute inset-0"
       style={{ 
-        clipPath: "ellipse(140px 110px at 50% 0%)",
-        mixBlendMode: "normal"
+        clipPath: "ellipse(140px 110px at 50% 0%)"
       }}
     />
   );
