@@ -17,14 +17,10 @@ export function MoonBackground() {
       // Dibuja el fondo de la media luna
       ctx.save();
       ctx.beginPath();
-      ctx.ellipse(canvas.width / 2, 0, canvas.width / 2, canvas.height, 0, 0, Math.PI);
+      ctx.circle(canvas.width / 2, 0, canvas.width / 2, canvas.height, 0, 0, Math.PI);
       ctx.clip();
 
-      // Gradiente radial desde el centro: negro en el centro, rojo suave hacia los bordes
-      // Los logos están aproximadamente a 60-90px del centro (z-[3])
-      // Los peces están en un radio de aproximadamente 98-126px (70%-90% de 140px/110px)
-      // El degradado debe terminar donde empiezan los peces (radio mínimo de órbita)
-      const gradientRadius = 95; // Termina donde empiezan los peces (70% de 140px)
+      const gradientRadius = 95; // 
       const fadeGradient = ctx.createRadialGradient(
         canvas.width / 2, 0, 0,
         canvas.width / 2, 0, gradientRadius
@@ -59,10 +55,10 @@ export function MoonBackground() {
   return (
     <canvas
       ref={canvasRef}
-      width={280}
-      height={110}
+      width={349.88}
+      height={174.22}
       className="absolute inset-0 rounded-b-[300px]"
-      style={{ clipPath: 'ellipse(160px 110px at 50% 0%)' }}
+      style={{ clipPath: 'circle(349.88px 174.22px at 50% 0%)' }}
     />
   );
 }

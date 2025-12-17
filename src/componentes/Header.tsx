@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import imgImageLibellaLogo from "../recursos/imagenes/libella-logo.png";
 import imgLogoOjoDeOso from "../recursos/imagenes/ojo-de-oso.png";
 import imgLogoSuelo360 from "../recursos/imagenes/suelo-360.png";
+import headerTexture from "../recursos/imagenes/lineas_claras.png";
 import LogoAnimation from "./LogoAnimation";
 
 interface HeaderProps {
@@ -14,9 +15,9 @@ interface HeaderProps {
 // Configuración de menú con posiciones exactas del diseño original
 // textWidth es el ancho del texto, usado para centrar la línea debajo del texto
 const menuItemsLeft = [
-  { nombre: 'INICIO', ruta: '/', key: 'INICIO', left: '93px', width: '51px', textWidth: 36 },
-  { nombre: 'SERVICIOS', ruta: '/servicios', key: 'SERVICIOS', left: '225px', width: '72px', textWidth: 58 },
-  { nombre: 'INVERSIONES', ruta: '/inversiones', key: 'INVERSIONES', left: '378px', width: '94px', textWidth: 75 },
+  { nombre: 'INICIO', ruta: '/', key: 'INICIO', left: '120px', width: '51px', textWidth: 36 },
+  { nombre: 'SERVICIOS', ruta: '/servicios', key: 'SERVICIOS', left: '260px', width: '72px', textWidth: 58 },
+  { nombre: 'INVERSIONES', ruta: '/inversiones', key: 'INVERSIONES', left: '420px', width: '94px', textWidth: 75 },
 ];
 
 const menuItemsRight = [
@@ -30,16 +31,16 @@ const allMenuItems = [...menuItemsLeft, ...menuItemsRight];
 // Componente MenuItem para móvil
 function MobileMenuItem({ nombre, ruta, isActive, onClick }: { nombre: string; ruta: string; isActive: boolean; onClick: () => void }) {
   const navigate = useNavigate();
-  
+
   const handleClick = () => {
     navigate(ruta);
     window.scrollTo(0, 0);
     onClick();
   };
-  
+
   return (
     <div onClick={handleClick} className="cursor-pointer">
-      <motion.div 
+      <motion.div
         className="relative py-4 border-b border-white/10"
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -50,7 +51,7 @@ function MobileMenuItem({ nombre, ruta, isActive, onClick }: { nombre: string; r
           {nombre}
         </p>
         {isActive && (
-          <motion.div 
+          <motion.div
             className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-[60%] bg-white rounded-full"
             layoutId="mobileActiveIndicator"
           />
@@ -60,13 +61,16 @@ function MobileMenuItem({ nombre, ruta, isActive, onClick }: { nombre: string; r
   );
 }
 
+// ... imports
+
 export default function Header({ paginaActual = '' }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
   const navigate = useNavigate();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMobileMenu = () => setMobileMenuOpen(false);
-  
+
   const handleNavigation = (ruta: string) => {
     navigate(ruta);
     window.scrollTo(0, 0);
@@ -75,40 +79,52 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
   return (
     <>
       <motion.header
-        className="fixed bg-[#c62926] h-[80px] left-0 top-0 w-full z-50"
+        className="fixed h-[80px] left-0 top-0 w-full z-50"
         data-name="Header"
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
+        initial={{ y: -80, backgroundColor: "#c62926" }}
+        animate={{
+          y: 0,
+          backgroundColor: isLogoHovered ? "#8C0606" : "#c62926"
+        }}
         transition={{ duration: 0.5 }}
       >
+        {/* Texture Background Overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src={headerTexture}
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+
         {/* Desktop Layout - Posiciones exactas del diseño original */}
-        <div className="hidden md:block relative w-full max-w-[1263px] mx-auto h-full px-[32px]">
+        <div className="hidden md:block relative w-full max-w-[1263px] mx-auto h-full px-[32px] z-10">
           {/* Left Menu - Posiciones absolutas exactas */}
-          <div className="absolute h-[20px] left-0 top-[31px] w-[543px]">
+          <div className="absolute h-[20px] left-[4px] top-[30px] w-[543px]">
             <div className="relative h-[20px] w-[543px]">
               {menuItemsLeft.map((item) => (
-                <motion.div 
+                <motion.div
                   key={item.key}
                   className="absolute h-[20px] overflow-visible cursor-pointer"
-                  style={{ left: item.left, width: item.width, top: item.key === 'SERVICIOS' ? '2px' : item.key === 'INVERSIONES' ? '0' : '1px' }}
+                  style={{ left: item.left, width: item.width, top: '0' }}
                   whileHover={{ scale: 1.05 }}
                   onClick={() => handleNavigation(item.ruta)}
                 >
                   {/* Texto del menú */}
-                  <div className="absolute flex h-[17.333px] items-start left-0 top-[0.67px]">
+                  <div className="absolute flex h-[17.333px] items-start left-0 top-0">
                     <p className="font-['Arial'] leading-[19.5px] text-[#f2f2f2] text-[13px] whitespace-nowrap tracking-[-0.39px]">
                       {item.nombre}
                     </p>
                   </div>
                   {/* Línea indicadora - centrada debajo del texto (no del contenedor) */}
-                  <motion.div 
+                  <motion.div
                     className="absolute bg-white h-[2px] top-[17.5px]"
-                    style={{ 
+                    style={{
                       left: item.textWidth / 2,
                       x: '-50%'
                     }}
                     initial={false}
-                    animate={{ 
+                    animate={{
                       width: paginaActual === item.key ? item.textWidth : 0,
                       opacity: paginaActual === item.key ? 1 : 0
                     }}
@@ -120,42 +136,44 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
           </div>
 
           {/* Logo con animación - Centrado en posición exacta */}
-          <div className="absolute left-[569px] top-[19px]">
+          <div className="absolute left-[603px] top-[16px]">
             <LogoAnimation
               mainLogoSrc={imgImageLibellaLogo}
               logo1Src={imgLogoOjoDeOso}
               logo2Src={imgImageLibellaLogo}
               logo3Src={imgLogoSuelo360}
               onNavigate={() => handleNavigation('/')}
+              onHoverStart={() => setIsLogoHovered(true)}
+              onHoverEnd={() => setIsLogoHovered(false)}
             />
           </div>
 
           {/* Right Menu - Posiciones absolutas exactas */}
-          <div className="absolute h-[20px] left-[732px] top-[29px] w-[499px]">
+          <div className="absolute h-[20px] left-[736px] top-[30px] w-[499px]">
             <div className="relative h-[20px] w-[499px]">
               {menuItemsRight.map((item) => (
-                <motion.div 
+                <motion.div
                   key={item.key}
                   className="absolute h-[20px] overflow-visible cursor-pointer"
-                  style={{ left: item.left, width: item.width, top: item.key === 'NOSOTROS' ? '0' : '-0.25px' }}
+                  style={{ left: item.left, width: item.width, top: '0' }}
                   whileHover={{ scale: 1.05 }}
                   onClick={() => handleNavigation(item.ruta)}
                 >
                   {/* Texto del menú */}
-                  <div className="absolute flex h-[17.333px] items-start left-0 top-[0.67px]">
+                  <div className="absolute flex h-[17.333px] items-start left-0 top-0">
                     <p className="font-['Arial'] leading-[19.5px] text-[#f2f2f2] text-[13px] whitespace-nowrap tracking-[-0.39px]">
                       {item.nombre}
                     </p>
                   </div>
                   {/* Línea indicadora - centrada debajo del texto (no del contenedor) */}
-                  <motion.div 
+                  <motion.div
                     className="absolute bg-white h-[2px] top-[17.5px]"
-                    style={{ 
+                    style={{
                       left: item.textWidth / 2,
                       x: '-50%'
                     }}
                     initial={false}
-                    animate={{ 
+                    animate={{
                       width: paginaActual === item.key ? item.textWidth : 0,
                       opacity: paginaActual === item.key ? 1 : 0
                     }}
@@ -202,7 +220,7 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
           </motion.button>
 
           {/* Logo - Centered */}
-          <div 
+          <div
             className="absolute left-1/2 -translate-x-1/2 cursor-pointer"
             onClick={() => handleNavigation('/')}
           >
@@ -210,10 +228,10 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
               className="h-[36px] w-[45px]"
               whileHover={{ scale: 1.1 }}
             >
-              <img 
-                alt="Libella Logo" 
-                className="w-full h-full object-cover" 
-                src={imgImageLibellaLogo} 
+              <img
+                alt="Libella Logo"
+                className="w-full h-full object-cover"
+                src={imgImageLibellaLogo}
               />
             </motion.div>
           </div>
@@ -221,53 +239,55 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
           {/* Spacer para balancear el layout */}
           <div className="w-[44px]" />
         </div>
-      </motion.header>
+      </motion.header >
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 bg-black/50 z-40 md:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={closeMobileMenu}
-            />
+        {
+          mobileMenuOpen && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeMobileMenu}
+              />
 
-            {/* Menu Panel */}
-            <motion.div
-              className="fixed top-[80px] left-0 right-0 bg-gradient-to-b from-[#c62926] to-[#8b1f1f] z-40 md:hidden overflow-hidden"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-            >
-              <nav className="px-6 py-4">
-                {allMenuItems.map((item, index) => (
-                  <motion.div
-                    key={item.key}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <MobileMenuItem
-                      nombre={item.nombre}
-                      ruta={item.ruta}
-                      isActive={paginaActual === item.key}
-                      onClick={closeMobileMenu}
-                    />
-                  </motion.div>
-                ))}
-              </nav>
+              {/* Menu Panel */}
+              <motion.div
+                className="fixed top-[80px] left-0 right-0 bg-gradient-to-b from-[#c62926] to-[#8b1f1f] z-40 md:hidden overflow-hidden"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+              >
+                <nav className="px-6 py-4">
+                  {allMenuItems.map((item, index) => (
+                    <motion.div
+                      key={item.key}
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <MobileMenuItem
+                        nombre={item.nombre}
+                        ruta={item.ruta}
+                        isActive={paginaActual === item.key}
+                        onClick={closeMobileMenu}
+                      />
+                    </motion.div>
+                  ))}
+                </nav>
 
-              {/* Decorative element */}
-              <div className="h-[4px] bg-gradient-to-r from-transparent via-white/20 to-transparent mx-6 mb-4" />
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+                {/* Decorative element */}
+                <div className="h-[4px] bg-gradient-to-r from-transparent via-white/20 to-transparent mx-6 mb-4" />
+              </motion.div>
+            </>
+          )
+        }
+      </AnimatePresence >
     </>
   );
 }
