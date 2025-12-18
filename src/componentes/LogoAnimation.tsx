@@ -82,9 +82,11 @@ export default function LogoAnimation({
           {/* Contenedor de logos */}
           <div className="absolute inset-0 flex items-center justify-center z-[3]">
             <div className="relative w-full h-full">
+
+
               {/* Logo Ojo de Oso - Izquierda Superior */}
               <div
-                className="absolute left-[20%] top-[15px] w-[60px] h-[45px] flex items-center justify-center"
+                className="absolute left-[23%] top-[15px] w-[60px] h-[40px] flex items-center justify-center"
                 style={{
                   visibility: showLogo1 ? 'visible' : 'hidden'
                 }}
@@ -143,7 +145,7 @@ export default function LogoAnimation({
 
               {/* Logo Suelo 360 - Derecha Superior */}
               <div
-                className="absolute right-[20%] top-[15px] w-[60px] h-[45px] flex items-center justify-center"
+                className="absolute right-[23%] top-[15px] w-[55px] h-[40px] flex items-center justify-center"
                 style={{
                   visibility: showLogo3 ? 'visible' : 'hidden'
                 }}

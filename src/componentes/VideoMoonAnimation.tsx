@@ -59,13 +59,13 @@ export function VideoMoonAnimation({ src }: VideoMoonAnimationProps) {
         canvas.width / 2, 0, canvas.height * 1.1
       );
 
-      // Centro: 100% opaco (se ve completamente)
+     /* // Centro: 100% opaco (se ve completamente)
       // Centro: 100% opaco (se ve completamente)
       opacityGradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
       opacityGradient.addColorStop(0.6, 'rgba(0, 0, 0, 0)'); // Hasta 60% sigue siendo 100% opaco
       // Desde 60% hasta 100%: transición suave de opaco a 80% transparente
       opacityGradient.addColorStop(1, 'rgba(0, 0, 0, 0.8)'); // 0.8 alpha en máscara = 80% transparente
-
+      */
       // Aplicar la máscara con globalCompositeOperation
       ctx.globalCompositeOperation = 'destination-out';
       ctx.fillStyle = opacityGradient;
