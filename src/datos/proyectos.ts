@@ -1,17 +1,12 @@
 // Datos detallados de los proyectos de Libella
 import imgCattleya from "../recursos/imagenes/cattleya.png";
-import imgAmsterdam from "../recursos/imagenes/amsterdam.png";
-import imgLaCeiba from "../recursos/imagenes/la-ceiba.png";
+import imgAmsterdam from "../recursos/imagenes/amsterhaus.png";
+import imgLaCeiba from "../recursos/imagenes/ceiba.png";
 import imgLaGranTurquesa from "../recursos/imagenes/la-gran-turquesa.png";
 import imgEskarlata from "../recursos/imagenes/eskarlata.png";
 import imgAukana from "../recursos/imagenes/aukana.png";
 import imgCaoba from "../recursos/imagenes/caoba.png";
 import imgCattleyaCampestre from "../recursos/imagenes/cattleya-campestre.png";
-
-export interface DetalleAvance {
-  nombre: string;
-  porcentaje: number;
-}
 
 export interface ProyectoDetalle {
   nombreProyecto: string;
@@ -20,138 +15,104 @@ export interface ProyectoDetalle {
   fechaEntrega: string;
   lotes: string;
   amenidades: string[];
-  porcentajeAvance: number;
-  detallesAvance: DetalleAvance[];
   imagenBanner: string;
+  pdfPortfolio?: string;
+  qrButtons?: {
+    page: number;
+    x: string;
+    y: string;
+    width: string;
+    height: string;
+    url: string;
+    label?: string;
+  }[];
 }
 
 export const proyectosData: Record<string, ProyectoDetalle> = {
   "altos-cattleya": {
     nombreProyecto: "Altos de Cattleya",
-    descripcion: "Parcelas desde 1000m² en conjunto cerrado con seguridad 24/7, vigilancia permanente y acceso controlado. Ubicadas en una zona estratégica con vistas panorámicas y acceso a servicios básicos.",
-    ubicacion: "Totoró - vereda de Aguas Tibias, Cauca. (Kilómetro 6)",
+    descripcion: "Hermosa parcelación en conjunto cerrado con reglamento de propiedad horizontal y a 12 minutos del Centro Comercial Terraplaza.",
+    ubicacion: "Km 6 vía Totoró - Vereda de Aguas Tibias, Cauca.",
     fechaEntrega: "Según disponibilidad",
     lotes: "Parcelas disponibles desde 1000m²",
-    amenidades: ["Agua y energía", "Zona de alta valorización", "Piscina", "Portería de ingreso", "Juegos infantiles", "Club house", "Conjunto cerrado","Via pavimentada hasta el proyecto", "Vias internas en huella de concreto"],
-    porcentajeAvance: 75,
-    detallesAvance: [
-      { nombre: "Adecuación del terreno", porcentaje: 100 },
-      { nombre: "Instalación de servicios", porcentaje: 80 },
-      { nombre: "Vías de acceso", porcentaje: 70 },
-      { nombre: "Áreas comunes", porcentaje: 60 }
-    ],
+    amenidades: ["Agua y energía", "Zona de alta valorización", "Piscina", "Portería de ingreso", "Juegos infantiles", "Club house", "Conjunto cerrado", "Via pavimentada hasta el proyecto", "Vias internas en huella de concreto"],
     imagenBanner: imgCattleya
   },
   "amsterdam": {
     nombreProyecto: "AmsterHaus",
-    descripcion: "Hermosos apartamentos desde 55m² y apartaestudios desde 33.29m² con acabados modernos. Ubicados en el corazón de Popayán, cerca de comercios, restaurantes y transporte público.",
+    descripcion: "Residencia con un diseño que combina la elegancia del estilo clásico con la frescura de lo moderno, en un conjunto arquitectónico de torres angostas, colores vibrantes y grandes ventanales que invitan a la luz y a la amplitud.",
     ubicacion: "Popayán Cra 20 #55 N 64 (A dos minutos de Café La Palma)",
     fechaEntrega: "Próximamente",
     lotes: "Apartamentos disponibles desde 55m²",
-    amenidades: ["Portería", "UTP", "Servicios públicos", "Fácil acceso", "Transporte público"],
-    porcentajeAvance: 45,
-    detallesAvance: [
-      { nombre: "Cimentación", porcentaje: 100 },
-      { nombre: "Estructura", porcentaje: 60 },
-      { nombre: "Instalaciones", porcentaje: 30 },
-      { nombre: "Acabados", porcentaje: 10 }
-    ],
+    amenidades: ["Agua y energía", "Juegos infantiles", "Club house", "Zona de alta valorización", "Portería", "Piscina", "Conjunto cerrado", "Acueducto", "Via pavimentada hasta el proyecto"],
     imagenBanner: imgAmsterdam
   },
   "la-ceiba": {
     nombreProyecto: "La Ceiba",
-    descripcion: "Espacio campestre con escrituras de 3000m² en copropiedad y listas para escriturar. Perfecto para quienes buscan tranquilidad y conexión con la naturaleza sin alejarse de la ciudad.",
+    descripcion: "Hermosa parcelación en sistem a abierto, donde convergen las comodidades urbanas con la comodidad única de los espacios campestres.",
     ubicacion: "Calibio, antigua carrilera, a 4.4km de la Variante Norte.",
-    fechaEntrega: "Disponible inmediatamente",
+    fechaEntrega: "Según disponibilidad",
     lotes: "Lotes campestres de 3000m²",
-    amenidades: ["Paisaje natural", "Escrituras listas", "Servicios básicos", "Acceso vial", "Zona verde", "Fauna y flora nativa"],
-    porcentajeAvance: 100,
-    detallesAvance: [
-      { nombre: "Levantamiento topográfico", porcentaje: 100 },
-      { nombre: "División de lotes", porcentaje: 100 },
-      { nombre: "Registros catastrales", porcentaje: 100 },
-      { nombre: "Documentos legales", porcentaje: 100 }
-    ],
+    amenidades: ["Alcantarillado", "Sendero ecológico", "2.8 hectáreas de reserva forestal", "Energía", "Portería", "Acueduto", "Via principal con sistema ECODECK en concreto", "Vías en afirmado vibro compactado", "Puente vehícular", "Zona BBQ", "Salón social", "Planta de tratamiento de aguas residuales - PTAR"],
     imagenBanner: imgLaCeiba
   },
   "la-gran-turquesa": {
     nombreProyecto: "La Gran Turquesa",
-    descripcion: "Exclusivo condominio campestre con amplias parcelas desde 1000m². Diseñado para ofrecer privacidad, seguridad y un estilo de vida de lujo en armonía con la naturaleza.",
-    ubicacion: "Totoró, Cauca. (Kilómetro 4)",
-    fechaEntrega: "Fase 2 en construcción",
+    descripcion: "Exclusivo refugio campestre donde la arquitectura armoniza con la naturaleza, cada amanecer revela paisajes imponentes y atardeceres únicos sobre las colinas.",
+    ubicacion: "Km 4 vía Totoró - Cauca",
+    fechaEntrega: "En fase de construcción",
     lotes: "Parcelas desde 1000m²",
-    amenidades: ["Club house", "Piscina", "Cancha de tenis", "Zona de juegos", "Vigilancia permanente", "Áreas verdes amplias"],
-    porcentajeAvance: 40,
-    detallesAvance: [
-      { nombre: "Fase 1 - Completada", porcentaje: 100 },
-      { nombre: "Fase 2 - Estructura", porcentaje: 50 },
-      { nombre: "Áreas comunes", porcentaje: 30 },
-      { nombre: "Servicios complementarios", porcentaje: 20 }
-    ],
-    imagenBanner: imgLaGranTurquesa
+    amenidades: ["Servicio de agua y energía", "Vías en afirmado y huellas concreto", "Portería", "Cerramiento perimetral", "Mirador"],
+    imagenBanner: imgLaGranTurquesa,
+    pdfPortfolio: "/src/recursos/imagenes/LaGranTurquesaPortafolio1.pdf",
+    qrButtons: [
+      // EJEMPLO - Ajusta estas posiciones según donde estén los QRs reales
+      {
+        page: 5, // Página donde está el QR
+        x: "70%", // Posición horizontal (izquierda a derecha)
+        y: "80%", // Posición vertical (arriba a abajo)
+        width: "100px", // Ancho del botón
+        height: "100px", // Alto del botón
+        url: "https://instagram.com/libella", // URL de redirección
+        label: "Instagram" // Texto opcional
+      }
+      // Agrega más botones aquí según necesites
+    ]
   },
   "eskarlata": {
     nombreProyecto: "Eskarlata",
     descripcion: "Parque agroturístico temático que combina la experiencia de la imaginación con la naturaleza. Un espacio único diseñado para el entretenimiento familiar, la educación ambiental y el disfrute de actividades al aire libre en un entorno natural privilegiado.",
     ubicacion: "Patía, Cauca",
-    fechaEntrega: "En desarrollo - Fase 1",
+    fechaEntrega: "En desarrollo",
     lotes: "Proyecto de parque temático",
-    amenidades: ["Zonas temáticas", "Áreas de camping", "Senderos ecológicos", "Zona de aventura", "Restaurante campestre", "Mirador panorámico"],
-    porcentajeAvance: 35,
-    detallesAvance: [
-      { nombre: "Diseño arquitectónico", porcentaje: 100 },
-      { nombre: "Adecuación del terreno", porcentaje: 60 },
-      { nombre: "Construcción de zonas temáticas", porcentaje: 25 },
-      { nombre: "Instalaciones y servicios", porcentaje: 15 }
-    ],
+    amenidades: ["Granja", "Estación de servicio", "Deportes extremos", "Reserva natural", "Atracciones mecánicas", "Diversas zonas"],
     imagenBanner: imgEskarlata
   },
   "aukana": {
     nombreProyecto: "Aukana",
-    descripcion: "Ecoparque agroturístico que ofrece una experiencia única de conexión con la naturaleza. Diseñado para promover el turismo sostenible y la conservación ambiental, Aukana es el lugar perfecto para el descanso, la recreación y el aprendizaje sobre prácticas ecológicas.",
+    descripcion: "Ecoparque agroturístico que ofrece una experiencia única de conexión con la naturaleza.",
     ubicacion: "Popayán, Cauca",
-    fechaEntrega: "En planificación - Fase inicial",
+    fechaEntrega: "En planificación",
     lotes: "Proyecto de ecoparque",
-    amenidades: ["Huertos orgánicos", "Zona de avistamiento de aves", "Centro de educación ambiental", "Senderos interpretativos", "Zona de picnic", "Granja interactiva"],
-    porcentajeAvance: 25,
-    detallesAvance: [
-      { nombre: "Estudios ambientales", porcentaje: 100 },
-      { nombre: "Planeación del proyecto", porcentaje: 80 },
-      { nombre: "Permisos y licencias", porcentaje: 40 },
-      { nombre: "Inicio de construcción", porcentaje: 10 }
-    ],
+    amenidades: ["Por definir"],
     imagenBanner: imgAukana
   },
   "caoba": {
     nombreProyecto: "Caoba",
-    descripcion: "Hermosas parcelas en conjunto cerrado ubicadas en una zona estratégica con excelente acceso vial. Caoba ofrece un ambiente campestre exclusivo con todas las comodidades de la vida moderna, ideal para construir la casa de tus sueños rodeado de naturaleza.",
+    descripcion: "Hermosas parcelas en conjunto cerrado. Caoba ofrece un ambiente campestre exclusivo con todas las comodidades de la vida moderna, donde podrás disfrutar de lo mejor de la naturaleza y la ciudad.",
     ubicacion: "Km 3 Variante vía Las Margaritas - Popayán, Cauca",
     fechaEntrega: "Proyecto finalizado - Disponible",
     lotes: "Parcelas en conjunto cerrado",
-    amenidades: ["Portería y vigilancia", "Vías pavimentadas", "Servicios públicos completos", "Zona verde comunal", "Áreas recreativas", "Iluminación LED"],
-    porcentajeAvance: 100,
-    detallesAvance: [
-      { nombre: "Urbanización completa", porcentaje: 100 },
-      { nombre: "Servicios instalados", porcentaje: 100 },
-      { nombre: "Vías y accesos", porcentaje: 100 },
-      { nombre: "Áreas comunes", porcentaje: 100 }
-    ],
+    amenidades: ["Garita de acceso", "Vías en afirmado", "Rodeado de la antigua carrilera"],
     imagenBanner: imgCaoba
   },
   "cattleya-campestre": {
     nombreProyecto: "Cattleya Campestre",
-    descripcion: "Condominio campestre que rompe esquemas por sus características únicas y paisajes excepcionales. Un proyecto que combina exclusividad, naturaleza y confort, ofreciendo amplias parcelas con vistas panorámicas y acceso a servicios de primera categoría en un entorno privilegiado.",
+    descripcion: "Parcelación en conjunto cerrado que rompe esquemas por sus características únicas y paisajes excepcionales, junto a su clima ideal.",
     ubicacion: "Km 6 Vereda de Aguas Tibias - Totoró, Cauca",
-    fechaEntrega: "Disponible - Últimas unidades",
+    fechaEntrega: "Según disponibilidad",
     lotes: "Parcelas desde 1000m² en condominio",
-    amenidades: ["Casa club", "Piscina", "Canchas deportivas", "Zona BBQ", "Parque infantil", "Senderos ecológicos", "Seguridad 24/7"],
-    porcentajeAvance: 90,
-    detallesAvance: [
-      { nombre: "Infraestructura principal", porcentaje: 100 },
-      { nombre: "Casa club y amenidades", porcentaje: 95 },
-      { nombre: "Paisajismo y zonas verdes", porcentaje: 85 },
-      { nombre: "Detalles finales", porcentaje: 75 }
-    ],
+    amenidades: ["Portería de ingreso doble", "Agua y energía", "Piscina", "Sendero ecológico", "3,7 hectáreas de reserva forestal", "Juegos infantiles", "Club house", "Conjunto cerrado", "Vías en huella concreto", "Zona de alta valorización"],
     imagenBanner: imgCattleyaCampestre
   }
 };

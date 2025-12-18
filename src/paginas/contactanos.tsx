@@ -17,22 +17,22 @@ import imgBannersProyectos from "@/recursos/imagenes/cd0a93d82933a4183533cb631ef
 
 function ContactCard({ icon, title, content, delay }: { icon: JSX.Element; title: string; content: string; delay: number }) {
   return (
-    <motion.div 
+    <motion.div
       className="box-border flex flex-col gap-6 items-center p-8 rounded-2xl w-full bg-gradient-to-b from-[rgba(175,44,40,0.91)] to-[rgba(135,21,21,0.95)] border border-[rgba(255,255,255,0.1)] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)]"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      whileHover={{ 
-        y: -10, 
+      whileHover={{
+        y: -10,
         boxShadow: "0 30px 60px rgba(136, 28, 28, 0.4)",
         transition: { duration: 0.3 }
       }}
     >
-      <motion.div 
+      <motion.div
         className="bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.2)] rounded-full flex items-center justify-center w-16 h-16"
-        whileHover={{ 
-          scale: 1.1, 
+        whileHover={{
+          scale: 1.1,
           rotate: 5,
           backgroundColor: "rgba(255,255,255,0.15)"
         }}
@@ -58,7 +58,7 @@ export default function Contactanos() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validación
     if (!formData.nombres || !formData.email || !formData.mensaje) {
       toast.error("Por favor completa todos los campos requeridos");
@@ -73,7 +73,7 @@ export default function Contactanos() {
     }
 
     toast.success("¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.");
-    
+
     // Resetear formulario
     setFormData({
       nombres: '',
@@ -93,23 +93,23 @@ export default function Contactanos() {
   return (
     <div className="bg-gradient-to-b from-[#1e1717] to-[rgba(135,21,21,0.97)] min-h-screen">
       <Toaster position="top-center" />
-      
+
       {/* Header de Inicio */}
       <Header paginaActual="CONTACTENOS" />
-      
+
       {/* Hero Section */}
       <div className="relative w-full overflow-hidden mt-20">
         <div className="absolute inset-0 opacity-40 h-[250px] sm:h-[350px] lg:h-[450px]">
-          <img 
-            alt="" 
-            className="w-full h-full object-cover" 
-            src={imgBannersProyectos} 
+          <img
+            alt=""
+            className="w-full h-full object-cover"
+            src={imgBannersProyectos}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[rgba(135,21,21,0.4)] to-[rgba(30,23,23,0.6)]" />
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-12">
-          <motion.h1 
+          <motion.h1
             className="font-['Kalam',_sans-serif] text-white text-5xl sm:text-7xl lg:text-9xl text-center"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function Contactanos() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
-        <motion.h2 
+        <motion.h2
           className="text-white text-center mb-12 sm:mb-16 text-3xl sm:text-4xl lg:text-5xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -130,7 +130,7 @@ export default function Contactanos() {
         >
           ¿Cómo podemos ayudarte?
         </motion.h2>
-        
+
         {/* Form and Map Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 mb-16">
           {/* Form Section - Izquierda */}
@@ -143,7 +143,7 @@ export default function Contactanos() {
             <h3 className="text-white mb-8 text-2xl sm:text-3xl">
               Envíanos un mensaje
             </h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Nombre completo */}
               <motion.div
@@ -235,7 +235,7 @@ export default function Contactanos() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 1.0 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.03,
                   boxShadow: "0 20px 40px rgba(136, 28, 28, 0.4)"
                 }}
@@ -253,7 +253,7 @@ export default function Contactanos() {
               </motion.button>
             </form>
           </motion.div>
-          
+
           {/* Map Section - Derecha */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
@@ -263,23 +263,24 @@ export default function Contactanos() {
             <h3 className="text-white mb-6 text-2xl sm:text-3xl">
               Visítanos
             </h3>
-            
+
             <div className="space-y-4">
               <div className="bg-gradient-to-br from-[rgba(255,255,255,0.08)] to-[rgba(255,255,255,0.03)] p-6 rounded-2xl border border-[rgba(255,255,255,0.15)]">
                 <p className="text-white/90 mb-2">📍 Dirección</p>
-                <p className="text-white">Carrera 34 N # 12-40 Ofic. 201</p>
-                <p className="text-white/70">Cali, Colombia</p>
+                <p className="text-white">Calle 34 Norte # 12-40 Apto 201</p>
+                <p className="text-white">Barrio Campo Bello</p>
+                <p className="text-white/70">Popayán, Colombia</p>
               </div>
-              
-              <motion.div 
+
+              <motion.div
                 className="w-full h-[350px] lg:h-[400px] rounded-2xl overflow-hidden shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] border border-[rgba(255,255,255,0.1)]"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.01,
                   boxShadow: "0 30px 60px rgba(0,0,0,0.3)"
                 }}
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5533445851!2d-76.53564!3d3.4198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a67a8e3e7e7d%3A0x0!2zM8KwMjUnMTEuMyJOIDc2wrAzMicwOC4zIlc!5e0!3m2!1ses!2sco!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d498.59691!2d-76.5901682!3d2.4680286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMsKwMjgnMDQuOSJOIDc2wrAzNScyNC42Ilc!5e0!3m2!1ses!2sco!4v1734373077000!5m2!1ses!2sco"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -292,10 +293,10 @@ export default function Contactanos() {
             </div>
           </motion.div>
         </div>
-        
+
         {/* Contact Cards Section */}
         <div className="py-8 sm:py-12">
-          <motion.div 
+          <motion.div
             className="text-center mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -307,7 +308,7 @@ export default function Contactanos() {
               <div className="absolute bg-gradient-to-r from-transparent via-[rgba(255,255,255,0.5)] to-transparent h-1 left-1/2 -translate-x-1/2 top-full w-48 mt-4" />
             </h3>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-3xl mx-auto">
             <ContactCard
               delay={0}
@@ -319,7 +320,7 @@ export default function Contactanos() {
                 </svg>
               }
             />
-            
+
             <ContactCard
               delay={0.2}
               title="Email"
@@ -334,7 +335,7 @@ export default function Contactanos() {
           </div>
         </div>
       </div>
-      
+
       {/* Footer de Inicio */}
       <FooterInicio />
     </div>

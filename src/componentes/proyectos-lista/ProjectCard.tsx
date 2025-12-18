@@ -30,7 +30,7 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
     if (onClick) {
       onClick();
     } else if (projectId || id) {
-      navigate(`/proyecto/${projectId || id}`);
+      navigate(`/proyecto/${projectId || id}`, { state: { from: '/proyectos' } });
       window.scrollTo(0, 0);
     }
   };
@@ -54,10 +54,10 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
           background: 'linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.06) 25%, rgba(255, 255, 255, 0.18) 50%, rgba(255, 255, 255, 0.06) 75%, transparent 100%)',
         }}
       />
-      
+
       {/* Glossy Border */}
       <div className="absolute inset-0 rounded-xl border border-white/10 group-hover:border-white/20 transition-colors duration-300 pointer-events-none" />
-      
+
       {/* Image Container */}
       <div className="relative h-[220px] sm:h-[250px] md:h-[280px] overflow-hidden">
         <motion.img
@@ -67,7 +67,7 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
           alt={title}
           className="w-full h-full object-cover"
         />
-        
+
         {/* Status Badge */}
         <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
           <Badge className={`${statusInfo.color} text-white border-0 px-2 py-0.5 md:px-3 md:py-1 text-xs shadow-lg`}>
@@ -77,7 +77,7 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
 
         {/* Image Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-        
+
         {/* Reflection Effect on Image */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
@@ -86,11 +86,11 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
       <div className="relative p-4 md:p-6 flex flex-col flex-grow">
         {/* Subtle inner glow */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
-        
+
         <h3 className="relative mb-3 text-[#f2f2f2] group-hover:text-white transition-colors duration-300 drop-shadow-lg">
           {title}
         </h3>
-        
+
         <p className="relative text-white/70 group-hover:text-white/85 mb-4 md:mb-5 line-clamp-2 text-sm md:text-base transition-colors duration-300">
           {description}
         </p>
@@ -100,7 +100,7 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
             <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 flex-shrink-0" />
             <span className="text-xs md:text-sm line-clamp-1">{location}</span>
           </div>
-          
+
           <div className="flex items-center gap-2 text-white/60 group-hover:text-[#af2c28] transition-colors duration-300">
             <Tag className="w-3.5 h-3.5 md:w-4 md:h-4 flex-shrink-0" />
             <span className="text-xs md:text-sm">{date}</span>
@@ -122,7 +122,7 @@ export function ProjectCard({ id, projectId, image, title, location, status, dat
         whileHover={{ width: '100%' }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       />
-      
+
       {/* Corner Highlights */}
       <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />

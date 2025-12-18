@@ -1,7 +1,7 @@
 // Datos de las noticias de Libella
-import imgCarousel1 from "../recursos/imagenes/hero-carousel-1.png";
-import imgCertificacion from "../recursos/imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png";
-import imgExpansion from "../recursos/imagenes/hero-carousel-2.png";
+import imgCarousel1 from "../recursos/imagenes/cattleya.png";
+import imgCertificacion from "../recursos/imagenes/amsterhaus.png";
+import imgExpansion from "../recursos/imagenes/aukana.png";
 
 export interface NoticiaItem {
   id: string;

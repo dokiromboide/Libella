@@ -7,9 +7,9 @@ import FooterInicio from "./componentes/FooterInicio";
 import TarjetaNoticia from "./componentes/noticias/TarjetaNoticia";
 import { noticiasData } from "./datos/noticias";
 import { proyectosData } from "./datos/proyectos";
-import imgHeroCarousel from "./recursos/imagenes/hero-carousel-1.png";
-import imgHeroCarousel1 from "./recursos/imagenes/hero-carousel-2.png";
-import imgHeroCarousel2 from "./recursos/imagenes/hero-carousel-3.png";
+import imgHeroCarousel from "./recursos/imagenes/cattleya.png";
+import imgHeroCarousel1 from "./recursos/imagenes/aukana.png";
+import imgHeroCarousel2 from "./recursos/imagenes/caoba.png";
 import imgHeroCarousel3 from "./recursos/imagenes/hero-carousel-4.png";
 import imgImageDivider from "./recursos/imagenes/divider-leaves.png";
 
@@ -25,11 +25,11 @@ const CAROUSEL_IMAGES = [
   imgHeroCarousel3,
 ];
 
-function CarouselButton({ 
-  direction, 
-  onClick 
-}: { 
-  direction: 'prev' | 'next'; 
+function CarouselButton({
+  direction,
+  onClick
+}: {
+  direction: 'prev' | 'next';
   onClick: () => void;
 }) {
   return (
@@ -52,11 +52,11 @@ function CarouselButton({
   );
 }
 
-function CarouselDot({ 
-  active, 
-  onClick 
-}: { 
-  active: boolean; 
+function CarouselDot({
+  active,
+  onClick
+}: {
+  active: boolean;
   onClick: () => void;
 }) {
   return (
@@ -92,9 +92,9 @@ export function CarouselHero() {
   };
 
   return (
-    <section 
+    <section
       className="relative w-full overflow-hidden bg-gray-900"
-      style={{ 
+      style={{
         height: 'clamp(550px, 90vh, 950px)',
         marginTop: '80px'
       }}
@@ -105,9 +105,9 @@ export function CarouselHero() {
             key={index}
             className="absolute inset-0"
             initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ 
+            animate={{
               opacity: currentSlide === index ? 1 : 0,
-              scale: currentSlide === index ? 1 : 1.1 
+              scale: currentSlide === index ? 1 : 1.1
             }}
             transition={{ duration: 1, ease: "easeInOut" }}
             style={{ zIndex: currentSlide === index ? 1 : 0 }}
@@ -121,12 +121,12 @@ export function CarouselHero() {
         ))}
       </AnimatePresence>
 
-      <div 
+      <div
         className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent pointer-events-none"
         style={{ zIndex: 2 }}
       />
 
-      <div 
+      <div
         className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"
         style={{ zIndex: 2 }}
       />
@@ -134,7 +134,7 @@ export function CarouselHero() {
       <CarouselButton direction="prev" onClick={prevSlide} />
       <CarouselButton direction="next" onClick={nextSlide} />
 
-      <div 
+      <div
         className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 md:gap-3 bg-black/20 backdrop-blur-sm rounded-full px-3 md:px-4 py-2"
       >
         {CAROUSEL_IMAGES.map((_, index) => (
@@ -158,14 +158,14 @@ export function SeccionNoticias() {
 
   return (
     <section className="relative w-full bg-gradient-to-b from-[rgba(198,41,38,0.97)] to-[#403838] overflow-hidden py-12 md:py-16 lg:py-24">
-      
-      <div className="absolute right-0 top-12 blur-3xl filter rounded-full opacity-30 pointer-events-none" 
-           style={{ width: 'clamp(300px, 40vw, 500px)', height: 'clamp(300px, 40vw, 500px)' }} />
-      <div className="absolute left-0 bottom-12 blur-3xl filter rounded-full opacity-30 pointer-events-none" 
-           style={{ width: 'clamp(250px, 30vw, 400px)', height: 'clamp(250px, 30vw, 400px)' }} />
+
+      <div className="absolute right-0 top-12 blur-3xl filter rounded-full opacity-30 pointer-events-none"
+        style={{ width: 'clamp(300px, 40vw, 500px)', height: 'clamp(300px, 40vw, 500px)' }} />
+      <div className="absolute left-0 bottom-12 blur-3xl filter rounded-full opacity-30 pointer-events-none"
+        style={{ width: 'clamp(250px, 30vw, 400px)', height: 'clamp(250px, 30vw, 400px)' }} />
 
       <div className="relative w-full px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-        
+
         <motion.div
           className="mb-8 md:mb-12"
           initial={{ opacity: 0, y: 20 }}
@@ -174,7 +174,7 @@ export function SeccionNoticias() {
           transition={{ duration: 0.6 }}
         >
           <div className="bg-gradient-to-r from-white/50 to-transparent h-[4px] w-[clamp(150px,20vw,200px)] mb-4" />
-          
+
           <h2 className="font-['Arial'] text-white text-[clamp(24px,4vw,40px)] tracking-[-2.88px] uppercase leading-tight">
             Nuestros Últimos Acontecimientos
           </h2>
@@ -214,20 +214,20 @@ interface ProyectoCardProps {
   onClick: () => void;
 }
 
-function ProyectoCard({ 
-  titulo, 
-  tipo, 
-  descripcion, 
-  ubicacion, 
-  estado, 
-  imagen, 
+function ProyectoCard({
+  titulo,
+  tipo,
+  descripcion,
+  ubicacion,
+  estado,
+  imagen,
   delay,
-  onClick 
+  onClick
 }: ProyectoCardProps) {
   return (
     <motion.div
       className="group relative bg-gradient-to-b from-[rgba(227,66,52,0.91)] to-[#403838] rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] overflow-hidden cursor-pointer mx-auto"
-      style={{ 
+      style={{
         height: 'clamp(400px, 450px, 500px)',
         maxWidth: '467px',
         width: '100%'
@@ -248,14 +248,14 @@ function ProyectoCard({
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.5 }}
         />
-        
+
         {/* Overlay oscuro - más oscuro en mobile, se oscurece en hover en desktop */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 md:from-black/20 md:via-black/10 md:to-black/30 md:group-hover:from-black/60 md:group-hover:via-black/40 md:group-hover:to-black/80 transition-all duration-500" />
       </div>
 
       {/* Contenido */}
       <div className="relative h-full flex flex-col justify-between p-6 md:p-8">
-        
+
         {/* Tipo de proyecto - siempre visible */}
         <div className="inline-block">
           <span className="bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1 text-white/90 text-xs md:text-sm uppercase tracking-wide">
@@ -265,7 +265,7 @@ function ProyectoCard({
 
         {/* Información del proyecto - visible en mobile, aparece en hover en desktop */}
         <div className="space-y-3 md:space-y-4 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-500">
-          
+
           {/* Título */}
           <h3 className="font-['Arial'] text-white font-semibold leading-tight" style={{ fontSize: 'clamp(20px, 2.5vw, 26px)' }}>
             {titulo}
@@ -307,10 +307,10 @@ function ProyectoCard({
 
 export function SeccionProyectos() {
   const navigate = useNavigate();
-  
+
   // Obtener los primeros 4 proyectos de proyectosData
   const proyectosIds = ['altos-cattleya', 'amsterdam', 'la-ceiba', 'la-gran-turquesa'];
-  
+
   const proyectosParaMostrar = proyectosIds.map(id => {
     const proyecto = proyectosData[id];
     return {
@@ -319,22 +319,22 @@ export function SeccionProyectos() {
       tipo: proyecto.lotes.includes('Apartamentos') ? 'Apartamentos' : 'Parcelación',
       descripcion: proyecto.descripcion,
       ubicacion: proyecto.ubicacion,
-      estado: proyecto.porcentajeAvance === 100 ? 'Disponible' : 
-              proyecto.porcentajeAvance > 50 ? 'En Construcción' : 'Próximamente',
+      estado: proyecto.porcentajeAvance === 100 ? 'Disponible' :
+        proyecto.porcentajeAvance > 50 ? 'En Construcción' : 'Próximamente',
       imagen: proyecto.imagenBanner
     };
   });
 
   return (
     <section className="relative w-full bg-gradient-to-b from-[#403838] to-[rgba(198,41,38,0.97)] overflow-hidden py-12 md:py-16 lg:py-24">
-      
+
       {/* Efecto decorativo de blur */}
-      <div className="absolute left-0 top-12 blur-3xl filter rounded-full opacity-30 pointer-events-none" 
-           style={{ width: 'clamp(300px, 40vw, 500px)', height: 'clamp(300px, 40vw, 500px)' }} />
+      <div className="absolute left-0 top-12 blur-3xl filter rounded-full opacity-30 pointer-events-none"
+        style={{ width: 'clamp(300px, 40vw, 500px)', height: 'clamp(300px, 40vw, 500px)' }} />
 
       {/* Contenedor principal */}
       <div className="relative w-full px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-        
+
         {/* Título de la sección */}
         <motion.div
           className="mb-8 md:mb-12"
@@ -344,7 +344,7 @@ export function SeccionProyectos() {
           transition={{ duration: 0.6 }}
         >
           <div className="bg-gradient-to-r from-white/50 to-transparent h-[4px] w-[clamp(150px,20vw,200px)] mb-4" />
-          
+
           <h2 className="font-['Arial'] text-white text-[clamp(24px,4vw,40px)] tracking-[-2.88px] uppercase leading-tight">
             Proyectos
           </h2>
@@ -358,7 +358,7 @@ export function SeccionProyectos() {
               {...proyecto}
               delay={index * 0.2}
               onClick={() => {
-                navigate(`/proyecto/${proyecto.id}`);
+                navigate(`/proyecto/${proyecto.id}`, { state: { from: '/' } });
                 window.scrollTo(0, 0);
               }}
             />
@@ -400,7 +400,7 @@ export function SeccionProyectos() {
 
 export function SeccionHojasDivisoras() {
   return (
-    <motion.section 
+    <motion.section
       className="relative w-full overflow-hidden"
       style={{ height: 'clamp(150px, 20vh, 250px)' }}
       initial={{ opacity: 0 }}
@@ -416,11 +416,11 @@ export function SeccionHojasDivisoras() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(135,21,21,0.4)] to-transparent pointer-events-none" 
-           style={{ zIndex: 1 }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(135,21,21,0.4)] to-transparent pointer-events-none"
+        style={{ zIndex: 1 }} />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(30,23,23,0.6)] to-transparent pointer-events-none" 
-           style={{ zIndex: 2 }} />
+      <div className="absolute inset-0 bg-gradient-to-t from-[rgba(30,23,23,0.6)] to-transparent pointer-events-none"
+        style={{ zIndex: 2 }} />
     </motion.section>
   );
 }
@@ -441,7 +441,7 @@ function MetricCard({ icon, number, label, delay }: MetricCardProps) {
   return (
     <motion.div
       className="relative bg-gradient-to-b from-[rgba(227,66,52,0.91)] to-[#403838] rounded-[24px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] overflow-hidden"
-      style={{ 
+      style={{
         minHeight: 'clamp(200px, 25vw, 288px)',
         padding: 'clamp(24px, 4vw, 48px)'
       }}
@@ -452,7 +452,7 @@ function MetricCard({ icon, number, label, delay }: MetricCardProps) {
       whileHover={{ y: -10, boxShadow: "0px 35px 70px -12px rgba(0,0,0,0.35)" }}
     >
       {/* Efecto de fondo radial */}
-      <div 
+      <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
           background: 'radial-gradient(circle at 75% 50%, rgba(255,255,255,0.1) 0%, rgba(128,128,128,0.05) 25%, rgba(0,0,0,0) 50%)'
@@ -461,7 +461,7 @@ function MetricCard({ icon, number, label, delay }: MetricCardProps) {
 
       {/* Contenido */}
       <div className="relative flex flex-col items-center justify-center h-full text-center gap-4 md:gap-6">
-        
+
         {/* Icono */}
         <motion.div
           className="bg-white/10 border border-white/20 rounded-full flex items-center justify-center"
@@ -488,7 +488,7 @@ function MetricCard({ icon, number, label, delay }: MetricCardProps) {
         </motion.h3>
 
         {/* Label */}
-        <p 
+        <p
           className="font-['Arial'] text-white/80 tracking-[0.8px] uppercase"
           style={{ fontSize: 'clamp(12px, 2vw, 16px)' }}
         >
@@ -520,10 +520,10 @@ export function SeccionMetricas() {
 
   return (
     <section className="relative w-full bg-gradient-to-b from-[rgba(198,41,38,0.97)] to-[#403838] overflow-hidden py-12 md:py-16 lg:py-24">
-      
+
       {/* Contenedor principal */}
       <div className="relative w-full px-4 md:px-8 lg:px-16 xl:px-24 2xl:px-32">
-        
+
         {/* Título de la sección */}
         <motion.div
           className="mb-8 md:mb-12 text-center"
@@ -534,7 +534,7 @@ export function SeccionMetricas() {
         >
           {/* Línea decorativa centrada */}
           <div className="bg-gradient-to-r from-transparent via-white/50 to-transparent h-[4px] w-[clamp(150px,20vw,200px)] mb-4 mx-auto" />
-          
+
           {/* Título */}
           <h2 className="font-['Arial'] text-white text-[clamp(24px,4vw,40px)] tracking-[-2.88px] uppercase leading-tight">
             Métricas
