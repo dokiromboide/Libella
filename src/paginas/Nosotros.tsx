@@ -6,21 +6,30 @@ import FooterInicio from "../componentes/FooterInicio";
 // Importar imágenes desde recursos
 import imgRetratoHombreBlancoAislado from "../recursos/imagenes/c45292d9d595b1476e0c7cd533a0e1483a2112c3.png";
 import imgLibellaLogo from "../recursos/imagenes/e5405135f74a3096ac6e7cfb1ced2550f21c0eaa.png";
-import imgImage4 from "../recursos/imagenes/la-gran-turquesa.png";
-import imgProyecto1 from "../recursos/imagenes/hero-carousel-1.png";
-import imgProyecto2 from "../recursos/imagenes/hero-carousel-2.png";
+
+// Importar imágenes del equipo
+import Libellap1 from "../recursos/imagenes/Libellap1.png";
+import Libellap3 from "../recursos/imagenes/Libellap3.png";
+import Libellap4 from "../recursos/imagenes/Libellap4.png";
+import Libellap5 from "../recursos/imagenes/Libellap5.png";
+import Libellap6 from "../recursos/imagenes/Libellap6.PNG";
+import Libellap7 from "../recursos/imagenes/Libellap7.png";
+import Libellap10 from "../recursos/imagenes/Libellap10.png";
+import Libellap20 from "../recursos/imagenes/Libellap20.png";
+import Libellap30 from "../recursos/imagenes/Libellap30.png";
+import Libellap40 from "../recursos/imagenes/Libellap40.png";
 
 // ============================================
 // SECCIÓN: HERO CON CARRUSEL
 // ============================================
-function HeroSection({ 
-  carouselImages, 
-  currentSlide, 
-  nextSlide, 
-  prevSlide, 
-  goToSlide 
-}: { 
-  carouselImages: Array<{ url: string; alt: string }>; 
+function HeroSection({
+  carouselImages,
+  currentSlide,
+  nextSlide,
+  prevSlide,
+  goToSlide
+}: {
+  carouselImages: Array<{ url: string; alt: string }>;
   currentSlide: number;
   nextSlide: () => void;
   prevSlide: () => void;
@@ -33,12 +42,11 @@ function HeroSection({
         {carouselImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+              }`}
           >
-            <img 
-              src={image.url} 
+            <img
+              src={image.url}
               alt={image.alt}
               className="w-full h-full object-cover"
             />
@@ -67,15 +75,14 @@ function HeroSection({
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
-              index === currentSlide 
-                ? 'bg-white w-8' 
-                : 'bg-white/50 hover:bg-white/80'
-            }`}
+            className={`w-3 h-3 rounded-full transition-all ${index === currentSlide
+              ? 'bg-white w-8'
+              : 'bg-white/50 hover:bg-white/80'
+              }`}
           />
         ))}
       </div>
-      
+
       {/* Content Overlay */}
       <div className="absolute inset-0 flex items-end justify-center pb-20 z-10 pointer-events-none">
         <div className="text-center">
@@ -109,9 +116,9 @@ function QuienesSomosMisionVisionSection() {
           </div>
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-br from-[#af2c28] to-[#871515] opacity-20 blur-2xl rounded-3xl" />
-            <img 
-              src={imgImage4} 
-              alt="Proyecto" 
+            <img
+              src={Libellap20}
+              alt="Proyecto"
               className="relative rounded-2xl w-full h-[400px] object-cover border-2 border-[#871515]"
             />
           </div>
@@ -193,7 +200,7 @@ function ValoresSection() {
           {valores.map((valor, index) => {
             const Icon = valor.icon;
             return (
-              <div 
+              <div
                 key={index}
                 className="bg-gradient-to-br from-[rgba(175,44,40,0.4)] to-[rgba(135,21,21,0.6)] p-8 rounded-2xl border border-[#871515] hover:border-[#af2c28] transition-all hover:scale-105"
               >
@@ -216,22 +223,22 @@ function ValoresSection() {
 // ============================================
 function EquipoSection() {
   const equipo = [
-    { nombre: "Bryan Santiago Castro", cargo: "Ingeniero Informatico", rol:"Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Jesus Caicedo", cargo: "Ingeniero Informatico", rol:"Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Dayana", cargo: "Diseñadora Gráfica", rol:"Diseñadora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Santiago", cargo: "Arte y Diseño", rol:"Ilustrador", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Ana", cargo: "Arte y Diseño", rol:"Escritora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Maria del Mar", cargo: "Arquitectura", rol:"Arquitecta", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol:"Estudio de Campo", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Johnatan Ordoñez", cargo: "Arte y Diseño", rol:"Gerente", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Diana Campo", cargo: "Contaduría Pública", rol:"Contadora Pública", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Yacson", cargo: "Auxiliar Contable", rol:"Auxiliar Contable", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol:"Asistente Administrativa", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Sergio", cargo: "Ingeniero civil", rol:"Jefe de obras", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Yeison", cargo: "Ingeniero Civil", rol:"Auditor de Viabilidad", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Sebastian", cargo: "Ingeniero Civil", rol:"Asistente de Arquitectura", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Johana", cargo: "Economista", rol:"Jefe de ventas", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Teresa", cargo: "Administradora", rol:"Asesora comercial", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado }
+    { nombre: "Bryan Santiago Castro", cargo: "Ingeniero Informatico", rol: "Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Jesus Caicedo", cargo: "Ingeniero Informatico", rol: "Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Dayana", cargo: "Diseñadora Gráfica", rol: "Diseñadora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Santiago", cargo: "Arte y Diseño", rol: "Ilustrador", area: "ARTE Y DISENO", imagen: Libellap6 },
+    { nombre: "Ana", cargo: "Arte y Diseño", rol: "Escritora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Maria del Mar", cargo: "Arquitectura", rol: "Arquitecta", area: "ARTE Y DISENO", imagen: Libellap7 },
+    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol: "Estudio de Campo", area: "INGENIERIA", imagen: Libellap3 },
+    { nombre: "Johnatan Ordoñez", cargo: "Arte y Diseño", rol: "Gerente", area: "ADMINISTRACION", imagen: Libellap5 },
+    { nombre: "Diana Campo", cargo: "Contaduría Pública", rol: "Contadora Pública", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Yacson", cargo: "Auxiliar Contable", rol: "Auxiliar Contable", area: "ADMINISTRACION", imagen: Libellap4 },
+    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol: "Asistente Administrativa", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Sergio", cargo: "Ingeniero civil", rol: "Jefe de obras", area: "INGENIERIA", imagen: Libellap1 },
+    { nombre: "Yeison", cargo: "Ingeniero Civil", rol: "Auditor de Viabilidad", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Sebastian", cargo: "Ingeniero Civil", rol: "Asistente de Arquitectura", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Johana", cargo: "Economista", rol: "Jefe de ventas", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Teresa", cargo: "Administradora", rol: "Asesora comercial", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado }
   ];
 
   const [categoria, setCategoria] = useState("Todos");
@@ -256,8 +263,8 @@ function EquipoSection() {
               onClick={() => setCategoria(cat)}
               className={`px-6 py-2 rounded-full border transition-all 
               ${categoria === cat
-                ? "bg-[#af2c28] text-white border-[#af2c28]"
-                : "bg-transparent text-white border-white/40 hover:border-white"}`}
+                  ? "bg-[#af2c28] text-white border-[#af2c28]"
+                  : "bg-transparent text-white border-white/40 hover:border-white"}`}
             >
               {cat}
             </button>
@@ -265,9 +272,9 @@ function EquipoSection() {
         </div>
 
         {/* ======== GRID ======== */}
-        <div className="grid md:grid-cols-3 gap-12 transition-all duration-500">
+        <div className="grid md:grid-cols-3 gap-8 transition-all duration-500">
           {equipoFiltrado.map((miembro, index) => (
-            <div key={index} className="group relative">
+            <div key={index} className="group relative max-w-xs mx-auto">
               <div className="absolute -inset-4 bg-gradient-to-br from-[#af2c28] to-[#871515] opacity-0 group-hover:opacity-20 blur-2xl transition-opacity rounded-3xl" />
               <div className="relative bg-gradient-to-b from-[rgba(175,44,40,0.91)] to-[rgba(135,21,21,0.95)] rounded-2xl overflow-hidden border-2 border-[#871515] group-hover:border-[#af2c28] transition-all">
                 <div className="aspect-[3/4] overflow-hidden">
@@ -297,15 +304,15 @@ export default function Nosotros() {
 
   const carouselImages = [
     {
-      url: imgImage4,
+      url: Libellap10,
       alt: "Proyecto Libella"
     },
     {
-      url: imgProyecto1,
+      url: Libellap30,
       alt: "Construcción moderna"
     },
     {
-      url: imgProyecto2,
+      url: Libellap40,
       alt: "Arquitectura inmobiliaria"
     }
   ];
@@ -341,7 +348,7 @@ export default function Nosotros() {
       {/* Contenido principal con padding-top para el header fijo */}
       <main className="pt-[80px]">
         {/* Hero con Carrusel */}
-        <HeroSection 
+        <HeroSection
           carouselImages={carouselImages}
           currentSlide={currentSlide}
           nextSlide={nextSlide}

@@ -8,14 +8,14 @@ import Header from "@/componentes/Header";
 import FooterInicio from "@/componentes/FooterInicio";
 
 // Importar imágenes reales del proyecto
-import img1 from '../../recursos/imagenes/hero-carousel-1.png'; // Altos de Cattleya
-import img2 from '../../recursos/imagenes/c99da49775b53e838cbd79be22c325df23fb5f1d.png'; // AmsterHaus
-import img3 from '../../recursos/imagenes/hero-carousel-2.png'; // Aukana
-import img4 from '../../recursos/imagenes/hero-carousel-3.png'; // Caoba
-import img5 from '../../recursos/imagenes/cattleya.png'; // Cattleya Campestre
-import img6 from '../../recursos/imagenes/amsterdam.png'; // Eskarlata
-import img7 from '../../recursos/imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png'; // La Ceiba
-import img8 from '../../recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png'; // La Gran Turquesa
+import img1 from '../../recursos/imagenes/cattleya.png'; // Altos de Cattleya
+import img2 from '../../recursos/imagenes/amsterhaus.png'; // AmsterHaus
+import img3 from '../../recursos/imagenes/aukana.png'; // Aukana
+import img4 from '../../recursos/imagenes/caoba.png'; // Caoba
+import img5 from '../../recursos/imagenes/cattleya-campestre.png'; // Cattleya Campestre
+import img6 from '../../recursos/imagenes/eskarlata.png'; // Eskarlata
+import img7 from '../../recursos/imagenes/ceiba.png'; // La Ceiba
+import img8 from '../../recursos/imagenes/la-gran-turquesa.png'; // La Gran Turquesa
 import imgImageDivider from '../../recursos/imagenes/divider-leaves.png';
 import imgLibellaLogo from '../../recursos/imagenes/libella-logo.png';
 import imgLibellaFooter from '../../recursos/imagenes/footer-logo.png';
@@ -88,7 +88,7 @@ const projectsData = [
     projectId: "la-ceiba",
     image: img7,
     title: "La Ceiba",
-    location: "Antigua carrilera - Calibio, Cauca.",  
+    location: "Antigua carrilera - Calibio, Cauca.",
     status: 'en-venta' as const,
     date: "Parcelación",
     description: "Espacio campestre con una comodidad única."
@@ -113,13 +113,13 @@ interface ProjectsSectionProps {
 function ProjectsSection({ searchTerm, selectedStatus }: ProjectsSectionProps) {
   const filteredProjects = useMemo(() => {
     let filtered = projectsData.filter(project => {
-      const matchesSearch = 
+      const matchesSearch =
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase());
-      
+
       const matchesStatus = selectedStatus === 'todos' || project.status === selectedStatus;
-      
+
       return matchesSearch && matchesStatus;
     });
 
@@ -187,16 +187,16 @@ function ImageDividerSection() {
   return (
     <div className="relative w-full h-56 md:h-72 lg:h-96 overflow-hidden">
       <div aria-hidden="true" className="absolute inset-0">
-        <img 
-          alt="Vista panorámica de desarrollos inmobiliarios." 
-          className="absolute w-full h-full object-cover" 
-          src={imgImageDivider} 
+        <img
+          alt="Vista panorámica de desarrollos inmobiliarios."
+          className="absolute w-full h-full object-cover"
+          src={imgImageDivider}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(135,21,21,0.6)] to-[rgba(30,23,23,0.7)]" />
       </div>
       <div className="relative z-10 h-full flex items-center justify-center">
         <div className="text-center px-4">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -226,10 +226,10 @@ function FooterSection() {
           {/* Logo and Tagline */}
           <div className="text-center md:text-left">
             <div className="mb-6">
-              <img 
-                alt="Libella Logo" 
-                className="h-28 md:h-36 w-auto mx-auto md:mx-0 filter drop-shadow-lg" 
-                src={imgLibellaFooter} 
+              <img
+                alt="Libella Logo"
+                className="h-28 md:h-36 w-auto mx-auto md:mx-0 filter drop-shadow-lg"
+                src={imgLibellaFooter}
               />
             </div>
             <p className="text-[#f7f4eb]/80 text-base md:text-lg italic">el arte de la creación</p>
@@ -276,10 +276,10 @@ export default function TodosProyectos() {
   return (
     <div className="bg-gradient-to-b from-[#1e1717] to-[rgba(135,21,21,0.97)] min-h-screen">
       <Toaster position="top-center" />
-      
+
       {/* Header de Inicio */}
       <Header paginaActual="PROYECTOS" />
-      
+
       <main className="flex flex-col w-full overflow-x-hidden pt-[80px]">
         <HeroBanner
           type="carousel"
@@ -287,7 +287,7 @@ export default function TodosProyectos() {
           title="NUESTROS PROYECTOS"
           subtitle="Descubre nuestra cartera de desarrollos inmobiliarios. Cada proyecto refleja nuestro compromiso con la excelencia y la innovación."
         />
-        
+
         <div className="w-full bg-gradient-to-b from-[rgba(135,21,21,0.97)] to-[#1e1717] py-10 md:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ProjectFilters
@@ -300,7 +300,7 @@ export default function TodosProyectos() {
         </div>
 
         <ProjectsSection searchTerm={searchTerm} selectedStatus={selectedStatus} />
-        
+
         <ImageDividerSection />
       </main>
 

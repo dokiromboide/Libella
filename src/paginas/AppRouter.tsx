@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useParams, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams, useNavigate, useLocation } from "react-router-dom";
 import InicioResponsive from "../InicioResponsive";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
@@ -20,9 +20,11 @@ function HomePage() {
 function ProyectoPage() {
   const { projectId } = useParams<{ projectId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
-  const handleBackToHome = () => {
-    navigate('/');
+  const handleBack = () => {
+    navigate(from);
     window.scrollTo(0, 0);
   };
 
@@ -33,7 +35,7 @@ function ProyectoPage() {
         <div className="text-center text-white">
           <h1 className="text-4xl font-bold mb-4">Proyecto no encontrado</h1>
           <button
-            onClick={handleBackToHome}
+            onClick={handleBack}
             className="px-6 py-3 bg-white text-[#c62926] rounded-lg font-semibold hover:bg-gray-100 transition-colors"
           >
             Volver al inicio
@@ -48,7 +50,8 @@ function ProyectoPage() {
   return (
     <ProyectoDetalle
       {...projectData}
-      onVolver={handleBackToHome}
+      onVolver={handleBack}
+      origenTexto={from === '/proyectos' ? 'Volver a Proyectos' : 'Volver al Inicio'}
     />
   );
 }
@@ -75,18 +78,18 @@ export default function AppRouter() {
       <Routes>
         {/* Página de inicio */}
         <Route path="/" element={<HomePage />} />
-        
+
         {/* Página de inversiones */}
         <Route path="/inversiones" element={<Inversiones />} />
-        
+
         {/* Páginas de proyectos */}
         <Route path="/proyectos" element={<TodosProyectos />} />
         <Route path="/proyecto/:projectId" element={<ProyectoPage />} />
-        
+
         {/* Páginas de noticias */}
         <Route path="/noticias" element={<TodasNoticias />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
-        
+
         {/* Otras páginas */}
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/nosotros" element={<Nosotros />} />

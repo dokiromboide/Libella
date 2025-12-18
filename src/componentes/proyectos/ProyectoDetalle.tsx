@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { PDFViewer } from "../PDFViewer";
+import { FileText } from "lucide-react";
 
 // Importar imágenes desde la carpeta recursos
-import imgHeroCarousel from "../../recursos/imagenes/hero-carousel-1.png";
-import imgHeroCarousel1 from "../../recursos/imagenes/hero-carousel-2.png";
-import imgHeroCarousel2 from "../../recursos/imagenes/hero-carousel-3.png";
+import imgHeroCarousel from "../../recursos/imagenes/cattleya.png";
+import imgHeroCarousel1 from "../../recursos/imagenes/aukana.png";
+import imgHeroCarousel2 from "../../recursos/imagenes/caoba.png";
 import imgHeroCarousel3 from "../../recursos/imagenes/hero-carousel-4.png";
-import imgImageLaCeiba from "../../recursos/imagenes/23069cff9d3176399375c76d68759cbd72f9fa16.png";
-import imgImageLaGranTurquesa from "../../recursos/imagenes/0c294c139f5fddad96feb3b16c0e5a444c171cf4.png";
+import imgImageLaCeiba from "../../recursos/imagenes/ceiba.png";
+import imgImageLaGranTurquesa from "../../recursos/imagenes/la-gran-turquesa.png";
 
 interface ProyectoDetalleProps {
   nombreProyecto: string;
@@ -15,10 +17,21 @@ interface ProyectoDetalleProps {
   fechaEntrega: string;
   lotes: string;
   amenidades: string[];
-  porcentajeAvance: number;
-  detallesAvance: { nombre: string; porcentaje: number }[];
+  porcentajeAvance?: number;
+  detallesAvance?: { nombre: string; porcentaje: number }[];
   imagenBanner: string;
+  pdfPortfolio?: string;
+  qrButtons?: {
+    page: number;
+    x: string;
+    y: string;
+    width: string;
+    height: string;
+    url: string;
+    label?: string;
+  }[];
   onVolver?: () => void;
+  origenTexto?: string;
 }
 
 export function ProyectoDetalle({
@@ -31,14 +44,17 @@ export function ProyectoDetalle({
   porcentajeAvance,
   detallesAvance,
   imagenBanner,
+  pdfPortfolio,
+  qrButtons,
   onVolver,
+  origenTexto,
 }: ProyectoDetalleProps) {
   const [formData, setFormData] = useState({
     nombre: "",
     email: "",
     telefono: "",
   });
-  const [showProgress, setShowProgress] = useState(false);
+  const [isPDFOpen, setIsPDFOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +94,7 @@ export function ProyectoDetalle({
               gap: "8px"
             }}
           >
-            ← Volver al Inicio
+            ← {origenTexto || 'Volver al Inicio'}
           </button>
         </div>
       </div>
@@ -86,7 +102,7 @@ export function ProyectoDetalle({
       {/* Banner Superior */}
       <div style={{ width: "100%", height: "350px", position: "relative", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", background: "rgba(0,0,0,0.3)" }}>
         <img
-          src={imgHeroCarousel}
+          src={imagenBanner}
           alt={nombreProyecto}
           style={{ width: "100%", height: "100%", objectFit: "cover", position: "absolute" }}
         />
@@ -103,7 +119,7 @@ export function ProyectoDetalle({
           {/* Columna Izquierda - Descripción */}
           <div style={{ background: "rgba(227, 66, 52, 0.91)", padding: "24px", borderRadius: "12px", color: "white" }}>
             <h2 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "24px" }}>Descripción del Proyecto</h2>
-            
+
             <p style={{ lineHeight: "1.6", marginBottom: "24px", opacity: 0.9 }}>
               {descripcion}
             </p>
@@ -129,6 +145,41 @@ export function ProyectoDetalle({
               </div>
             </div>
 
+            {pdfPortfolio && (
+              <div style={{ marginBottom: "16px" }}>
+                <button
+                  onClick={() => setIsPDFOpen(true)}
+                  style={{
+                    width: "100%",
+                    background: "rgba(255,255,255,0.15)",
+                    border: "2px solid rgba(255,255,255,0.3)",
+                    color: "white",
+                    padding: "12px 24px",
+                    borderRadius: "8px",
+                    cursor: "pointer",
+                    fontSize: "16px",
+                    fontWeight: "600",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.25)";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.15)";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  <FileText style={{ width: "20px", height: "20px" }} />
+                  Ver portafolio
+                </button>
+              </div>
+            )}
+
             <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)", paddingTop: "16px" }}>
               <h4 style={{ marginBottom: "12px", fontWeight: "600" }}>Caracteristicas:</h4>
               <ul style={{ listStyle: "none", padding: 0, display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px" }}>
@@ -145,7 +196,7 @@ export function ProyectoDetalle({
           {/* Columna Derecha - Formulario */}
           <div style={{ background: "rgba(227, 66, 52, 0.91)", padding: "24px", borderRadius: "12px", color: "white" }}>
             <h2 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "24px" }}>Agendar Visita</h2>
-            
+
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <div>
                 <label style={{ display: "block", marginBottom: "8px", fontSize: "14px" }}>Nombre completo</label>
@@ -274,62 +325,12 @@ export function ProyectoDetalle({
           </div>
         </div>
 
-        {/* Botón Ver Avances */}
-        <div style={{ textAlign: "center", marginBottom: "48px" }}>
-          <button
-            onClick={() => setShowProgress(!showProgress)}
-            style={{
-              background: "#c62926",
-              color: "white",
-              border: "none",
-              padding: "12px 32px",
-              borderRadius: "6px",
-              cursor: "pointer",
-              fontSize: "16px",
-              fontWeight: "600"
-            }}
-          >
-            {showProgress ? "Ocultar avances" : "Ver avances del proyecto"}
-          </button>
-        </div>
-
-        {/* Sección de Avances */}
-        {showProgress && (
-          <div style={{ background: "rgba(227, 66, 52, 0.91)", padding: "24px", borderRadius: "12px", marginBottom: "48px", color: "white" }}>
-            <h2 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "24px" }}>Avances de Obra</h2>
-            
-            <div style={{ marginBottom: "24px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "8px" }}>
-                <span>Progreso general del proyecto</span>
-                <span style={{ fontWeight: "bold" }}>{porcentajeAvance}%</span>
-              </div>
-              <div style={{ width: "100%", height: "16px", background: "rgba(255,255,255,0.2)", borderRadius: "8px", overflow: "hidden" }}>
-                <div style={{ height: "100%", width: `${porcentajeAvance}%`, background: "white", transition: "width 0.3s" }}></div>
-              </div>
-            </div>
-
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
-              {detallesAvance.map((detalle, idx) => (
-                <div key={idx} style={{ border: "1px solid rgba(255,255,255,0.1)", padding: "16px", borderRadius: "8px", background: "rgba(0,0,0,0.2)" }}>
-                  <p style={{ fontSize: "14px", marginBottom: "8px" }}>{detalle.nombre}</p>
-                  <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-                    <div style={{ flex: 1, height: "8px", background: "rgba(255,255,255,0.2)", borderRadius: "4px", overflow: "hidden" }}>
-                      <div style={{ height: "100%", width: `${detalle.porcentaje}%`, background: "white", transition: "width 0.3s" }}></div>
-                    </div>
-                    <span style={{ fontSize: "14px", fontWeight: "600", minWidth: "45px" }}>{detalle.porcentaje}%</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* Carrusel/Portafolio */}
         <div style={{ marginBottom: "48px" }}>
           <h2 style={{ textAlign: "center", color: "white", fontSize: "28px", fontWeight: "bold", marginBottom: "32px", textTransform: "uppercase", letterSpacing: "2px" }}>
             Galería del Proyecto
           </h2>
-          
+
           <div style={{ display: "flex", gap: "16px", overflowX: "auto", paddingBottom: "16px", scrollbarWidth: "thin" }}>
             {portfolioImages.map((imgSrc, idx) => (
               <div key={idx} style={{ minWidth: "400px", height: "250px", borderRadius: "12px", overflow: "hidden", flexShrink: 0, background: "rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.1)" }}>
@@ -343,6 +344,17 @@ export function ProyectoDetalle({
           </div>
         </div>
       </div>
+
+      {/* PDF Viewer Modal */}
+      {pdfPortfolio && (
+        <PDFViewer
+          pdfUrl={pdfPortfolio}
+          isOpen={isPDFOpen}
+          onClose={() => setIsPDFOpen(false)}
+          title={`Portafolio - ${nombreProyecto}`}
+          qrButtons={qrButtons}
+        />
+      )}
     </div>
   );
 }
