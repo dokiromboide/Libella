@@ -55,10 +55,10 @@ export function MoonBackground() {
   return (
     <canvas
       ref={canvasRef}
-      width={349.88}
-      height={174.22}
+      width={245}
+      height={122.15}
       className="absolute inset-0 rounded-b-[300px]"
-      style={{ clipPath: 'circle(349.88px 174.22px at 50% 0%)' }}
+      style={{ clipPath: 'circle(245px 122.15px at 50% 0%)' }}
     />
   );
 }

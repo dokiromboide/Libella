@@ -84,7 +84,7 @@ export default function Header({ paginaActual = '' }: HeaderProps) {
         initial={{ y: -80, backgroundColor: "#c62926" }}
         animate={{
           y: 0,
-          backgroundColor: isLogoHovered ? "#8C0606" : "#c62926"
+          backgroundColor: isLogoHovered ? "#9B1200" : "#c62926"
         }}
         transition={{ duration: 0.5 }}
       >
