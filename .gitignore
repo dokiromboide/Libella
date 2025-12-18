@@ -1,0 +1,74 @@
+# === Node.js, React y JavaScript ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+dist/
+build/
+coverage/
+lib-cov/
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.tgz
+.cache/
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Mapas de fuentes JavaScript y CSS
+*.map
+
+# Archivo de lock de dependencias (elige según el gestor, elimina el que no uses)
+package-lock.json
+yarn.lock
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+ENV.bak/
+venv.bak/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info/
+.eggs/
+coverage.*
+*.cover
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+pip-log.txt
+
+# === Edición y entorno de desarrollo ===
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# === SO y archivos generados ===
+.DS_Store
+Thumbs.db
+
+# === CSS preprocesadores ===
+.sass-cache/
+*.css.map
+
+# === Archivos temporales y otros ===
+*.swp
+*.bak
+*.tmp
