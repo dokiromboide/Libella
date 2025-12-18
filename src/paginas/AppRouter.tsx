@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useParams, useNavigate, useLocation } from "react-router-dom";
+import { HashRouter, Routes, Route, useParams, useNavigate, useLocation } from "react-router-dom";
 import InicioResponsive from "../InicioResponsive";
 import { ProyectoDetalle } from "../componentes/proyectos/ProyectoDetalle";
 import NoticiaDetalle from "./noticias/NoticiaDetalle";
@@ -74,7 +74,7 @@ function PaginaPlaceholder({ titulo, paginaActual }: { titulo: string; paginaAct
 // Router principal
 export default function AppRouter() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         {/* Página de inicio */}
         <Route path="/" element={<HomePage />} />
@@ -95,6 +95,6 @@ export default function AppRouter() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/contacto" element={<Contactanos />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
