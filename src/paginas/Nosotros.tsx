@@ -272,20 +272,20 @@ function EquipoSection() {
         </div>
 
         {/* ======== GRID ======== */}
-        <div className="grid md:grid-cols-3 gap-8 transition-all duration-500">
+        <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-6 transition-all duration-500">
           {equipoFiltrado.map((miembro, index) => (
-            <div key={index} className="group relative max-w-xs mx-auto">
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#af2c28] to-[#871515] opacity-0 group-hover:opacity-20 blur-2xl transition-opacity rounded-3xl" />
-              <div className="relative bg-gradient-to-b from-[rgba(175,44,40,0.91)] to-[rgba(135,21,21,0.95)] rounded-2xl overflow-hidden border-2 border-[#871515] group-hover:border-[#af2c28] transition-all">
-                <div className="aspect-[3/4] overflow-hidden">
+            <div key={index} className="group relative max-w-[240px] mx-auto">
+              <div className="absolute -inset-2 bg-gradient-to-br from-[#af2c28] to-[#871515] opacity-0 group-hover:opacity-20 blur-xl transition-opacity rounded-2xl" />
+              <div className="relative bg-gradient-to-b from-[rgba(175,44,40,0.91)] to-[rgba(135,21,21,0.95)] rounded-xl overflow-hidden border-2 border-[#871515] group-hover:border-[#af2c28] transition-all">
+                <div className="aspect-[4/5] overflow-hidden">
                   <img src={miembro.imagen} alt={miembro.nombre}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-6 bg-gradient-to-t from-black/80 to-transparent -mt-30 relative z-10">
-                  <h3 className="text-white text-xl mb-1">{miembro.nombre}</h3>
-                  <p className="text-white/80">{miembro.cargo}</p>
-                  <p className="text-white/80">{miembro.rol}</p>
+                <div className="p-4 bg-gradient-to-t from-black/80 to-transparent -mt-20 relative z-10">
+                  <h3 className="text-white text-base font-semibold mb-1 leading-tight">{miembro.nombre}</h3>
+                  <p className="text-white/80 text-sm leading-tight">{miembro.cargo}</p>
+                  <p className="text-white/80 text-sm leading-tight">{miembro.rol}</p>
                 </div>
               </div>
             </div>
