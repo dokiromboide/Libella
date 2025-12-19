@@ -9,6 +9,7 @@ import imgLibellaLogo from "../recursos/imagenes/e5405135f74a3096ac6e7cfb1ced255
 
 // Importar imágenes del equipo
 import Libellap1 from "../recursos/imagenes/Libellap1.png";
+import Libellap2 from "../recursos/imagenes/Libellap2.png";
 import Libellap3 from "../recursos/imagenes/Libellap3.png";
 import Libellap4 from "../recursos/imagenes/Libellap4.png";
 import Libellap5 from "../recursos/imagenes/Libellap5.png";
@@ -18,6 +19,9 @@ import Libellap10 from "../recursos/imagenes/Libellap10.png";
 import Libellap20 from "../recursos/imagenes/Libellap20.png";
 import Libellap30 from "../recursos/imagenes/Libellap30.png";
 import Libellap40 from "../recursos/imagenes/Libellap40.png";
+import dayana from "../recursos/imagenes/dayana.jpeg";
+import yeison from "../recursos/imagenes/yeison.jpeg";
+import johana from "../recursos/imagenes/johana.jpeg";
 
 // ============================================
 // SECCIÓN: HERO CON CARRUSEL
@@ -225,7 +229,7 @@ function EquipoSection() {
   const equipo = [
     { nombre: "Bryan Santiago Castro", cargo: "Ingeniero Informatico", rol: "Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
     { nombre: "Jesus Caicedo", cargo: "Ingeniero Informatico", rol: "Programador", area: "TECNOLOGIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Dayana", cargo: "Diseñadora Gráfica", rol: "Diseñadora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Dayana", cargo: "Diseñadora Gráfica", rol: "Diseñadora", area: "ARTE Y DISENO", imagen: dayana },
     { nombre: "Santiago", cargo: "Arte y Diseño", rol: "Ilustrador", area: "ARTE Y DISENO", imagen: Libellap6 },
     { nombre: "Ana", cargo: "Arte y Diseño", rol: "Escritora", area: "ARTE Y DISENO", imagen: imgRetratoHombreBlancoAislado },
     { nombre: "Maria del Mar", cargo: "Arquitectura", rol: "Arquitecta", area: "ARTE Y DISENO", imagen: Libellap7 },
@@ -233,10 +237,11 @@ function EquipoSection() {
     { nombre: "Johnatan Ordoñez", cargo: "Arte y Diseño", rol: "Gerente", area: "ADMINISTRACION", imagen: Libellap5 },
     { nombre: "Diana Campo", cargo: "Contaduría Pública", rol: "Contadora Pública", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
     { nombre: "Yacson", cargo: "Auxiliar Contable", rol: "Auxiliar Contable", area: "ADMINISTRACION", imagen: Libellap4 },
+    { nombre: "Bryan", cargo: "Derecho y leyes", rol: "Abogado", area: "ADMINISTRACION", imagen: Libellap2 },
     { nombre: "Sergio", cargo: "Ingeniero civil", rol: "Jefe de obras", area: "INGENIERIA", imagen: Libellap1 },
-    { nombre: "Yeison", cargo: "Ingeniero Civil", rol: "Auditor de Viabilidad", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Yeison", cargo: "Ingeniero Civil", rol: "Auditor de Viabilidad", area: "INGENIERIA", imagen: yeison },
     { nombre: "Sebastian", cargo: "Ingeniero Civil", rol: "Asistente de Arquitectura", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
-    { nombre: "Johana", cargo: "Economista", rol: "Jefe de ventas", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado },
+    { nombre: "Johana", cargo: "Economista", rol: "Jefe de ventas", area: "VENTAS", imagen: johana },
     { nombre: "Teresa", cargo: "Administradora", rol: "Asesora comercial", area: "VENTAS", imagen: imgRetratoHombreBlancoAislado }
   ];
 
