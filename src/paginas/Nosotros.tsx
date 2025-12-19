@@ -233,7 +233,6 @@ function EquipoSection() {
     { nombre: "Johnatan Ordoñez", cargo: "Arte y Diseño", rol: "Gerente", area: "ADMINISTRACION", imagen: Libellap5 },
     { nombre: "Diana Campo", cargo: "Contaduría Pública", rol: "Contadora Pública", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
     { nombre: "Yacson", cargo: "Auxiliar Contable", rol: "Auxiliar Contable", area: "ADMINISTRACION", imagen: Libellap4 },
-    { nombre: "Juliana", cargo: "Ingeniera Forestal", rol: "Asistente Administrativa", area: "ADMINISTRACION", imagen: imgRetratoHombreBlancoAislado },
     { nombre: "Sergio", cargo: "Ingeniero civil", rol: "Jefe de obras", area: "INGENIERIA", imagen: Libellap1 },
     { nombre: "Yeison", cargo: "Ingeniero Civil", rol: "Auditor de Viabilidad", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
     { nombre: "Sebastian", cargo: "Ingeniero Civil", rol: "Asistente de Arquitectura", area: "INGENIERIA", imagen: imgRetratoHombreBlancoAislado },
