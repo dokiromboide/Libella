@@ -3,12 +3,7 @@ import { PDFViewer } from "../PDFViewer";
 import { FileText } from "lucide-react";
 
 // Importar imágenes desde la carpeta recursos
-import imgHeroCarousel from "../../recursos/imagenes/cattleya.png";
-import imgHeroCarousel1 from "../../recursos/imagenes/aukana.png";
-import imgHeroCarousel2 from "../../recursos/imagenes/caoba.png";
-import imgHeroCarousel3 from "../../recursos/imagenes/hero-carousel-4.png";
-import imgImageLaCeiba from "../../recursos/imagenes/ceiba.png";
-import imgImageLaGranTurquesa from "../../recursos/imagenes/la-gran-turquesa.png";
+
 
 interface ProyectoDetalleProps {
   nombreProyecto: string;
@@ -63,15 +58,20 @@ export function ProyectoDetalle({
     setFormData({ nombre: "", email: "", telefono: "" });
   };
 
-  // Usar las imágenes importadas
-  const portfolioImages = [
-    imgHeroCarousel,
-    imgHeroCarousel1,
-    imgHeroCarousel2,
-    imgHeroCarousel3,
-    imgImageLaCeiba,
-    imgImageLaGranTurquesa
-  ];
+  // Función para manejar la apertura del PDF
+  const handleOpenPDF = () => {
+    if (pdfPortfolio) {
+      // Si es La Gran Turquesa o AmsterHaus, abrir en nueva pestaña (PDF directo)
+      if (nombreProyecto === "La Gran Turquesa" || nombreProyecto === "AmsterHaus") {
+        window.open(pdfPortfolio, '_blank');
+      } else {
+        // Para otros proyectos, abrir en modal
+        setIsPDFOpen(true);
+      }
+    }
+  };
+
+
 
   return (
     <div style={{ width: "100%", minHeight: "100vh", background: "linear-gradient(to bottom, rgba(198, 41, 38, 0.97), #403838)" }}>
@@ -148,7 +148,7 @@ export function ProyectoDetalle({
             {pdfPortfolio && (
               <div style={{ marginBottom: "16px" }}>
                 <button
-                  onClick={() => setIsPDFOpen(true)}
+                  onClick={handleOpenPDF}
                   style={{
                     width: "100%",
                     background: "rgba(255,255,255,0.15)",
@@ -177,6 +177,11 @@ export function ProyectoDetalle({
                   <FileText style={{ width: "20px", height: "20px" }} />
                   Ver portafolio
                 </button>
+                {(nombreProyecto === "La Gran Turquesa" || nombreProyecto === "AmsterHaus") && (
+                  <p style={{ fontSize: '13px', marginTop: '10px', color: '#fff', textAlign: 'center', fontWeight: '500' }}>
+                    * Te redirigirás a una nueva pestaña
+                  </p>
+                )}
               </div>
             )}
 
@@ -325,24 +330,7 @@ export function ProyectoDetalle({
           </div>
         </div>
 
-        {/* Carrusel/Portafolio */}
-        <div style={{ marginBottom: "48px" }}>
-          <h2 style={{ textAlign: "center", color: "white", fontSize: "28px", fontWeight: "bold", marginBottom: "32px", textTransform: "uppercase", letterSpacing: "2px" }}>
-            Galería del Proyecto
-          </h2>
 
-          <div style={{ display: "flex", gap: "16px", overflowX: "auto", paddingBottom: "16px", scrollbarWidth: "thin" }}>
-            {portfolioImages.map((imgSrc, idx) => (
-              <div key={idx} style={{ minWidth: "400px", height: "250px", borderRadius: "12px", overflow: "hidden", flexShrink: 0, background: "rgba(0,0,0,0.2)", border: "2px solid rgba(255,255,255,0.1)" }}>
-                <img
-                  src={imgSrc}
-                  alt={`${nombreProyecto} - Vista ${idx + 1}`}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* PDF Viewer Modal */}

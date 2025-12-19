@@ -7,6 +7,8 @@ import imgEskarlata from "../recursos/imagenes/eskarlata.png";
 import imgAukana from "../recursos/imagenes/aukana.png";
 import imgCaoba from "../recursos/imagenes/caoba.png";
 import imgCattleyaCampestre from "../recursos/imagenes/cattleya-campestre.png";
+import pdfAmsterdam from "../recursos/imagenes/AmsterHausPortafolio.pdf";
+import pdfLaGranTurquesa from "../recursos/imagenes/LaGranTurquesaPortafolio.pdf";
 
 export interface ProyectoDetalle {
   nombreProyecto: string;
@@ -45,7 +47,8 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
     fechaEntrega: "Próximamente",
     lotes: "Apartamentos disponibles desde 55m²",
     amenidades: ["Agua y energía", "Juegos infantiles", "Club house", "Zona de alta valorización", "Portería", "Piscina", "Conjunto cerrado", "Acueducto", "Via pavimentada hasta el proyecto"],
-    imagenBanner: imgAmsterdam
+    imagenBanner: imgAmsterdam,
+    pdfPortfolio: pdfAmsterdam
   },
   "la-ceiba": {
     nombreProyecto: "La Ceiba",
@@ -64,7 +67,7 @@ export const proyectosData: Record<string, ProyectoDetalle> = {
     lotes: "Parcelas desde 1000m²",
     amenidades: ["Servicio de agua y energía", "Vías en afirmado y huellas concreto", "Portería", "Cerramiento perimetral", "Mirador"],
     imagenBanner: imgLaGranTurquesa,
-    pdfPortfolio: "/src/recursos/imagenes/LaGranTurquesaPortafolio1.pdf",
+    pdfPortfolio: pdfLaGranTurquesa,
     qrButtons: [
       // EJEMPLO - Ajusta estas posiciones según donde estén los QRs reales
       {
