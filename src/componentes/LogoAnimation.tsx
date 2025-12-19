@@ -46,134 +46,161 @@ export default function LogoAnimation({
   }, [isHovered, onHoverStart, onHoverEnd]);
 
   return (
-    <div
-      className="h-[40px] relative w-[50px] cursor-pointer z-50"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={onNavigate}
-    >
-      <img
-        alt="Logo principal"
-        className="absolute inset-0 max-w-none object-cover size-full"
-        src={mainLogoSrc}
-      />
-
-      {/* Media Luna con logos */}
+    <>
+      <style>
+        {`
+          @keyframes glowPulse {
+            0% { 
+              filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)) 
+                      drop-shadow(0 0 6px rgba(255, 200, 200, 0.2)); 
+              transform: scale(1);
+            }
+            50% { 
+              filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.8)) 
+                      drop-shadow(0 0 20px rgba(255, 220, 220, 0.4))
+                      drop-shadow(0 0 30px rgba(255, 150, 150, 0.2)); 
+              transform: scale(1.02);
+            }
+            100% { 
+              filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.4)) 
+                      drop-shadow(0 0 6px rgba(255, 200, 200, 0.2)); 
+              transform: scale(1);
+            }
+          }
+        `}
+      </style>
       <div
-        className={`absolute -top-[20px] left-1/2 z-[150] ${isHovered ? '' : 'pointer-events-none'}`}
-        style={{
-          transform: `translateX(-50%) scale(${isHovered ? '1' : '0.01'})`,
-          opacity: isHovered ? 1 : 0,
-          transformOrigin: 'center 40px',
-          transition: 'transform 0.5s ease-out, opacity 0.5s ease-out'
-        }}
+        className="h-[40px] relative w-[50px] cursor-pointer z-50"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={onNavigate}
       >
-        <div className="relative w-[350px] h-[175px]">
-          {/* Video de fondo de media luna (semicírculo) */}
-          <div
-            className="absolute inset-0 overflow-hidden z-[1]"
-            style={{
-              visibility: showVideo ? 'visible' : 'hidden'
-            }}
-          >
-            <VideoMoonAnimation src={videoMediaLuna} />
-          </div>
+        <img
+          alt="Logo principal"
+          className="absolute inset-0 max-w-none object-cover size-full"
+          src={mainLogoSrc}
+          style={{ animation: 'glowPulse 2.5s infinite ease-in-out' }}
+        />
 
-          {/* Contenedor de logos */}
-          <div className="absolute inset-0 flex items-center justify-center z-[3]">
-            <div className="relative w-full h-full">
-              {/* Logo Ojo de Oso - Izquierda Superior */}
-              <div
-                className="absolute left-[20%] top-[15px] w-[60px] h-[45px] flex items-center justify-center"
-                style={{
-                  visibility: showLogo1 ? 'visible' : 'hidden'
-                }}
-              >
-                <div className="relative w-full h-full">
-                  <img
-                    src={logo1Src}
-                    alt="Ojo de Oso"
-                    className="w-full h-full object-contain logo-glow"
-                  />
-                  <div
-                    className="absolute inset-0 overflow-hidden logo-scanner-overlay"
-                    style={{
-                      maskImage: `url(${logo1Src})`,
-                      maskSize: 'contain',
-                      maskRepeat: 'no-repeat',
-                      maskPosition: 'center',
-                      WebkitMaskImage: `url(${logo1Src})`,
-                      WebkitMaskSize: 'contain',
-                      WebkitMaskRepeat: 'no-repeat',
-                      WebkitMaskPosition: 'center'
-                    }}
-                  />
+        {/* Media Luna con logos */}
+        <div
+          className={`absolute -top-[10px] left-1/2 z-[150] ${isHovered ? '' : 'pointer-events-none'}`}
+          style={{
+            transform: `translateX(-50%) scale(${isHovered ? '1' : '0.01'})`,
+            opacity: isHovered ? 1 : 0,
+            transformOrigin: 'center 40px',
+            transition: 'transform 0.5s ease-out, opacity 0.5s ease-out'
+          }}
+        >
+          <div className="relative w-[230px] h-[122.15px]">
+            {/* Video de fondo de media luna (semicírculo) */}
+            <div
+              className="absolute inset-0 overflow-hidden z-[1]"
+              style={{
+                visibility: showVideo ? 'visible' : 'hidden'
+              }}
+            >
+              <VideoMoonAnimation src={videoMediaLuna} />
+            </div>
+
+            {/* Contenedor de logos */}
+            <div className="absolute inset-0 flex items-center justify-center z-[3]">
+              <div className="relative w-full h-full">
+
+
+                {/* Logo Ojo de Oso - Izquierda Superior */}
+                <div
+                  className="absolute left-[23%] top-[8px] w-[59px] h-[40px] flex items-center justify-center"
+                  style={{
+                    visibility: showLogo1 ? 'visible' : 'hidden'
+                  }}
+                >
+                  <div className="relative w-full h-full">
+                    <img
+                      src={logo1Src}
+                      alt="Ojo de Oso"
+                      className="w-full h-full object-contain logo-glow"
+                    />
+                    <div
+                      className="absolute inset-0 overflow-hidden logo-scanner-overlay"
+                      style={{
+                        maskImage: `url(${logo1Src})`,
+                        maskSize: 'contain',
+                        maskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskImage: `url(${logo1Src})`,
+                        WebkitMaskSize: 'contain',
+                        WebkitMaskRepeat: 'no-repeat',
+                        WebkitMaskPosition: 'center'
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Logo Libella - Centro (arriba) */}
-              <div
-                className="absolute left-1/2 -translate-x-1/2 top-[30px] w-[60px] h-[53px] flex items-center justify-center"
-                style={{
-                  visibility: showLogo2 ? 'visible' : 'hidden'
-                }}
-              >
-                <div className="relative w-full h-full">
-                  <img
-                    src={logo2Src}
-                    alt="Libella"
-                    className="w-full h-full object-contain logo-glow"
-                  />
-                  <div
-                    className="absolute inset-0 overflow-hidden logo-scanner-overlay"
-                    style={{
-                      maskImage: `url(${logo2Src})`,
-                      maskSize: 'contain',
-                      maskRepeat: 'no-repeat',
-                      maskPosition: 'center',
-                      WebkitMaskImage: `url(${logo2Src})`,
-                      WebkitMaskSize: 'contain',
-                      WebkitMaskRepeat: 'no-repeat',
-                      WebkitMaskPosition: 'center',
-                      animationDelay: '1s'
-                    }}
-                  />
+                {/* Logo Libella - Centro (arriba) */}
+                <div
+                  className="absolute left-1/2 -translate-x-1/2 top-[28px] w-[52px] h-[45px] flex items-center justify-center"
+                  style={{
+                    visibility: showLogo2 ? 'visible' : 'hidden'
+                  }}
+                >
+                  <div className="relative w-full h-full">
+                    <img
+                      src={logo2Src}
+                      alt="Libella"
+                      className="w-full h-full object-contain logo-glow"
+                    />
+                    <div
+                      className="absolute inset-0 overflow-hidden logo-scanner-overlay"
+                      style={{
+                        maskImage: `url(${logo2Src})`,
+                        maskSize: 'contain',
+                        maskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskImage: `url(${logo2Src})`,
+                        WebkitMaskSize: 'contain',
+                        WebkitMaskRepeat: 'no-repeat',
+                        WebkitMaskPosition: 'center',
+                        animationDelay: '1s'
+                      }}
+                    />
+                  </div>
                 </div>
-              </div>
 
-              {/* Logo Suelo 360 - Derecha Superior */}
-              <div
-                className="absolute right-[20%] top-[15px] w-[60px] h-[45px] flex items-center justify-center"
-                style={{
-                  visibility: showLogo3 ? 'visible' : 'hidden'
-                }}
-              >
-                <div className="relative w-full h-full">
-                  <img
-                    src={logo3Src}
-                    alt="Suelo 360"
-                    className="w-full h-full object-contain logo-glow"
-                  />
-                  <div
-                    className="absolute inset-0 overflow-hidden logo-scanner-overlay"
-                    style={{
-                      maskImage: `url(${logo3Src})`,
-                      maskSize: 'contain',
-                      maskRepeat: 'no-repeat',
-                      maskPosition: 'center',
-                      WebkitMaskImage: `url(${logo3Src})`,
-                      WebkitMaskSize: 'contain',
-                      WebkitMaskRepeat: 'no-repeat',
-                      WebkitMaskPosition: 'center',
-                      animationDelay: '2s'
-                    }}
-                  />
+                {/* Logo Suelo 360 - Derecha Superior */}
+                <div
+                  className="absolute right-[23%] top-[8px] w-[50px] h-[40px] flex items-center justify-center"
+                  style={{
+                    visibility: showLogo3 ? 'visible' : 'hidden'
+                  }}
+                >
+                  <div className="relative w-full h-full">
+                    <img
+                      src={logo3Src}
+                      alt="Suelo 360"
+                      className="w-full h-full object-contain logo-glow"
+                    />
+                    <div
+                      className="absolute inset-0 overflow-hidden logo-scanner-overlay"
+                      style={{
+                        maskImage: `url(${logo3Src})`,
+                        maskSize: 'contain',
+                        maskRepeat: 'no-repeat',
+                        maskPosition: 'center',
+                        WebkitMaskImage: `url(${logo3Src})`,
+                        WebkitMaskSize: 'contain',
+                        WebkitMaskRepeat: 'no-repeat',
+                        WebkitMaskPosition: 'center',
+                        animationDelay: '2s'
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
